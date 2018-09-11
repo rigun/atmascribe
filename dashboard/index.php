@@ -391,7 +391,7 @@ require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
             }else{
                 document.getElementById("lainnya").checked = true;
             }
-
         }
+        
 </script>
 </html>

@@ -36,6 +36,8 @@ if($num>0){
             "foto" => $foto,
             "ttl" => $ttl,
             "kutipan" => $kutipan,
+            "status" => $status,
+            "dibuat_pada" => $dibuat_pada,
          );
          
          // "description" => html_entity_decode($description),
@@ -50,7 +52,7 @@ if($num>0){
  
 else{
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "Tidak ada data.")
     );
 }
 ?>

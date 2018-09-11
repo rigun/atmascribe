@@ -2,12 +2,11 @@
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST, DELETE");
+header("Access-Control-Allow-Methods: PUT, PATCH, POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
- 
-// include database and object file
+// include database and object files
 include_once '../config/database.php';
 include_once '../objects/user.php';
  
@@ -18,23 +17,26 @@ $db = $database->getConnection();
 // prepare product object
 $product = new User($db);
  
-// get product id
+// get id of product to be edited
 $data = json_decode(file_get_contents("php://input"));
  
-// set product id to be deleted
+// set ID property of product to be edited
 $product->id = $data->id;
  
-// delete the product
-if($product->delete()){
+// set product property values
+$product->status = $data->status; 
+
+// update the product
+if($product->updateStatus()){
     echo '{';
-        echo '"message": "User berhasil di hapus"';
+        echo '"message": "Status Berhasil di Update."';
     echo '}';
 }
  
-// if unable to delete the product
+// if unable to update the product, tell the user
 else{
     echo '{';
-        echo '"message": "Gagal Menghapus User"';
+        echo '"message": "Gagal Update Status."';
     echo '}';
 }
 ?>

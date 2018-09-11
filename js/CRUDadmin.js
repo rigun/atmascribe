@@ -1,4 +1,4 @@
-function submitDataUser(e){
+function submitDataUser(e,dibuat_pada,token){
     e.preventDefault();
     var data ={
         nama: $('#nama').val(),
@@ -8,6 +8,8 @@ function submitDataUser(e){
         kutipan: null,
         foto: null,
         status: null,
+        dibuat_pada: dibuat_pada,
+        token: token
     }
     
     var form_data=JSON.stringify(data);
@@ -18,8 +20,10 @@ function submitDataUser(e){
     data : form_data,
     success : function(result) {
         // product was created, go back to products list
+        alert(result.message);
         getDatauser();
         getSumData();
+
     },
         error: function(xhr, resp, text) {
             // show error to console
@@ -85,13 +89,62 @@ function getDatauser(){
                             "<td id=''>"+val.email+"</td>"+
                             "<td id=''>"+val.catatan+"</td>"+
                             "<td id=''>"+val.jadwal+"</td>"+
-                            "<td id=''>"+val.total+"</td>"+
-                        "</tr> " 
+                            "<td id=''>"+val.total+"</td>"
+            if(val.status == 0){
+                contentHtml +=  "<td id=''><span style='color: red'>Tidak Aktif</a></td>"
+            }else if(val.status == 1){
+                contentHtml +=  "<td id=''><span style='color: green'>Aktif</a></td>"
+            }else{
+                contentHtml +=  "<td id=''>Kesalahan Pada server</td>"
+            }
+                    contentHtml +="</tr> " 
             number++;
         });
         $('#dataTable').html(contentHtml);
     });
     
+}
+function deleteDataUser(e){
+    e.preventDefault();
+    var id = $('#id').attr('value');
+    alert(id);
+    $.ajax({
+    url: "http://localhost:808/paw/Tubes/api/user/delete.php",
+    type : "DELETE",
+    data: JSON.stringify({ id: id }),
+    contentType : 'application/json',
+    success : function(result) {
+        // product was created, go back to products list
+        alert(result.message);
+        $('#DeleteUser').modal('toggle');
+        $('tbody#dataReportTable tr#'+id).remove();
+        $('tbody#dataReportTable tr#detail'+id).remove();
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
+}
+function updateDataUser(e,status,detail){
+    e.preventDefault();
+    var id = $('#id'+detail).attr('value');
+    $.ajax({
+    url: "http://localhost:808/paw/Tubes/api/user/updateStatus.php",
+    type : "POST",
+    data: JSON.stringify({ id: id, status: status}),
+    contentType : 'application/json',
+    success : function(result) {
+        // product was created, go back to products list
+        alert(result.message);
+        $('#'+detail).modal('toggle');
+        alert('berhasil');
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
 }
 function getReport(){
     var reportContent = "";
@@ -100,17 +153,23 @@ function getReport(){
         $.each(data.records, function(key, val){
             $.getJSON("http://localhost:808/paw/Tubes/api/user/readOne.php?id="+val.id, function(dataOne){
              
-                reportContent += "<span id='' style='display: none' >"+val.id+"</span>"+
-                    "<tr>"+
+                reportContent +=    "<tr id="+val.id+">"+
+                    "<span id='' style='display: none' >"+val.id+"</span>"+
                         "<td >"+number+"</td>"+
                         "<td id='uNama"+val.id+"'>"+dataOne.nama+"</td>"+
                         "<td id='uEmail"+val.id+"'>"+dataOne.email+"</td>"+
                         "<td id='uTtl"+val.id+"'>"+dataOne.ttl+"</td>"+
                         "<td id='uKutipan"+val.id+"'>"+dataOne.kutipan+"</td>"+
                         "<td class='row'>"+
-                        "<img onclick='showdetail("+val.id+")' src='../img/icon/info.png' />"+
-                        "<img src='../img/icon/edit.svg' />"+
-                        "<img src='../img/icon/cancel.svg' />"+
+                        "<img onclick='showdetail("+val.id+")' src='../img/icon/info.png' />"
+                    if(val.status == 0){
+                        reportContent += "<a data-toggle='modal' data-target='#AktifUser' onclick='updateUserStat(1,"+val.id+")' ><img src='../img/icon/tidak aktif.png' /></a>"
+                    }else if(val.status == 1){
+                        reportContent += "<a data-toggle='modal' data-target='#deAktifUser' onclick='updateUserStat(2,"+val.id+")' ><img src='../img/icon/aktif.png' /></a>"
+                    }else{
+                        reportContent += "Kesalahan Pada Server"
+                    }
+                        reportContent += "<a data-toggle='modal' data-target='#DeleteUser' onclick='deleteModalUser("+val.id+")' ><img src='../img/icon/cancel.svg' /></a>"+
                         "</td>"+
                     "</tr>"+
                     "<tr id='detail"+val.id+"' style='display: none'>"+
@@ -125,7 +184,6 @@ function getReport(){
                                     "<th class='col-2'>Waktu</th>"+
                                     "<th class='col-2'>Tanggal</th>"+
                                     "<th class='col-2'>Tempat</th>"+
-                                    "<th class='col-2'>Pengaturan</th>"+
                                 "</tr>"+
                             "</thead>"+
                             "<tbody>"
@@ -133,14 +191,11 @@ function getReport(){
                                 key+=1;
                                 reportContent +=  "<tr>"+
                                     "<td class='col-1'>"+key+"</td>"+
-                                    "<td class='col-3'>"+valJadwal.jadwal+"</td>"+
+                                    "<td class='col-5'>"+valJadwal.jadwal+"</td>"+
                                     "<td class='col-2'>"+valJadwal.waktu+"</td>"+
                                     "<td class='col-2'>"+valJadwal.tanggal+"</td>"+
                                     "<td class='col-2'>"+valJadwal.tempat+"</td>"+
-                                    "<td id='' class='row'>"+
-                                        "<img src='../img/icon/edit.svg' />"+
-                                        "<img src='../img/icon/cancel.svg' />"+
-                                    "</td>"+
+                                  
                                 "</tr>"
                             });
                             reportContent += "</tbody>"+
@@ -149,19 +204,15 @@ function getReport(){
                             "<thead>"+
                                 "<tr>"+
                                     "<th class='col-1'>No.</th>"+
-                                    "<th class='col-9'>Catatan</th>"+
-                                    "<th class='col-2'>Pengaturan</th>"+
+                                    "<th class='col-11'>Catatan</th>"+
                                 "</tr>"+
                             "</thead>"+
                             "<tbody>" 
                             $.each(dataOne.catatans, function(key, valCatatan){
+                                key+=1;
                                 reportContent +=  "<tr>"+
                                     "<td id=''>"+key+"</td>"+
                                     "<td id=''>"+valCatatan.catatan+"</td>"+
-                                    "<td id='' class='row'>"+
-                                        "<img src='../img/icon/edit.svg' />"+
-                                        "<img src='../img/icon/cancel.svg' />"+
-                                    "</td>"+
                                     "</tr>"
                             });
                             reportContent += "</tbody>"+

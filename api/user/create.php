@@ -23,23 +23,25 @@ $data = json_decode(file_get_contents("php://input"));
  
 $product->email = $data->email;
 $product->nama = $data->nama;
-$product->password = $data->password;
+$product->password = password_hash($data->password, PASSWORD_DEFAULT);
 $product->foto = $data->foto;
 $product->ttl = $data->ttl;
 $product->kutipan = $data->kutipan;
 $product->status = $data->status;
+$product->token = $data->token;
+$product->dibuat_pada = $data->dibuat_pada;
 
 // create the product
 if($product->create()){
     echo '{';
-        echo '"message": "Product was created."';
+        echo '"message": "User Berhasil Dibuat"';
     echo '}';
 }
  
 // if unable to create the product, tell the user
 else{
     echo '{';
-        echo '"message": "Unable to create product."';
+        echo '"message": "Tidak Dapat Membuat User."';
     echo '}';
 }
 ?>

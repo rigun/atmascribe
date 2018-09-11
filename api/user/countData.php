@@ -35,6 +35,7 @@ if($num>0){
             "catatan" => $catatan,
             "jadwal" => $jadwal,
             "total" => $total,
+            "status" => $status
          );
          
          // "description" => html_entity_decode($description),
@@ -49,7 +50,7 @@ if($num>0){
  
 else{
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "Tidak ada data.")
     );
 }
 ?>

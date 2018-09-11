@@ -21,29 +21,45 @@ $product = new User($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set ID property of product to be edited
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->id = $data->id;
  
 // set product property values
  
 $product->email = $data->email; 
 $product->nama = $data->nama; 
-$product->password = $data->password; 
+$product->password = password_hash($data->password, PASSWORD_DEFAULT); 
+$product->passwordL = $data->passwordL; 
 $product->foto = $data->foto; 
 $product->ttl = $data->ttl; 
 $product->kutipan = $data->kutipan; 
-$product->status = $data->status; 
 
+if($product->password == null){
+    if($product->update()){
+        echo '{';
+            echo '"message": "Data berhasil di perbaharui."';
+        echo '}';
+    }
+     
+    // if unable to update the product, tell the user
+    else{
+        echo '{';
+            echo '"message": "Gagal memperbaharui data. Coba lagi"';
+        echo '}';
+    }
+}else{
+    if($product->updateWithPassword()){
+        echo '{';
+            echo '"message": "Data berhasil di perbaharui."';
+        echo '}';
+    }
+     
+    // if unable to update the product, tell the user
+    else{
+        echo '{';
+            echo '"message": "Gagal memperbaharui data. Coba lagi"';
+        echo '}';
+    }
+}
 // update the product
-if($product->update()){
-    echo '{';
-        echo '"message": "Product was updated."';
-    echo '}';
-}
- 
-// if unable to update the product, tell the user
-else{
-    echo '{';
-        echo '"message": "Unable to update product."';
-    echo '}';
-}
+
 ?>

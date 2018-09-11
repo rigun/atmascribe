@@ -13,6 +13,7 @@
                     <th>Catatan</th>
                     <th>Jadwal</th>
                     <th>Total</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody id="dataTable">
@@ -44,7 +45,7 @@
                 </div>
 
                 <div class="modal-body">
-                        <form id="userAdd"  name="userAdd"  action='#' method='post'onsubmit="return submitDataUser(event)">
+                        <form id="userAdd"  name="userAdd"  action='#' method='post'onsubmit="return submitDataUser(event,'<?php echo date('Y-m-d H:i:s');?>','<?php echo bin2hex(random_bytes(5))?>')">
                         <input type="hidden" name="id" value="" />
                                 <div class="wrap-input100" >
                                         <input class="input100" type="text" id="nama" name="nama" placeholder="Nama" value="">
@@ -52,15 +53,15 @@
                                 </div>
                                 <div class="wrap-input100" >
                                         <input class="input100" type="email" id="email" name="email" placeholder="Email" value="">
-                                        <span class="focus-input100 icon-foo" data-placeholder="&#xe82a;"></span>
+                                        <span class="focus-input100 icon-foo" data-placeholder="&#xe818;"></span>
                                 </div>
                                 <div class="wrap-input100" >
                                         <input class="input100" type="password" id="password" placeholder="Password" name="password" value="">
-                                        <span class="focus-input100 icon-foo" data-placeholder="&#xe82a;"></span>
+                                        <span class="focus-input100 icon-foo" data-placeholder="&#xe80f;"></span>
                                 </div>
                                 <div class="wrap-input100" >
                                         <input class="input100" type="password" onkeyup="cekpass()" id="konfirmasi" placeholder="Konfirmasi" value="">
-                                        <span class="focus-input100 icon-foo" data-placeholder="&#xe82a;"></span>
+                                        <span class="focus-input100 icon-foo" data-placeholder="&#xe80f;"></span>
                                         <span class="alert-danger" style="margin-left: 65px; font-size: 16px; display: none"></span>
                                 </div>
                                 <button type="submit" id="submit" class="submit" >Tambah </button><br/>

@@ -14,6 +14,9 @@ class User{
     public $ttl;
     public $kutipan;
     public $status;
+    public $dibuat_pada;
+    public $token;
+    public $passwordL;
  
     // constructor with $db as database connection
     public function __construct($db){
@@ -28,7 +31,7 @@ class User{
                 FROM
                     " . $this->table_name . " 
                 ORDER BY
-                id";
+                id DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -46,7 +49,8 @@ class User{
                     u.email as email, 
                     c.catatanCount as catatan, 
                     j.jadwalCount as jadwal,
-                    c.catatanCount + j.jadwalCount as total
+                    c.catatanCount + j.jadwalCount as total,
+                    u.status as status
                     from 
                     user u 
                     left join 
@@ -72,7 +76,8 @@ class User{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                 email=:email, nama=:nama, password=:password, foto=:foto, ttl=:ttl, kutipan=:kutipan, status=:status";
+                 email=:email, nama=:nama, password=:password, foto=:foto, ttl=:ttl, kutipan=:kutipan, status=:status,
+                 dibuat_pada=:dibuat_pada, token=:token";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -86,6 +91,8 @@ class User{
         $this->ttl=htmlspecialchars(strip_tags($this->ttl));
         $this->kutipan=htmlspecialchars(strip_tags($this->kutipan));
         $this->status=htmlspecialchars(strip_tags($this->status));
+        $this->dibuat_pada=htmlspecialchars(strip_tags($this->dibuat_pada));
+        $this->token=htmlspecialchars(strip_tags($this->token));
 
         // bind values
         $stmt->bindParam(":email", $this->email);
@@ -95,6 +102,8 @@ class User{
         $stmt->bindParam(":ttl", $this->ttl);
         $stmt->bindParam(":kutipan", $this->kutipan);
         $stmt->bindParam(":status", $this->status);
+        $stmt->bindParam(":dibuat_pada", $this->dibuat_pada);
+        $stmt->bindParam(":token", $this->token);
       
     
         // execute query
@@ -116,7 +125,8 @@ class User{
                 WHERE
                     id = ?
                 LIMIT
-                    0,1";
+                    0,1
+                    ";
      
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
@@ -157,7 +167,7 @@ class User{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    email=:email, nama=:nama, password=:password, foto=:foto, ttl=:ttl, kutipan=:kutipan, status=:status
+                    email=:email, nama=:nama, foto=:foto, ttl=:ttl, kutipan=:kutipan
                 WHERE
                     id=:id";
     
@@ -166,21 +176,17 @@ class User{
     
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->nama=htmlspecialchars(strip_tags($this->nama));
-        $this->password=htmlspecialchars(strip_tags($this->password));
         $this->foto=htmlspecialchars(strip_tags($this->foto));
         $this->ttl=htmlspecialchars(strip_tags($this->ttl));
         $this->kutipan=htmlspecialchars(strip_tags($this->kutipan));
-        $this->status=htmlspecialchars(strip_tags($this->status));
         $this->id=htmlspecialchars(strip_tags($this->id));
 
         // bind values
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":nama", $this->nama);
-        $stmt->bindParam(":password", $this->password);
         $stmt->bindParam(":foto", $this->foto);
         $stmt->bindParam(":ttl", $this->ttl);
         $stmt->bindParam(":kutipan", $this->kutipan);
-        $stmt->bindParam(":status", $this->status);
         $stmt->bindParam(":id", $this->id);
     
         // execute the query
@@ -191,6 +197,85 @@ class User{
         return false;
     }
 
+    function updateWithPassword(){
+          // update query
+           // query to read single record
+            $sql = "SELECT password FROM " . $this->table_name . " WHERE id = ?";
+
+            $stmtP = $this->conn->prepare( $sql );
+
+            $stmtP->bindParam(1, $this->id);
+
+            $stmtP->execute();
+
+            $row = $stmtP->fetch(PDO::FETCH_ASSOC);
+            $this->passwordL=htmlspecialchars(strip_tags($this->passwordL));
+          if(password_verify( $this->passwordL,$row['password'] )){
+            $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    email=:email, nama=:nama, password=:password, foto=:foto, ttl=:ttl, kutipan=:kutipan
+                WHERE
+                    id=:id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            $this->email=htmlspecialchars(strip_tags($this->email));
+            $this->nama=htmlspecialchars(strip_tags($this->nama));
+            $this->password=htmlspecialchars(strip_tags($this->password));
+            $this->foto=htmlspecialchars(strip_tags($this->foto));
+            $this->ttl=htmlspecialchars(strip_tags($this->ttl));
+            $this->kutipan=htmlspecialchars(strip_tags($this->kutipan));
+            $this->id=htmlspecialchars(strip_tags($this->id));
+
+            // bind values
+            $stmt->bindParam(":email", $this->email);
+            $stmt->bindParam(":nama", $this->nama);
+            $stmt->bindParam(":password", $this->password);
+            $stmt->bindParam(":foto", $this->foto);
+            $stmt->bindParam(":ttl", $this->ttl);
+            $stmt->bindParam(":kutipan", $this->kutipan);
+            $stmt->bindParam(":id", $this->id);
+
+            // execute the query
+            if($stmt->execute()){
+            return true;
+            }
+
+            return false;  
+            
+          }else{
+            return false;
+            
+          }
+    }
+    function updateStatus(){
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    status=:status
+                WHERE
+                    id=:id";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        $this->status=htmlspecialchars(strip_tags($this->status));
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        // bind values
+        $stmt->bindParam(":status", $this->status);
+        $stmt->bindParam(":id", $this->id);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
     // delete the product
         function delete(){
         
@@ -240,6 +325,36 @@ class User{
             $stmt->execute();
         
             return $stmt;
+        }
+        function dataById(){
+            // delete query
+            $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
+        
+            // prepare query
+            $stmt = $this->conn->prepare($query);
+        
+            // sanitize
+            $this->id=htmlspecialchars(strip_tags($this->id));
+        
+            // bind id of record to delete
+            $stmt->bindParam(1, $this->id);
+        
+            // execute query
+            if($stmt->execute()){
+                
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+                // set values to object properties
+                $this->id = $row['id'];
+                $this->email = $row['email'];
+                $this->nama = $row['nama'];
+                $this->foto = $row['foto'];
+                $this->ttl = $row['ttl'];
+                $this->kutipan = $row['kutipan'];
+                return true;
+            }
+        
+            return false;
         }
 }
 
