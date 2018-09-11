@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2018 at 05:31 PM
+-- Generation Time: Sep 11, 2018 at 10:21 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -35,17 +35,6 @@ CREATE TABLE `catatan` (
   `user_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `catatan`
---
-
-INSERT INTO `catatan` (`id`, `catatan`, `prioritas`, `user_id`) VALUES
-(2, 'beli celana', 0, 1),
-(5, 'beli Apa aja yang penting baju', 0, 1),
-(6, 'beli Apa aja yang penting baju', 0, 6),
-(7, 'beli Apa aja yang penting baju', 0, 6),
-(8, 'beli Apa aja yang penting baju', 0, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -62,14 +51,6 @@ CREATE TABLE `jadwal` (
   `user_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `jadwal`
---
-
-INSERT INTO `jadwal` (`id`, `jadwal`, `waktu`, `tanggal`, `tempat`, `prioritas`, `user_id`) VALUES
-(1, 'tes', '10:00:00', '2018-10-17', 'kampus20', 1, 1),
-(23, 'Minum Cola', '10:00:00', '2018-12-12', 'Kampus20', 1, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -84,18 +65,10 @@ CREATE TABLE `user` (
   `foto` varchar(255) DEFAULT NULL,
   `ttl` date DEFAULT NULL,
   `kutipan` text,
-  `status` int(11) NOT NULL DEFAULT '0'
+  `status` int(11) NOT NULL DEFAULT '0',
+  `dibuat_pada` datetime DEFAULT NULL,
+  `token` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `email`, `password`, `nama`, `foto`, `ttl`, `kutipan`, `status`) VALUES
-(1, 'rio@rio.com', 'password', 'nama', NULL, NULL, NULL, 0),
-(4, 'rio3@rio.com', 'password333', 'nama333', '', '0000-00-00', '', 0),
-(5, 'isi@girlre.com', '', '', '', '0000-00-00', '', 0),
-(6, 'rio2@rio.com', '', 'nama', '', '0000-00-00', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -141,7 +114,7 @@ ALTER TABLE `jadwal`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
