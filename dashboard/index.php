@@ -1,5 +1,8 @@
 <?php
 require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
+session_start();
+if($_SESSION['id']){
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +36,7 @@ require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
                         <a class="nav-link js-scroll-trigger" href="../akun">Akun</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">Keluar</a>
+                        <a class="nav-link js-scroll-trigger" href="../logout.php">Keluar</a>
                     </li>
                 </ul>
             </div>
@@ -395,3 +398,8 @@ require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
         
 </script>
 </html>
+<?php
+}else{
+ header("location: ../masuk/");
+}
+?>

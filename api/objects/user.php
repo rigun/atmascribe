@@ -356,5 +356,34 @@ class User{
         
             return false;
         }
+        function login(){
+            $sql = "SELECT password FROM " . $this->table_name . " WHERE email = ?";
+
+            $stmtP = $this->conn->prepare($sql);
+
+            $stmtP->bindParam(1, $this->email);
+
+            $stmtP->execute();
+
+            $row = $stmtP->fetch(PDO::FETCH_ASSOC);
+            $this->password=htmlspecialchars(strip_tags($this->password));
+          if(password_verify( $this->password,$row['password'] )){
+            $sql2 = "SELECT id FROM " . $this->table_name . " WHERE email = ?";
+
+            $stmt = $this->conn->prepare( $sql2 );
+
+            $stmt->bindParam(1, $this->email);
+
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            session_start();
+            $_SESSION['id'] = $row['id'];
+            return true;
+          }else{
+            return false;
+            
+          }
+        }
 }
 

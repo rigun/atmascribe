@@ -12,15 +12,15 @@ layout('layouts/header.php');
 
 <img src="<?php echo BASE_URL.'/img/icon/Logo.png'; ?>" alt="logo">
 </div>
-    <form id="myForm"  name="myForm" method="post" action="" onsubmit="return cekform()">
+    <form id="myForm"  name="myForm" method="post" action="" onsubmit="return login(event)">
             
                 
             <div class="wrap-input100" >
-                    <input class="input100" type="email" name="email" placeholder="Email" value="">
+                    <input class="input100" type="email" id="email" name="email" placeholder="Email" value="">
                     <span class="focus-input100" data-placeholder="&#xe818;"></span>
                 </div>
                 <div class="wrap-input100" >
-                    <input class="input100" type="password" name="kataSandi" placeholder="Kata Sandi" value="">
+                    <input class="input100" type="password" id="password" name="kataSandi" placeholder="Kata Sandi" value="">
                     <span class="focus-input100" data-placeholder="&#xe80f;"></span>
             </div>
                 

@@ -1,7 +1,8 @@
 <?php
 require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
 session_start();
-$_SESSION['id'] = 6;
+if($_SESSION['id']){
+
 ?>
 
 <!DOCTYPE html>
@@ -60,3 +61,8 @@ $_SESSION['id'] = 6;
 <script src="../js/style.js"></script>
 <script src="../js/CRUDuser.js"></script>
 </html>
+<?php
+}else{
+ header("location: ../masuk/");
+}
+?>

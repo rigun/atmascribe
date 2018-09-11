@@ -114,3 +114,34 @@ function cekpass(){
 
     }
 }
+function detectEmail(e){
+    e.preventDefault();
+    var data ={
+        email: $('#email').val(),
+    }
+    
+    var form_data=JSON.stringify(data);
+    $.ajax({
+    url: "http://localhost:808/paw/Tubes/api/user/search.php",
+    type : "POST",
+    contentType : 'application/json',
+    data : form_data,
+    success : function(result) {
+        // product was created, go back to products list
+        $('.alert').html(result.code);
+        $('.alert').css("display","block");
+        if(result.code == 403){
+            $('#registrationSubmit').attr("disabled","disabled");
+
+        }else if(result.code == 200){
+            $('#registrationSubmit').prop("disabled", false);
+        }else{
+            $('#registrationSubmit').attr("disabled","disabled");
+        }
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
+}

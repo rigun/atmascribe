@@ -533,3 +533,8 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.submit:disabled{
+    background-image: none;
+    background-color: gray;
+}

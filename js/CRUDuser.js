@@ -158,3 +158,59 @@ function updateAllProfile(e,id){
         }
     });
 }
+
+function registration(e,dibuat_pada,token){
+    e.preventDefault();
+    var data ={
+        nama: $('#nama').val(),
+        email: $('#email').val(),
+        password: $('#password').val(),
+        ttl : null,
+        kutipan: null,
+        foto: null,
+        status: null,
+        dibuat_pada: dibuat_pada,
+        token: token
+    }
+    
+    var form_data=JSON.stringify(data);
+    $.ajax({
+    url: "http://localhost:808/paw/Tubes/api/user/create.php",
+    type : "POST",
+    contentType : 'application/json',
+    data : form_data,
+    success : function(result) {
+        // product was created, go back to products list
+        alert(result.message);
+        window.location = "./masuk/"
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
+}
+function login(e){
+    e.preventDefault();
+    var data ={
+        email: $('#email').val(),
+        password: $('#password').val(),
+    }
+    
+    var form_data=JSON.stringify(data);
+    $.ajax({
+    url: "http://localhost:808/paw/Tubes/api/user/login.php",
+    type : "POST",
+    contentType : 'application/json',
+    data : form_data,
+    success : function(result) {
+        // product was created, go back to products list
+        alert(result.message);
+        window.location = "../dashboard/"
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
+}
