@@ -2,7 +2,7 @@
 // required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: PUT, PATCH, POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
@@ -20,21 +20,20 @@ $product = new User($db);
 // get id of product to be edited
 $data = json_decode(file_get_contents("php://input"));
  
- 
- 
-$product->email = $data->email; 
-$product->password = $data->password; 
+// set ID property of product to be edited
+$product->token = $data->token;
+$product->password = password_hash($data->password, PASSWORD_DEFAULT); 
 
-if($product->login()){
+if($product->updatePasswordByToken($data->newToken)){
     echo '{';
-        echo '"message": "Login berhasil", "code":"200"';
+        echo '"message": "password berhasil di perbaharui","code":"200"';
     echo '}';
 }
     
 // if unable to update the product, tell the user
 else{
     echo '{';
-        echo '"message": "Gagal login.", "code":"404"';
+        echo '"message": "Gagal memperbaharui data. Coba lagi. with password"';
     echo '}';
 }
 

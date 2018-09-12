@@ -3,6 +3,6 @@
 	session_start();
 	session_destroy();
 
-	header("location: ./masuk/");
+	header("location: loginBase.php");
 ?>
 

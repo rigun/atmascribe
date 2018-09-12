@@ -48,11 +48,11 @@ function getUserProfile(id){
                                                     '</li>'+
                                                    '</ul>'+
                                         '</li>'+
-                                        '<li>Tempat, Tanggal Lahir : <ul>'+
+                                        '<li>Tanggal Lahir : <ul>'+
                                                     '<li class="textList">'+dataUser.ttl+'</li>'+
                                                     '<li class="inputList">'+
                                                         '<div class="wrap-input100" >'+
-                                                                '<input id="ttl" class="input100" type="date" name="ttl" placeholder="Tempat, Tanggal Lahir" value="'+dataUser.ttl+'">'+
+                                                                '<input id="ttl" class="input100" type="date" name="ttl" placeholder="Tanggal Lahir" value="'+dataUser.ttl+'">'+
                                                                 '<span class="focus-input100 icon-foo" data-placeholder="&#xe822;"></span>'+
                                                             '</div>'+
                                                     '</li>'+
@@ -85,12 +85,13 @@ function getUserProfile(id){
                                                                   '<span class="focus-input100 icon-foo" data-placeholder="&#xe80f;"></span>'+
                                '</div>'+
                                '<div class="wrap-input100" >'+
-                                                                      '<input id="passwordB" class="input100" type="password" name="kataSandiBaru" placeholder="Password Baru" value="">'+
+                                                                      '<input id="passwordB" class="input100" type="password" name="kataSandiBaru" placeholder="Password Baru" onchange="cekpassB()" value="">'+
                                                                       '<span class="focus-input100 icon-foo" data-placeholder="&#xe80f;"></span>'+
                                '</div>'+
                                '<div class="wrap-input100" >'+
-                                                                      '<input id="passwordKB" class="input100" type="password" name="kataSandiBaruKonfirmasi" placeholder="Konfirmasi password baru" value="">'+
-                                                                      '<span class="focus-input100 icon-foo" data-placeholder="&#xe80f;"></span>'+
+                                                                      '<input id="passwordKB" class="input100" type="password" name="kataSandiBaruKonfirmasi" placeholder="Konfirmasi password baru" onchange="cekpassB()" value="">'+
+                                                                      '<span class="focus-input100 icon-foo" data-placeholder="&#xe80f;" ></span>'+
+                                                                      '<span class="alertPass" style="display:none"></span>'+
                                '</div>'+
                            '</div>'+
                            '<a class="submit simpan ubahPassword" onclick="chPassword()" style="width: 100%; display: none; color: white;" >UBAH</a>'+
@@ -139,7 +140,6 @@ function updateAllProfile(e,id){
         foto: null
     }
     var form_data=JSON.stringify(data);
-    console.log(form_data);
     $.ajax({
     url: "http://localhost:808/paw/Tubes/api/user/update.php",
     type : "POST",
@@ -150,6 +150,35 @@ function updateAllProfile(e,id){
         alert(result.message);
         cancel();
         getUserProfile(id);
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            alert("Gagal");
+            console.log(xhr, resp, text);
+        }
+    });
+}
+function updatePassword(e,token, newToken){
+    e.preventDefault();
+   
+
+    var data ={
+        token: token,
+        newToken: newToken,
+        password: $('#password').val()
+    }
+    var form_data=JSON.stringify(data);
+    $.ajax({
+    url: "http://localhost:808/paw/Tubes/api/user/updatePassword.php",
+    type : "POST",
+    data: form_data,
+    contentType : 'application/json',
+    success : function(result) {
+        // product was created, go back to products list
+        alert(result.message);
+        if(result.code == 200){
+            window.location = "../index.php"
+        }
     },
         error: function(xhr, resp, text) {
             // show error to console
@@ -181,14 +210,57 @@ function registration(e,dibuat_pada,token){
     data : form_data,
     success : function(result) {
         // product was created, go back to products list
-        alert(result.message);
-        window.location = "./masuk/"
+        if(result.code == 403){
+            alert(result.message);
+        }else{
+            $.ajax({
+                url: "http://localhost:808/paw/Tubes/api/config/mail.php",
+                type: "POST",
+                contentType : 'application/x-www-form-urlencoded',
+                data: {
+                  token: token,
+                  email: $('#email').val(),
+                  nama: $('#nama').val()
+                },
+                cache: false,
+                success: function(result) {
+                  console.log(result);
+                  window.location = "./daftar/pendaftaran-berhasil.php"
+                },
+                error: function(xhr, resp, text) {
+                console.log(xhr, resp, text);
+                alert("gagal");
+                },
+              });
+        }
     },
         error: function(xhr, resp, text) {
             // show error to console
             console.log(xhr, resp, text);
         }
     });
+}
+
+function sendMailPassword(e){
+    e.preventDefault();
+
+    $.ajax({
+        url: "http://localhost:808/paw/Tubes/api/mail/renewMail.php",
+        type: "POST",
+        contentType : 'application/x-www-form-urlencoded',
+        data: {
+          email: $('#email').val(),
+        },
+        cache: false,
+        success: function(result) {
+          alert(result);
+          window.location = "./success-renew.php"
+        },
+        error: function(xhr, resp, text) {
+        console.log(xhr, resp, text);
+        alert("gagal");
+        },
+      });
 }
 function login(e){
     e.preventDefault();
@@ -206,7 +278,11 @@ function login(e){
     success : function(result) {
         // product was created, go back to products list
         alert(result.message);
-        window.location = "../dashboard/"
+        if(result.code == 200){
+            window.location = "../dashboard/";
+        }else{
+            window.location = "../logout.php";
+        }
     },
         error: function(xhr, resp, text) {
             // show error to console

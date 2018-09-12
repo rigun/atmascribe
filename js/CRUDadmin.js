@@ -226,3 +226,32 @@ function getReport(){
         });   
     });
 }
+
+function loginAdmin(e){
+    e.preventDefault();
+    var data ={
+        username: $('#username').val(),
+        password: $('#password').val(),
+    }
+    
+    var form_data=JSON.stringify(data);
+    $.ajax({
+    url: "http://localhost:808/paw/Tubes/api/config/login.php",
+    type : "POST",
+    contentType : 'application/json',
+    data : form_data,
+    success : function(result) {
+        // product was created, go back to products list
+        alert(result.message);
+        if(result.code == 200){
+            window.location = "./index.php";
+        }else{
+            window.location = "./logout.php";
+        }
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
+}

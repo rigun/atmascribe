@@ -534,7 +534,7 @@
     background-position: center;
 }
 
-.submit:disabled{
-    background-image: none;
-    background-color: gray;
-}
+    .navbar .nav-active{
+        color: white!important ;
+        opacity: 1;
+    }

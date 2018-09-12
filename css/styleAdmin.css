@@ -50,3 +50,34 @@
     background-color: blue;
     color: white;
 }
+
+.loginAdmin{
+    background: white;
+    border-radius: 25px;
+    margin: auto;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 100%;
+    max-height: 400px;
+    margin-top: 100px;
+}
+.loginAdmin .header{
+    background-color: #003365;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color: white;
+    font-size: 40px;
+    text-align : center;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-bottom: 0;
+    min-height: 50px;
+    padding: 10px 0px;
+}
+
+.loginAdmin .submit{
+    max-width: 360px;
+    margin: 20px;
+}

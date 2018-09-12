@@ -104,14 +104,27 @@ function cekpass(){
         
     var password = $("input#password").val();
     var konfirm = $("input#konfirmasi").val();
-    var nama = $("input#nama").val();
-    var email = $("input#email").val();
     if(konfirm != password){
-        $('.alert-danger').css("display","block");
-        $('.alert-danger').html("password tidak cocok");
+        $('.alertPass').css("display","block");
+        $('.alertPass').html("password tidak cocok");
+        $('#registrationSubmit').attr("disabled","disabled");
     }else{
-        $('.alert-danger').css("display","none");
+        $('.alertPass').css("display","none");
+        $('#registrationSubmit').prop("disabled", false);
+    }
+}
 
+function cekpassB(){
+        
+    var password = $("input#passwordB").val();
+    var konfirm = $("input#passwordKB").val();
+    if(konfirm != password){
+        $('.alertPass').css("display","block");
+        $('.alertPass').html("password tidak cocok");
+        $('#updateAkun').attr("disabled","disabled");
+    }else{
+        $('.alertPass').css("display","none");
+        $('#updateAkun').prop("disabled", false);
     }
 }
 function detectEmail(e){
@@ -128,14 +141,19 @@ function detectEmail(e){
     data : form_data,
     success : function(result) {
         // product was created, go back to products list
-        $('.alert').html(result.code);
-        $('.alert').css("display","block");
+       
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
         if(result.code == 403){
             $('#registrationSubmit').attr("disabled","disabled");
-
-        }else if(result.code == 200){
+            $('.alert').html(result.message);
+            $('.alert').css("display","block");
+        }else if(result.code == 200 && re.test(String($('#email').val()).toLowerCase())){
             $('#registrationSubmit').prop("disabled", false);
+            $('.alert').css("display","none");
         }else{
+            $('.alert').html("Format email belum sesuai");
+            $('.alert').css("display","block");
             $('#registrationSubmit').attr("disabled","disabled");
         }
     },

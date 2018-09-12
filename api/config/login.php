@@ -8,21 +8,21 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
  
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/user.php';
+include_once '../objects/admin.php';
  
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
  
 // prepare product object
-$product = new User($db);
+$product = new Admin($db);
  
 // get id of product to be edited
 $data = json_decode(file_get_contents("php://input"));
  
  
  
-$product->email = $data->email; 
+$product->username = $data->username; 
 $product->password = $data->password; 
 
 if($product->login()){

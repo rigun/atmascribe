@@ -33,7 +33,7 @@ $product->foto = $data->foto;
 $product->ttl = $data->ttl; 
 $product->kutipan = $data->kutipan; 
 
-if($product->password == null){
+if($product->passwordL == null){
     if($product->update()){
         echo '{';
             echo '"message": "Data berhasil di perbaharui."';
@@ -56,7 +56,7 @@ if($product->password == null){
     // if unable to update the product, tell the user
     else{
         echo '{';
-            echo '"message": "Gagal memperbaharui data. Coba lagi"';
+            echo '"message": "Gagal memperbaharui data. Coba lagi. with password"';
         echo '}';
     }
 }

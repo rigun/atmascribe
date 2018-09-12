@@ -41,7 +41,7 @@ if($product->create()){
 // if unable to create the product, tell the user
 else{
     echo '{';
-        echo '"message": "Tidak Dapat Membuat User."';
+        echo '"message": "Tidak Dapat Membuat User.", "code":"403"';
     echo '}';
 }
 ?>

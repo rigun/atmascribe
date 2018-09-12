@@ -1,3 +1,8 @@
+<?php
+session_start();
+if($_SESSION['id'] && $_SESSION['usernameAdmin'] == "admin"){
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,13 +33,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li >
-                    <a class="nav-link js-scroll-trigger" onclick="updateAppDash('dashApp')" >Dashboard</a>
+                    <a id="navDashboard" class="nav-link js-scroll-trigger nav-active" onclick="updateAppDash('dashApp')" >Dashboard</a>
                 </li>
                 <li >
-                    <a class="nav-link js-scroll-trigger" onclick="updateAppDash('report')">Report</a>
+                    <a id="navReport"  class="nav-link js-scroll-trigger" onclick="updateAppDash('report')">Report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#">Keluar</a>
+                    <a class="nav-link js-scroll-trigger" href="logout.php">Keluar</a>
                 </li>
             </ul>
         </div>
@@ -55,3 +60,8 @@
 <script src="../js/style.js"></script>
 <script src="../js/CRUDadmin.js"></script>
 </html>
+<?php
+    }else{
+    header("location: loginBase.php");
+    }
+?>

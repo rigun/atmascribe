@@ -11,15 +11,15 @@ layout('layouts/header.php');
 ?>
 <img src="<?php echo BASE_URL.'/img/icon/Logo.png'; ?>" alt="logo">
             </div>
-                <form id="myForm"  name="myForm" method="post" action="" onsubmit="return cekform()">
+                <form id="myForm"  name="myForm" method="post" action="" onsubmit="return sendMailPassword(event)">
                         
                             
                         <div class="wrap-input100" >
-                                <input class="input100" type="email" name="email" placeholder="Email" value="">
+                                <input id="email" class="input100" type="email" name="email" placeholder="Email" value="">
                                 <span class="focus-input100" data-placeholder="&#xe818;"></span>
                             </div>
                             
-                        <input type="submit" value="ATUR ULANG KATA SANDI" class="submit" /><br/>
+                        <input type="submit" value="KIRIM LINK" class="submit" /><br/>
                         <span>Sudah punya akun ? </span><a href="<?php echo BASE_URL.'masuk'; ?>">Masuk</a>
                 </form>
 <?php

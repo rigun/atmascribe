@@ -33,10 +33,13 @@ if($_SESSION['id']){
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li >
-                        <a class="nav-link js-scroll-trigger" href="#">Akun</a>
+                        <a class="nav-link js-scroll-trigger" href="../dashboard">Home</a>
+                    </li>
+                    <li >
+                        <a class="nav-link js-scroll-trigger nav-active" href="#content">Akun</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">Keluar</a>
+                        <a class="nav-link js-scroll-trigger" href="../logout.php">Keluar</a>
                     </li>
                 </ul>
             </div>

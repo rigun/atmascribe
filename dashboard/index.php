@@ -32,6 +32,9 @@ if($_SESSION['id']){
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                   <li >
+                        <a class="nav-link js-scroll-trigger nav-active" href="#">Home</a>
+                    </li>
                     <li >
                         <a class="nav-link js-scroll-trigger" href="../akun">Akun</a>
                     </li>

@@ -276,6 +276,60 @@ class User{
     
         return false;
     }
+
+    function updateByToken(){
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    status=1
+                WHERE
+                    token=:token";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        $this->token=htmlspecialchars(strip_tags($this->token));
+
+        // bind values
+        $stmt->bindParam(":token", $this->token);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+
+    function updatePasswordByToken($newToken){
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    password=:password, token=:newToken
+                WHERE
+                    token=:token";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        $this->token=htmlspecialchars(strip_tags($this->token));
+        $newToken=htmlspecialchars(strip_tags($newToken));
+        $this->password=htmlspecialchars(strip_tags($this->password));
+
+        // bind values
+        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":newToken", $newToken);
+        $stmt->bindParam(":token", $this->token);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
     // delete the product
         function delete(){
         
@@ -325,6 +379,37 @@ class User{
             $stmt->execute();
         
             return $stmt;
+        }
+
+        function getUserByToken($email){
+
+                $query = "SELECT
+                            token
+                            FROM
+                            " . $this->table_name . " 
+                            WHERE
+                            email LIKE ? ";
+
+                // prepare query statement
+                $stmt = $this->conn->prepare($query);
+
+                // sanitize
+                $email = htmlspecialchars(strip_tags($email));
+
+                // bind
+                $stmt->bindParam(1, $email);
+
+                // execute query
+                $stmt->execute();
+                if($stmt->execute()){
+                
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+         
+                    // set values to object properties
+                   return $row['token'];
+                    
+                }
+                return false;
         }
         function dataById(){
             // delete query

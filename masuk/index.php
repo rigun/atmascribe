@@ -16,15 +16,15 @@ layout('layouts/header.php');
             
                 
             <div class="wrap-input100" >
-                    <input class="input100" type="email" id="email" name="email" placeholder="Email" value="">
+                    <input class="input100" type="email" id="email" name="email" placeholder="Email" value="" required>
                     <span class="focus-input100" data-placeholder="&#xe818;"></span>
                 </div>
                 <div class="wrap-input100" >
-                    <input class="input100" type="password" id="password" name="kataSandi" placeholder="Kata Sandi" value="">
+                    <input class="input100" type="password" id="password" name="kataSandi" placeholder="Kata Sandi" value="" required>
                     <span class="focus-input100" data-placeholder="&#xe80f;"></span>
             </div>
                 
-            <input type="submit" value="MASUK" class="submit" /><br/>
+            <input type="submit" value="MASUK" class="submit"  /><br/>
             <div class="row">
                 <div class="text-left col-7">
                     <span>Belum punya akun ? </span><a href="<?php echo BASE_URL.''; ?>">Daftar</a>
