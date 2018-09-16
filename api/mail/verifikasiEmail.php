@@ -21,9 +21,7 @@ $product->token = isset($_GET['token']) ? $_GET['token'] : die();
  
 
 if($product->updateByToken()){
-    echo '{';
-        echo '"message": "Status Berhasil di Update."';
-    echo '}';
+    header('location: ../../successVerifikasi.php');
 }
 else{
     echo '{';

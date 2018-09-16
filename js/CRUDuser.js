@@ -214,7 +214,7 @@ function registration(e,dibuat_pada,token){
             alert(result.message);
         }else{
             $.ajax({
-                url: "http://localhost:808/paw/Tubes/api/config/mail.php",
+                url: "http://localhost:808/paw/Tubes/api/mail/mail.php",
                 type: "POST",
                 contentType : 'application/x-www-form-urlencoded',
                 data: {
@@ -229,7 +229,7 @@ function registration(e,dibuat_pada,token){
                 },
                 error: function(xhr, resp, text) {
                 console.log(xhr, resp, text);
-                alert("gagal");
+                alert("gagal mengirim email");
                 },
               });
         }

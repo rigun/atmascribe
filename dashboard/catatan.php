@@ -19,22 +19,7 @@
             <th>Pengaturan</th>
             </tr>
         </thead>
-        <tbody>
-            <?php 
-             $i=0;
-             while($i!=4){
-                 $i++;
-            ?>
-            <tr>
-            <td> <span id="<?php echo 'cNama'.$i.''; ?>">Bayar Kos</span> <span id="<?php echo 'cRank'.$i.''; ?>" style="display:none">1</span></td>
-            <td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan('2018-09-06','<?php echo $i;?>')" ><img src="../img/icon/edit.svg" /></a>
-                 <a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('<?php echo $i;?>')" ><img src="../img/icon/cekMini.svg" /></a></td>
-            </tr>
-            <?php
-                }
-            ?>
-
-           
+        <tbody id="catatanPenting">
         </tbody>
     </table>
     
@@ -53,20 +38,7 @@
             <th>Pengaturan</th>
             </tr>
         </thead>
-        <tbody>
-        <?php 
-             $i=5;
-             while($i!=8){
-                 $i++;
-            ?>
-            <tr>
-            <td> <span id="<?php echo 'cNama'.$i.''; ?>">Beli Baju</span> <span id="<?php echo 'cRank'.$i.''; ?>" style="display:none">0</span></td>
-            <td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan('2018-09-06','<?php echo $i;?>')" ><img src="../img/icon/edit.svg" /></a>
-                 <a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('<?php echo $i;?>')" ><img src="../img/icon/cekMini.svg" /></a></td>
-            </tr>
-            <?php
-                }
-            ?>
+        <tbody id="catatanLainnya">
         </tbody>
     </table>
     

@@ -2,7 +2,7 @@
 require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
 session_start();
 if($_SESSION['id']){
-
+$id = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ if($_SESSION['id']){
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../bower_components/fullcalendar/dist/fullcalendar.css" />
 </head>
-<body>
+<body onload="getCatatanById(<?php echo $id;?>)">
     <nav id="mainNav" class="navbar navbar-expand-lg">
         <div class="logoNavbar">
             <div class="row">
@@ -49,8 +49,8 @@ if($_SESSION['id']){
                 <div class="row">
                     <div class="col-8">
 
-                        <div class="data">
-                          
+<!-- data webnya : catatan, jadwal, kalender -->
+                        <div class="data"> 
                         </div>
                         
                         <div class="buttonApps">
@@ -279,7 +279,7 @@ if($_SESSION['id']){
 
                     <div class="modal-body">
                         <p style="width: 100%;font-size: 40px; text-align: center;">Sudah selesai ?</a>
-                            <form id="myForm"  name="myForm" method="post" action="" onsubmit="return cekform()">
+                            <form id="myForm"  name="myForm" method="post" action="" onsubmit="return doneCatatan()">
                             <input type="hidden" name="id" value="" />
                                         
                                      
@@ -307,15 +307,15 @@ if($_SESSION['id']){
                     </div>
 
                     <div class="modal-body">
-                            <form id="myForm"  name="myFormCatatan" method="post" action="" onsubmit="return cekform()">
+                            <form id="myForm"  name="myFormCatatan" method="post" action="" onsubmit="return createCatatan(event,'<?php echo $id ?>')">
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="name" placeholder="Catatanku" value="">
+                                            <input id="catatanName" class="input100" type="text" name="name" placeholder="Catatanku" value="" onchange="tes()">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe828;"></span>
                                         </div>
                                     <div class="wrap-input100" >
                                         <div class="radio">
-                                            <input  type="radio" name="rank" value="1"><label>Penting</label>
-                                            <input type="radio" name="rank" value="0"><label>Lainnya</label>
+                                            <input  id="catatanRank" type="radio" name="rank" value="1"><label>Penting</label>
+                                            <input  id="catatanRank" type="radio" name="rank" value="0"><label>Lainnya</label>
                                         </div>
                                     </div>
                                     <input type="submit" value="TAMBAH" class="submit" /><br/>
@@ -340,15 +340,15 @@ if($_SESSION['id']){
                     </div>
 
                     <div class="modal-body">
-                            <form id="myForm"  name="editCatatan" method="post" action="" onsubmit="return cekform()">
+                            <form id="myForm"  name="editCatatan" method="post" action="" onsubmit="return cekform(event)">
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="name" placeholder="Catatanku" value="">
+                                            <input id="catatanName" class="input100" type="text" name="name" placeholder="Catatanku" value="" >
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe828;"></span>
                                         </div>
                                     <div class="wrap-input100" >
                                         <div class="radio">
-                                            <input id="penting" type="radio" name="rank" value="1"><label>Penting</label>
-                                            <input id="lainnya" type="radio" name="rank" value="0"><label>Lainnya</label>
+                                            <input type="radio" name="rank" value="1"><label>Penting</label>
+                                            <input type="radio" name="rank" value="0"><label>Lainnya</label>
                                         </div>
                                     </div>
                                     <input type="submit" value="UBAH" class="submit" /><br/>
@@ -360,6 +360,7 @@ if($_SESSION['id']){
                 </div>
         </div>
         <!-- End Modal -->
+     
 </body>
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/boostrap/dist/js/bootstrap.min.js"></script>
@@ -367,6 +368,13 @@ if($_SESSION['id']){
 <script src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 
 <script src="../js/style.js"></script>
+<script src="../js/CRUDuser.js"></script>
+<script src="../js/CRUDcatatan.js"></script>
+<script>
+        function tes(){
+            alert($('#catatanRank').val());
+        }
+</script>
 <script>
         function editModal(date,index){
             var jNama = document.getElementById("jNama"+index);
