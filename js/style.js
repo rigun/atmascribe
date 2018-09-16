@@ -31,23 +31,23 @@
     function updateContent(data){
         $(".data").addClass("data-custom");
         if(data == 'Jadwal'){
-            $('.data').load('http://localhost:808/paw/Tubes/dashboard/jadwal.php');
+            $('.data').load('https://atmascribe.thekingcorp.org/dashboard/jadwal.php');
         }else if(data == 'Catatan'){
-            $('.data').load('http://localhost:808/paw/Tubes/dashboard/catatan.php');
+            $('.data').load('https://atmascribe.thekingcorp.org/dashboard/catatan.php');
         }else if(data == 'Prioritas'){
-            $('.data').load('http://localhost:808/paw/Tubes/dashboard/prioritas.php');
+            $('.data').load('https://atmascribe.thekingcorp.org/dashboard/prioritas.php');
         }else{
-            $('.data').load('http://localhost:808/paw/Tubes/dashboard/kalender.php');
+            $('.data').load('https://atmascribe.thekingcorp.org/dashboard/kalender.php');
         }
     }
 
     function updateAppDash(data){
         if(data == 'dashApp'){
-            $('.dashAppsData').load('http://localhost:808/paw/Tubes/base/dashApp.php');
+            $('.dashAppsData').load('https://atmascribe.thekingcorp.org/base/dashApp.php');
             getSumData();
             getDatauser();
         }else if(data == 'report'){
-            $('.dashAppsData').load('http://localhost:808/paw/Tubes/base/report.php');
+            $('.dashAppsData').load('https://atmascribe.thekingcorp.org/base/report.php');
             getReport();
         }else {
             $('.dashAppsData').html("failed");
@@ -135,7 +135,7 @@ function detectEmail(e){
     
     var form_data=JSON.stringify(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/search.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/search.php",
     type : "POST",
     contentType : 'application/json',
     data : form_data,

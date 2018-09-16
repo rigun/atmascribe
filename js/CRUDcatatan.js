@@ -2,7 +2,7 @@ function getCatatanById(id){
     var penting = "";
     var lainnya = "";
 
-        $.getJSON("http://localhost:808/paw/Tubes/api/catatan/readByUser.php?id="+id, function(catatans){
+        $.getJSON("https://atmascribe.thekingcorp.org/api/catatan/readByUser.php?id="+id, function(catatans){
             
             $.each(catatans, function(key, catatan){
                 if(catatan.prioritas == 1){
@@ -38,7 +38,7 @@ function createCatatan(e, id){
     var form_data=JSON.stringify(data);
     console.log(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/catatan/create.php",
+    url: "https://atmascribe.thekingcorp.org/api/catatan/create.php",
     type : "POST",
     contentType : 'application/json',
     data : form_data,

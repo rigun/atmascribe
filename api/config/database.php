@@ -3,9 +3,9 @@ class Database{
  
     // specify your own database credentials
     private $host = "localhost";
-    private $db_name = "atmascribe";
-    private $username = "root";
-    private $password = "";
+    private $db_name = "thekingc_atmascribe";
+    private $username = "thekingc";
+    private $password = "Zn@44N#GxuWw73";
     public $conn;
  
     // get the database connection

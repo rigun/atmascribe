@@ -14,7 +14,7 @@ function submitDataUser(e,dibuat_pada,token){
     
     var form_data=JSON.stringify(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/create.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/create.php",
     type : "POST",
     contentType : 'application/json',
     data : form_data,
@@ -35,7 +35,7 @@ function getSumData(){
     var contentHtml = "";
     
 
-    $.getJSON("http://localhost:808/paw/Tubes/api/user/sumData.php", function(data){
+    $.getJSON("https://atmascribe.thekingcorp.org/api/user/sumData.php", function(data){
         $.each(data.records, function(key, val){
             if(val.catatan == null){
                 val.catatan = 0;
@@ -72,7 +72,7 @@ function getSumData(){
 function getDatauser(){
     var contentHtml = "";
     var number = 1;
-    $.getJSON("http://localhost:808/paw/Tubes/api/user/countData.php", function(data){
+    $.getJSON("https://atmascribe.thekingcorp.org/api/user/countData.php", function(data){
         $.each(data.records, function(key, val){
             if(val.catatan == null){
                 val.catatan = 0;
@@ -109,7 +109,7 @@ function deleteDataUser(e){
     var id = $('#id').attr('value');
     alert(id);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/delete.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/delete.php",
     type : "DELETE",
     data: JSON.stringify({ id: id }),
     contentType : 'application/json',
@@ -130,7 +130,7 @@ function updateDataUser(e,status,detail){
     e.preventDefault();
     var id = $('#id'+detail).attr('value');
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/updateStatus.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/updateStatus.php",
     type : "POST",
     data: JSON.stringify({ id: id, status: status}),
     contentType : 'application/json',
@@ -149,9 +149,9 @@ function updateDataUser(e,status,detail){
 function getReport(){
     var reportContent = "";
     var number = 1;
-    $.getJSON("http://localhost:808/paw/Tubes/api/user/read.php", function(data){
+    $.getJSON("https://atmascribe.thekingcorp.org/user/read.php", function(data){
         $.each(data.records, function(key, val){
-            $.getJSON("http://localhost:808/paw/Tubes/api/user/readOne.php?id="+val.id, function(dataOne){
+            $.getJSON("https://atmascribe.thekingcorp.org/user/readOne.php?id="+val.id, function(dataOne){
              
                 reportContent +=    "<tr id="+val.id+">"+
                     "<span id='' style='display: none' >"+val.id+"</span>"+
@@ -236,7 +236,7 @@ function loginAdmin(e){
     
     var form_data=JSON.stringify(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/config/login.php",
+    url: "https://atmascribe.thekingcorp.org/api/config/login.php",
     type : "POST",
     contentType : 'application/json',
     data : form_data,

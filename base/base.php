@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', 'http://localhost:808/paw/Tubes/');
+define('BASE_URL', 'https://atmascribe.thekingcorp.org/');
 define('BASE_PATH', __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR);
 
 function layout($string) {

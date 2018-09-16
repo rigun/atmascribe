@@ -1,7 +1,7 @@
 function getUserProfile(id){
     var userContent = "";
     var number = 1;
-    $.getJSON("http://localhost:808/paw/Tubes/api/user/userDatabyId.php?id="+id, function(dataUser){
+    $.getJSON("https://atmascribe.thekingcorp.org/api/user/userDatabyId.php?id="+id, function(dataUser){
         userContent +=  '<div class="col-md-2">'+
                         '<form method="post" action="#" id="akunForm"  name="updateAkunPengguna" enctype="multipart/form-data" onsubmit="updateAllProfile(event,'+id+')">'+
                         '<div class="avatar-preview">'+
@@ -141,7 +141,7 @@ function updateAllProfile(e,id){
     }
     var form_data=JSON.stringify(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/update.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/update.php",
     type : "POST",
     data: form_data,
     contentType : 'application/json',
@@ -169,7 +169,7 @@ function updatePassword(e,token, newToken){
     }
     var form_data=JSON.stringify(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/updatePassword.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/updatePassword.php",
     type : "POST",
     data: form_data,
     contentType : 'application/json',
@@ -204,7 +204,7 @@ function registration(e,dibuat_pada,token){
     
     var form_data=JSON.stringify(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/create.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/create.php",
     type : "POST",
     contentType : 'application/json',
     data : form_data,
@@ -214,7 +214,7 @@ function registration(e,dibuat_pada,token){
             alert(result.message);
         }else{
             $.ajax({
-                url: "http://localhost:808/paw/Tubes/api/mail/mail.php",
+                url: "https://atmascribe.thekingcorp.org/api/mail/mail.php",
                 type: "POST",
                 contentType : 'application/x-www-form-urlencoded',
                 data: {
@@ -245,7 +245,7 @@ function sendMailPassword(e){
     e.preventDefault();
 
     $.ajax({
-        url: "http://localhost:808/paw/Tubes/api/mail/renewMail.php",
+        url: "https://atmascribe.thekingcorp.org/api/mail/renewMail.php",
         type: "POST",
         contentType : 'application/x-www-form-urlencoded',
         data: {
@@ -271,7 +271,7 @@ function login(e){
     
     var form_data=JSON.stringify(data);
     $.ajax({
-    url: "http://localhost:808/paw/Tubes/api/user/login.php",
+    url: "https://atmascribe.thekingcorp.org/api/user/login.php",
     type : "POST",
     contentType : 'application/json',
     data : form_data,
