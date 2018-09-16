@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2018 at 05:14 AM
+-- Generation Time: Sep 16, 2018 at 04:42 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -102,12 +102,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `email`, `password`, `nama`, `foto`, `ttl`, `kutipan`, `status`, `dibuat_pada`, `token`) VALUES
 (39, 'rio09tkj@gmail.com', '$2y$10$TgOFg/JkcW7WR7pwEgXTbeaWaT.Pf8NbVCFrXzx6c6Db3JNvgXoUu', 'Rio Gunawan', '', '0000-00-00', '', 1, '2018-09-11 15:08:08', '1af264fc5a'),
-(41, 'rio@rio.com', '$2y$10$PfnaC.7ceF5e5PwcGf0ZbemP1Jk0rO11ZMn5UnD.bhSBLb6r2KBlS', 'rio', '', '0000-00-00', '', 1, '2018-09-11 15:37:46', '1457f63c57'),
-(42, 'riogunawan8967uajy@gmail.com', '$2y$10$5PwjTWYfqilV3kwfcohwb.2.jcowgQeWCAe9wsksL1XJ/tGgXHSpW', 'Rio Gunawan', '', '2018-09-27', 'tes', 1, '2018-09-12 04:24:00', 'c26cdfb0e5'),
+(41, 'rio@rio.com', '$2y$10$PfnaC.7ceF5e5PwcGf0ZbemP1Jk0rO11ZMn5UnD.bhSBLb6r2KBlS', 'rio', '', '0000-00-00', '', 0, '2018-09-11 15:37:46', '1457f63c57'),
+(42, 'riogunawan8967uajy@gmail.com', '$2y$10$5PwjTWYfqilV3kwfcohwb.2.jcowgQeWCAe9wsksL1XJ/tGgXHSpW', 'Rio Gunawan', '', '2018-09-27', 'tesCoba dulu lagi aja dah ya :D', 1, '2018-09-12 04:24:00', 'c26cdfb0e5'),
 (43, 'lolyeliatamba@gmail.com', '$2y$10$zxDncdF4L4x0qfOR9SOi/OsHnxutGsm/gJU1fNcaZoDu6EEIH9Ge.', 'Loly', '', '1999-06-01', 'the red', 1, '2018-09-12 11:29:22', '6601240023'),
 (47, 'll@lll.com', '$2y$10$UGCIbJiOGv9tqxu1lWKE.e0uftTe.pAi8i3xF55pNQNc1RovHYViS', 'll', '', '0000-00-00', '', 0, '2018-09-12 11:39:50', 'aaf1721690'),
-(48, 'tes@tes.com', '$2y$10$msKRXC9Pw1oHq2T3tj3.qOrUPZxWLxWz36mHvKgiIukTq8gBTMn4e', 'tes', '', '0000-00-00', '', 0, '2018-09-13 19:03:43', 'ca60534ec3'),
-(49, '', '$2y$10$Z5xuwgxjPBalG90s7SKHeepAzabg0rmsgonNhyjYeVTHi2yOXPuuK', '', '', '0000-00-00', '', 0, '0000-00-00 00:00:00', ''),
 (50, 'rigunwasdf@gmail.com', '$2y$10$aPMEiwh1aDQV87gRliDj3Oj9o0E5n9.Le2lu9NGt/rAtmKedEk2OO', 'Nama Panjang', '', '0000-00-00', '', 0, '0000-00-00 00:00:00', ''),
 (51, 'sfasv@gmail.com', '$2y$10$T1pDiZYmssPs2633O473c.p8REh1UoGVFIQy9E5NmUgsRbe1l1WCe', 'Nama Panjang', '', '0000-00-00', '', 0, '0000-00-00 00:00:00', '');
 

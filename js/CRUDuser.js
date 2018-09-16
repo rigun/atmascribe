@@ -189,6 +189,9 @@ function updatePassword(e,token, newToken){
 }
 
 function registration(e,dibuat_pada,token){
+    if(!detectEmail(e)){
+        return false;
+    };
     e.preventDefault();
     var data ={
         nama: $('#nama').val(),

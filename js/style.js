@@ -148,13 +148,16 @@ function detectEmail(e){
             $('#registrationSubmit').attr("disabled","disabled");
             $('.alert').html(result.message);
             $('.alert').css("display","block");
+            return true;
         }else if(result.code == 200 && re.test(String($('#email').val()).toLowerCase())){
             $('#registrationSubmit').prop("disabled", false);
             $('.alert').css("display","none");
+            return false;
         }else{
             $('.alert').html("Format email belum sesuai");
             $('.alert').css("display","block");
             $('#registrationSubmit').attr("disabled","disabled");
+            return false;
         }
     },
         error: function(xhr, resp, text) {
