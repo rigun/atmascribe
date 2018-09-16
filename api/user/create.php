@@ -33,7 +33,7 @@ $product->dibuat_pada = $data->dibuat_pada;
 
 // create the product
 // query products
-$stmt = $product->search($keywords);
+$stmt = $product->search($data->email);
 $num = $stmt->rowCount();
  
 // check if more than 0 record found
