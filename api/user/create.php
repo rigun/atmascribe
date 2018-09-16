@@ -32,16 +32,31 @@ $product->token = $data->token;
 $product->dibuat_pada = $data->dibuat_pada;
 
 // create the product
-if($product->create()){
+// query products
+$stmt = $product->search($keywords);
+$num = $stmt->rowCount();
+ 
+// check if more than 0 record found
+if($num>0){
+ 
     echo '{';
-        echo '"message": "User Berhasil Dibuat"';
+        echo '"message": "Email Sudah ada", "code": "403"';
     echo '}';
 }
  
-// if unable to create the product, tell the user
 else{
-    echo '{';
-        echo '"message": "Tidak Dapat Membuat User.", "code":"403"';
-    echo '}';
+    if($product->create()){
+        echo '{';
+            echo '"message": "User Berhasil Dibuat"';
+        echo '}';
+    }
+     
+    // if unable to create the product, tell the user
+    else{
+        echo '{';
+            echo '"message": "Tidak Dapat Membuat User.", "code":"403"';
+        echo '}';
+    }
 }
+
 ?>
