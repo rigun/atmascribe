@@ -31,9 +31,10 @@ $product->status = $data->status;
 $product->token = $data->token;
 $product->dibuat_pada = $data->dibuat_pada;
 
-// create the product
+$keywords= $data->email;
+ 
 // query products
-$stmt = $product->search($data->email);
+$stmt = $product->search($keywords);
 $num = $stmt->rowCount();
  
 // check if more than 0 record found

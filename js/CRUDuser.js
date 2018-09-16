@@ -191,9 +191,6 @@ function updatePassword(e,token, newToken){
 function registration(e,dibuat_pada,token){
     
     e.preventDefault();
-    if(!detectEmail(e)){
-        return false;
-    };
     var data ={
         nama: $('#nama').val(),
         email: $('#email').val(),
