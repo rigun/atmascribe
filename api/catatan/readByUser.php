@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+ 
+
 include_once '../config/database.php';
 include_once '../objects/catatan.php';
  
@@ -28,5 +32,5 @@ while ($rowCatatan = $stmtCatatan->fetch(PDO::FETCH_ASSOC)){
         
     array_push($catatan_arr["catatan"], $product_item);
 }
-print_r(json_encode($catatan_arr));
+echo json_encode($catatan_arr);
 ?>
