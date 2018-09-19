@@ -9,7 +9,6 @@ $db = $database->getConnection();
 // prepare user object
 $catatan = new Catatan($db);
  
-echo $_GET['id'];
 // set ID property of user to be edited
 $catatan->user_id = isset($_GET['id']) ? $_GET['id'] : die();
 // read the details of user to be edited
