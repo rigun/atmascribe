@@ -3,8 +3,11 @@ function getCatatanById(id){
     var lainnya = "";
 
         $.getJSON("https://atmascribe.thekingcorp.org/api/catatan/readByUser.php?id="+id, function(catatans){
-            console.log(catatans);
+           
             $.each(catatans, function(key, catatan){
+                console.log(catatan);
+                console.log(catatan.object);
+                console.log(catatan.object.prioritas);
                 if(catatan.prioritas === 1){
                     penting += '<tr>'+
                                 '<td> <span id="cNama"'+catatan.id+'>'+catatan.catatan+'</span> <span id="cRank"'+catatan.id+' style="display:none">1</span></td>'+
