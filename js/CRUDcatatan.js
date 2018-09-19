@@ -77,28 +77,28 @@ function editCatatanData(e, userId){
 
 
 }
-function doneCatatan(e, userId){
+function doneCatatanData(e, userId){
 
-e.preventDefault();
-    var data ={
-        id : $('#cIdD').val(),
-    }
-    
-    var form_data=JSON.stringify(data);
-    console.log(data);
-    $.ajax({
-    url: "https://atmascribe.thekingcorp.org/api/catatan/delete.php",
-    type : "DELETE",
-    contentType : 'application/json',
-    data : form_data,
-    success : function(result) {
-        $('#doneCatatan').modal('toggle');
-        getCatatanById(userId);
-    },
-        error: function(xhr, resp, text) {
-            // show error to console
-            console.log(xhr, resp, text);
+    e.preventDefault();
+        var data ={
+            id : $('#cIdD').val(),
         }
-    });
+        
+        var form_data=JSON.stringify(data);
+        console.log(data);
+        $.ajax({
+        url: "https://atmascribe.thekingcorp.org/api/catatan/delete.php",
+        type : "DELETE",
+        contentType : 'application/json',
+        data : form_data,
+        success : function(result) {
+            $('#doneCatatan').modal('toggle');
+            getCatatanById(userId);
+        },
+            error: function(xhr, resp, text) {
+                // show error to console
+                console.log(xhr, resp, text);
+            }
+        });
 
 }
