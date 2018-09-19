@@ -149,9 +149,9 @@ function updateDataUser(e,status,detail){
 function getReport(){
     var reportContent = "";
     var number = 1;
-    $.getJSON("https://atmascribe.thekingcorp.org/user/read.php", function(data){
+    $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
-            $.getJSON("https://atmascribe.thekingcorp.org/user/readOne.php?id="+val.id, function(dataOne){
+            $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
              
                 reportContent +=    "<tr id="+val.id+">"+
                     "<span id='' style='display: none' >"+val.id+"</span>"+
