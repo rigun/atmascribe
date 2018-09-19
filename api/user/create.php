@@ -48,7 +48,7 @@ if($num>0){
 else{
     if($product->create()){
         echo '{';
-            echo '"message": "User Berhasil Dibuat"';
+            echo '"message": "User Berhasil Dibuat", "code":"200"';
         echo '}';
     }
      
