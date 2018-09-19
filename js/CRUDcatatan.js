@@ -3,15 +3,15 @@ function getCatatanById(id){
     var lainnya = "";
 
         $.getJSON("https://atmascribe.thekingcorp.org/api/catatan/readByUser.php?id="+id, function(catatans){
-            
+            console.log(catatans);
             $.each(catatans, function(key, catatan){
-                if(catatan.prioritas == 1){
+                if(catatan.prioritas == "1"){
                     penting += '<tr>'+
                                 '<td> <span id="cNama"'+catatan.id+'>'+catatan.catatan+'</span> <span id="cRank"'+catatan.id+' style="display:none">1</span></td>'+
                                 '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+catatan.id+')" ><img src="../img/icon/edit.svg" /></a>'+
                                     '<a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('+catatan.id+')" ><img src="../img/icon/cekMini.svg" /></a></td>'+
                                 '</tr>'
-                }else if(catatan.prioritas == 0){
+                }else if(catatan.prioritas == "0"){
                     lainnya += '<tr>'+
                                 '<td> <span id="cNama"'+catatan.id+'>'+catatan.catatan+'</span> <span id="cRank"'+catatan.id+' style="display:none">0</span></td>'+
                                 '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+catatan.id+')" ><img src="../img/icon/edit.svg" /></a>'+

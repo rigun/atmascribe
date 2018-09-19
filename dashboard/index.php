@@ -63,7 +63,7 @@ $id = $_SESSION['id'];
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="buttonApp catatan" onclick="updateContent('Catatan')">
+                                    <div class="buttonApp catatan" onclick="updateContent('Catatan'), getCatatanById(<?php echo $id;?>)">
                                         <h2>CatatanKu</h2>
                                     </div>
                                 </div>
