@@ -280,11 +280,8 @@ $id = $_SESSION['id'];
 
                     <div class="modal-body">
                         <p style="width: 100%;font-size: 40px; text-align: center;">Sudah selesai ?</a>
-                            <form id="doneCatatanForm"  name="doneCatatanForm" method="post" action="" onsubmit="return doneCatatan()">
-                            <input type="hidden" name="id" value="" />
-                                        
-                                     
-                                      
+                            <form id="doneCatatanForm"  name="doneCatatanForm" onsubmit="return doneCatatan(event,'<?php echo $id ?>')">
+                            <input id="cIdD" type="hidden" name="cIdD" value="" />
                                     <input type="submit" value="Sudah" class="submit" /><br/>
                                     <button class="cancel" data-dismiss="modal" aria-label="Close">BATAL</button>
                             </form>
@@ -341,7 +338,7 @@ $id = $_SESSION['id'];
                     </div>
 
                     <div class="modal-body">
-                            <form id="editCatatan"  name="editCatatan" method="post" action="" onsubmit="return editCatatanData(event)">
+                            <form id="editCatatan"  name="editCatatan" method="post" action="" onsubmit="return editCatatanData(event,'<?php echo $id ?>')">
                                     <div class="wrap-input100" >
                                             <input id="catatanNameE" class="input100" type="text" name="name" placeholder="Catatanku" value="" >
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe828;"></span>
@@ -400,14 +397,13 @@ $id = $_SESSION['id'];
             document.forms["editCatatan"]["name"].value = cNama.innerHTML;
             document.forms["editCatatan"]["cId"].value = index;
             if(cRank.innerHTML == "1"){
-                document.getElementById("penting").checked = true;
+                document.getElementById("pentingE").checked = true;
             }else{
-                document.getElementById("lainnya").checked = true;
+                document.getElementById("lainnyaE").checked = true;
             }
         }
         function doneCatatan(id){
-            var cId = document.forms["doneCatatanForm"]["cId"].value = id;
-
+            var cId = document.forms["doneCatatanForm"]["cIdD"].value = id;
         }
         
 </script>

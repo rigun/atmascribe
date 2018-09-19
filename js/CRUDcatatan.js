@@ -50,7 +50,7 @@ function createCatatan(e, id){
     });
 }
 
-function editCatatanData(e){
+function editCatatanData(e, userId){
     e.preventDefault();
     var data ={
         catatan: $('#catatanNameE').val(),
@@ -67,11 +67,38 @@ function editCatatanData(e){
     data : form_data,
     success : function(result) {
         $('#EditCatatan').modal('toggle');
-        getCatatanById(id);
+        getCatatanById(userId);
     },
         error: function(xhr, resp, text) {
             // show error to console
             console.log(xhr, resp, text);
         }
     });
+
+
+}
+function doneCatatan(e, userId){
+
+e.preventDefault();
+    var data ={
+        id : $('#cIdD').val(),
+    }
+    
+    var form_data=JSON.stringify(data);
+    console.log(data);
+    $.ajax({
+    url: "https://atmascribe.thekingcorp.org/api/catatan/delete.php",
+    type : "DELETE",
+    contentType : 'application/json',
+    data : form_data,
+    success : function(result) {
+        $('#doneCatatan').modal('toggle');
+        getCatatanById(userId);
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
+
 }
