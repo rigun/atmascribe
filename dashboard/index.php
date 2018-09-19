@@ -10,6 +10,7 @@ $id = $_SESSION['id'];
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../favicon.png'; ?>">
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../bower_components/boostrap/dist/css/bootstrap.min.css" />
@@ -309,7 +310,7 @@ $id = $_SESSION['id'];
                     <div class="modal-body">
                             <form id="myForm"  name="myFormCatatan" method="post" action="" onsubmit="return createCatatan(event,'<?php echo $id ?>')">
                                     <div class="wrap-input100" >
-                                            <input id="catatanName" class="input100" type="text" name="name" placeholder="Catatanku" value="" onchange="tes()">
+                                            <input id="catatanName" class="input100" type="text" name="name" placeholder="Catatanku" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe828;"></span>
                                         </div>
                                     <div class="wrap-input100" >
@@ -370,11 +371,7 @@ $id = $_SESSION['id'];
 <script src="../js/style.js"></script>
 <script src="../js/CRUDuser.js"></script>
 <script src="../js/CRUDcatatan.js"></script>
-<script>
-        function tes(){
-            alert($('#catatanRank').val());
-        }
-</script>
+
 <script>
         function editModal(date,index){
             var jNama = document.getElementById("jNama"+index);

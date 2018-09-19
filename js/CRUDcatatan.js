@@ -43,7 +43,8 @@ function createCatatan(e, id){
     contentType : 'application/json',
     data : form_data,
     success : function(result) {
-        alert(result.message);
+        $('#Catatan').modal('toggle');
+        getCatatanById(id);
     },
         error: function(xhr, resp, text) {
             // show error to console

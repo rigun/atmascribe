@@ -253,11 +253,10 @@ function login(e){
     contentType : 'application/json',
     data : form_data,
     success : function(result) {
-        // product was created, go back to products list
-        alert(result.message);
         if(result.code == 200){
             window.location = "../dashboard/";
         }else{
+            alert(result.message);
             window.location = "../logout.php";
         }
     },
