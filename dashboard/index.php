@@ -280,8 +280,8 @@ $id = $_SESSION['id'];
 
                     <div class="modal-body">
                         <p style="width: 100%;font-size: 40px; text-align: center;">Sudah selesai ?</a>
-                            <form id="doneCatatanForm"  name="doneCatatanForm" onsubmit="return doneCatatan(event,'<?php echo $id ?>')">
-                            <input id="cIdD" type="hidden" name="cIdD" value="" />
+                            <form id="doneCatatanForm"  name="doneCatatanForm" method="post" action="" onsubmit="return doneCatatan(event,'<?php echo $id ?>')">
+                                    <input id="cIdD" type="hidden" name="cIdD" value="" />
                                     <input type="submit" value="Sudah" class="submit" /><br/>
                                     <button class="cancel" data-dismiss="modal" aria-label="Close">BATAL</button>
                             </form>
