@@ -280,7 +280,7 @@ $id = $_SESSION['id'];
 
                     <div class="modal-body">
                         <p style="width: 100%;font-size: 40px; text-align: center;">Sudah selesai ?</a>
-                            <form id="myForm"  name="myForm" method="post" action="" onsubmit="return doneCatatan()">
+                            <form id="doneCatatanForm"  name="doneCatatanForm" method="post" action="" onsubmit="return doneCatatan()">
                             <input type="hidden" name="id" value="" />
                                         
                                      
@@ -341,17 +341,19 @@ $id = $_SESSION['id'];
                     </div>
 
                     <div class="modal-body">
-                            <form id="myForm"  name="editCatatan" method="post" action="" onsubmit="return cekform(event)">
+                            <form id="editCatatan"  name="editCatatan" method="post" action="" onsubmit="return editCatatanData(event)">
                                     <div class="wrap-input100" >
-                                            <input id="catatanName" class="input100" type="text" name="name" placeholder="Catatanku" value="" >
+                                            <input id="catatanNameE" class="input100" type="text" name="name" placeholder="Catatanku" value="" >
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe828;"></span>
                                         </div>
                                     <div class="wrap-input100" >
                                         <div class="radio">
-                                            <input type="radio" name="rank" value="1"><label>Penting</label>
-                                            <input type="radio" name="rank" value="0"><label>Lainnya</label>
+                                            <input type="radio" name="rankE" value="1"><label>Penting</label>
+                                            <input type="radio" name="rankE" value="0"><label>Lainnya</label>
                                         </div>
                                     </div>
+                                    <input id="cIdE" type="hidden" name="cId" value="" />
+
                                     <input type="submit" value="UBAH" class="submit" /><br/>
                                     <button class="cancel" data-dismiss="modal" aria-label="Close">BATAL</button>
                             </form>
@@ -396,12 +398,16 @@ $id = $_SESSION['id'];
             var cRank = document.getElementById("cRank"+index);
 
             document.forms["editCatatan"]["name"].value = cNama.innerHTML;
-            document.forms["editCatatan"]["id"].value = index;
+            document.forms["editCatatan"]["cId"].value = index;
             if(cRank.innerHTML == "1"){
                 document.getElementById("penting").checked = true;
             }else{
                 document.getElementById("lainnya").checked = true;
             }
+        }
+        function doneCatatan(id){
+            var cId = document.forms["doneCatatanForm"]["cId"].value = id;
+
         }
         
 </script>

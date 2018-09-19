@@ -21,13 +21,9 @@ $product = new Catatan($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set ID property of product to be edited
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
- 
-// set product property values
- 
+$product->id = $data->id;
 $product->catatan = $data->catatan;
 $product->prioritas = $data->prioritas;
-$product->user_id = $data->user_id;
 
 // update the product
 if($product->update()){

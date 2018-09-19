@@ -49,3 +49,29 @@ function createCatatan(e, id){
         }
     });
 }
+
+function editCatatanData(e){
+    e.preventDefault();
+    var data ={
+        catatan: $('#catatanNameE').val(),
+        prioritas: $('input[name="rankE"]:checked').val(),
+        id : $('#cIdE').val(),
+    }
+    
+    var form_data=JSON.stringify(data);
+    console.log(data);
+    $.ajax({
+    url: "https://atmascribe.thekingcorp.org/api/catatan/update.php",
+    type : "POST",
+    contentType : 'application/json',
+    data : form_data,
+    success : function(result) {
+        $('#EditCatatan').modal('toggle');
+        getCatatanById(id);
+    },
+        error: function(xhr, resp, text) {
+            // show error to console
+            console.log(xhr, resp, text);
+        }
+    });
+}
