@@ -132,13 +132,8 @@ class Catatan{
                 WHERE
                     user_id = ?";
 
-            // prepare query statement
             $stmt = $this->conn->prepare( $query );
-
-            // bind id of product to be updated
-            $stmt->bindParam(1, $this->id);
-
-            // execute query
+            $stmt->bindParam(1, $this->user_id);
             $stmt->execute();
 
         return $stmt;
