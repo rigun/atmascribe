@@ -5,18 +5,22 @@ function getCatatanById(id){
         $.getJSON("https://atmascribe.thekingcorp.org/api/catatan/readByUser.php?id="+id, function(catatans){
            
             $.each(catatans, function(key, catatan){
-                
-                if(catatan[key].prioritas === 1){
+                console.log(catatan[0]);
+                console.log(catatan[0].object);
+                console.log(catatan[0].object.prioritas);
+                console.log(catatan[0].prioritas);
+                console.log(key);
+                if(catatan.prioritas === 1){
                     penting += '<tr>'+
-                                '<td> <span id="cNama"'+catatan[key].id+'>'+catatan[key].catatan+'</span> <span id="cRank"'+catatan[key].id+' style="display:none">1</span></td>'+
-                                '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+catatan[key].id+')" ><img src="../img/icon/edit.svg" /></a>'+
-                                    '<a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('+catatan[key].id+')" ><img src="../img/icon/cekMini.svg" /></a></td>'+
+                                '<td> <span id="cNama"'+catatan.id+'>'+catatan.catatan+'</span> <span id="cRank"'+catatan.id+' style="display:none">1</span></td>'+
+                                '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+catatan.id+')" ><img src="../img/icon/edit.svg" /></a>'+
+                                    '<a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('+catatan.id+')" ><img src="../img/icon/cekMini.svg" /></a></td>'+
                                 '</tr>'
-                }else if(catatan[key].prioritas === 0){
+                }else if(catatan.prioritas === 0){
                     lainnya += '<tr>'+
-                                '<td> <span id="cNama"'+catatan[key].id+'>'+catatan[key].catatan+'</span> <span id="cRank"'+catatan[key].id+' style="display:none">0</span></td>'+
-                                '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+catatan[key].id+')" ><img src="../img/icon/edit.svg" /></a>'+
-                                    '<a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('+catatan[key].id+')" ><img src="../img/icon/cekMini.svg" /></a></td>'+
+                                '<td> <span id="cNama"'+catatan.id+'>'+catatan.catatan+'</span> <span id="cRank"'+catatan.id+' style="display:none">0</span></td>'+
+                                '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+catatan.id+')" ><img src="../img/icon/edit.svg" /></a>'+
+                                    '<a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('+catatan.id+')" ><img src="../img/icon/cekMini.svg" /></a></td>'+
                                 '</tr>'
                 }else{
                     penting += "kesalahan pada server";
