@@ -13,32 +13,20 @@ $catatan = new Catatan($db);
 $catatan->user_id = isset($_GET['id']) ? $_GET['id'] : die();
 // read the details of user to be edited
 $stmtCatatan = $catatan->readOne();
-$numCatatan = $stmtCatatan->rowCount();
 
-// create array
-if($numCatatan>0){
- 
-    // products array
-    $catatan_arr=array();
-    $catatan_arr["catatan"]=array();
+$catatan_arr=array();
+$catatan_arr["catatan"]=array();
 
-    while ($rowCatatan = $stmtCatatan->fetch(PDO::FETCH_ASSOC)){
+while ($rowCatatan = $stmtCatatan->fetch(PDO::FETCH_ASSOC)){
 
-        extract($rowCatatan);
-        $product_item=array(
-            "catatan" => $catatan,
-            "prioritas" => $prioritas,
-            "id" => $id
-         );
-         
-        array_push($catatan_arr["catatan"], $product_item);
-    }
+    extract($rowCatatan);
+    $product_item=array(
+        "catatan" => $catatan,
+        "prioritas" => $prioritas,
+        "id" => $id
+        );
+        
+    array_push($catatan_arr["catatan"], $product_item);
 }
-else{
-    $catatan_arr["catatan"]=null;
-}
-
- 
-// make it json format
-print_r(json_encode($user_arr));
+print_r(json_encode($catatan_arr));
 ?>

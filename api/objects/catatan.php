@@ -137,7 +137,7 @@ class Catatan{
             $stmt->execute();
      
     
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt;
        
     }
 }
