@@ -10,7 +10,6 @@ $db = $database->getConnection();
  
 // prepare product object
 $product = new User($db);
-echo $_GET['token'];
 $product->token = isset($_GET['token']) ? $_GET['token'] : die();
  
 
@@ -18,6 +17,7 @@ if($product->updateByToken()){
     echo '{';
         echo '"message": "Status Berhasil di Update."';
     echo '}';
+    header("Location: https://atmascribe.thekingcorp.org/successVerifikasi.php");
 }
 else{
     echo '{';
