@@ -6,8 +6,8 @@ function getCatatanById(id){
         
         $.each(catatans.catatan, function(key, cttn){
             if(cttn.prioritas == 1){
-                penting+="<tr><td><span id='cNama"+cttn.id+"'>"+cttn.catatan+"</span><span id='cRank"+cttn.id+"' style='display:none'>1</span></td>"+
-                            "<td>tes</tr>"
+                penting+="<tr><td>tes</td>"+
+                            "<td>tes</td></tr>"
                 
             }else if(cttn.prioritas == 0){
                 lainnya += "<tr><td><span id='cNama"+cttn.id+"'>"+cttn.catatan+"</span><span id='cRank"+cttn.id+"' style='display:none'>0</span></td>"+
