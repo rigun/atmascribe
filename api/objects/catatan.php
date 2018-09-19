@@ -135,8 +135,9 @@ class Catatan{
             $stmt = $this->conn->prepare( $query );
             $stmt->bindParam(1, $this->user_id);
             $stmt->execute();
-
-        return $stmt;
+     
+    
+        return $stmt->fetch(PDO::FETCH_ASSOC);
        
     }
 }
