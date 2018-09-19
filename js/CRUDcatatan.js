@@ -6,25 +6,24 @@ function getCatatanById(id){
            
             $.each(catatans.catatan, function(key, cttn){
                 if(cttn.prioritas == 1){
-                    console.log(penting);
-                    penting += '<tr>'+
-                                '<td> <span id="cNama'+cttn.id+'">'+cttn.catatan+'</span> <span id="cRank'+cttn.id+'" style="display:none">1</span></td>'+
-                                '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+cttn.id+')" ><img src="../img/icon/edit.svg" /></a>'+
-                                    '<a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('+cttn.id+')" ><img src="../img/icon/cekMini.svg" /></a></td>'+
-                                '</tr>'
+                    penting += "<tr>"+
+                                "<td> <span id='cNama"+cttn.id+"'>"+cttn.catatan+"</span> <span id='cRank"+cttn.id+"' style='display:none'>1</span></td>"+
+                                "<td> <a  data-toggle='modal' data-target='#EditCatatan' onclick='editModalCatatan('2018-09-06','"+cttn.id+"') ><img src='../img/icon/edit.svg' /></a>"+
+                                    "<a  data-toggle='modal' data-target='#doneCatatan' onclick='doneCatatan('"+cttn.id+"') ><img src='../img/icon/cekMini.svg' /></a></td>"+
+                                "</tr>"
                 }else if(cttn.prioritas == 0){
-                    lainnya += '<tr>'+
-                                '<td> <span id="cNama'+cttn.id+'">'+cttn.catatan+'</span> <span id="cRank'+cttn.id+'" style="display:none">0</span></td>'+
-                                '<td> <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan("2018-09-06",'+cttn.id+')" ><img src="../img/icon/edit.svg" /></a>'+
-                                    '<a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('+cttn.id+')" ><img src="../img/icon/cekMini.svg" /></a></td>'+
-                                '</tr>'
+                    lainnya += "<tr>"+
+                                "<td> <span id='cNama"+cttn.id+"'>"+cttn.catatan+"</span> <span id='cRank"+cttn.id+"' style='display:none'>0</span></td>"+
+                                "<td> <a  data-toggle='modal' data-target='#EditCatatan' onclick='editModalCatatan('2018-09-06','+cttn.id+') ><img src='../img/icon/edit.svg' /></a>"+
+                                    "<a  data-toggle='modal' data-target='#doneCatatan' onclick='doneCatatan('"+cttn.id+"') ><img src='../img/icon/cekMini.svg' /></a></td>"+
+                                "</tr>"
                 }else{
                     penting += "kesalahan pada server";
                 }
-                
+                $('#catatanPenting').html(penting);     
+                $('#catatanLainnya').html(lainnya);  
             });               
-        $('#catatanPenting').html(penting);     
-        $('#catatanLainnya').html(lainnya);     
+   
         });
 
 }
