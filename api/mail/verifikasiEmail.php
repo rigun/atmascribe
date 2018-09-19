@@ -7,7 +7,9 @@ include_once './objects/user.php';
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
- 
+echo '{';
+    echo '"message": "Updating"';
+echo '}';
 // prepare product object
 $product = new User($db);
  
