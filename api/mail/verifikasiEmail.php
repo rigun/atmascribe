@@ -21,7 +21,10 @@ $product->token = isset($_GET['token']) ? $_GET['token'] : die();
  
 
 if($product->updateByToken()){
-    header('location: ../../successVerifikasi.php');
+    header('Location: https://atmascribe.thekingcorp.org/successVerifikasi.php');
+    echo '{';
+        echo '"message": "Sukses Update Status."';
+    echo '}';
 }
 else{
     echo '{';
