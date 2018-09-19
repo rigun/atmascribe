@@ -188,19 +188,13 @@ function updatePassword(e,token, newToken){
     });
 }
 
-function registration(e,dibuat_pada,token){
+function registration(e){
     
     e.preventDefault();
     var data ={
         nama: $('#nama').val(),
         email: $('#email').val(),
         password: $('#password').val(),
-        ttl : null,
-        kutipan: null,
-        foto: null,
-        status: null,
-        dibuat_pada: dibuat_pada,
-        token: token
     }
     
     var form_data=JSON.stringify(data);
@@ -214,25 +208,7 @@ function registration(e,dibuat_pada,token){
         if(result.code == 403){
             alert(result.message);
         }else{
-            $.ajax({
-                url: "https://atmascribe.thekingcorp.org/api/mail/mail.php",
-                type: "POST",
-                contentType : 'application/x-www-form-urlencoded',
-                data: {
-                  token: token,
-                  email: $('#email').val(),
-                  nama: $('#nama').val()
-                },
-                cache: false,
-                success: function(result) {
-                  console.log(result);
-                  window.location = "./daftar/pendaftaran-berhasil.php"
-                },
-                error: function(xhr, resp, text) {
-                console.log(xhr, resp, text);
-                alert("gagal mengirim email");
-                },
-              });
+            window.location = "./daftar/pendaftaran-berhasil.php"
         }
     },
         error: function(xhr, resp, text) {
