@@ -18,10 +18,10 @@ function getCatatanById(id){
                     penting += "kesalahan pada server";
                 }
 
-            });               
+            });
+            $('#catatanPenting').html(penting);     
+            $('#catatanLainnya').html(lainnya);                 
         });
-        $('#catatanPenting').html(penting);     
-        $('#catatanLainnya').html(lainnya);  
 
 }
 function createCatatan(e, id){
