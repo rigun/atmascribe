@@ -391,7 +391,7 @@ $id = $_SESSION['id'];
             }
 
         }
-        function editModalCatatan(date,index){
+        function editModalCatatan(index){
             var cNama = document.getElementById("cNama"+index);
             var cRank = document.getElementById("cRank"+index);
 
