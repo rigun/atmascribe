@@ -169,7 +169,7 @@ class Jadwal{
               FROM
                   " . $this->table_name . "
               WHERE
-                  tanggal = ? anda user_id = ?";
+                  tanggal = ? and user_id = ?";
 
           $stmt = $this->conn->prepare( $query );
           $stmt->bindParam(1, $this->tanggal);
