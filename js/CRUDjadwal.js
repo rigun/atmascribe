@@ -77,9 +77,11 @@ function getJadwalById(id){
                     if(cekPrioritas != 0){
                         prioritas+="</tbody></table></div>";
                         headerPrioritas += prioritas;
+                        console.log(headerPrioritas);
                         cekPrioritas = 0 ;
                     }else{
                         prioritas="";
+                        headerPrioritas= "";
                     }
                     jadwalUser+="</tbody></table></div>";
                     $('#jadwalContent').html(jadwalUser);  
