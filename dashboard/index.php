@@ -76,7 +76,7 @@ $id = $_SESSION['id'];
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="buttonApp prioritas" onclick="updateContent('Prioritas')">
+                                    <div class="buttonApp prioritas" onclick="updateContent('Prioritas'),getJadwalById(<?php echo $id;?>)">
                                         <h2>PrioritasKu</h2>
                                     </div>
                                 </div>
