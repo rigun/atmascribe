@@ -77,7 +77,7 @@ function getJadwalById(id){
                     if(cekPrioritas != 0){
                         prioritas+="</tbody></table></div>";
                         headerPrioritas += prioritas;
-                        $('#prioritasContent').html(headerPrioritas);  
+                        $('#prioritasContent').html("tes");  
 
                         cekPrioritas = 0 ;
                     }else{
