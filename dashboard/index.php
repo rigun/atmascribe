@@ -91,25 +91,8 @@ $id = $_SESSION['id'];
                         </div>
                         <div class="box-widget">
                             <h2>Catatan</h2>
-                            <?php
-                                $i=0;
-                                while($i != 3){
-                                    $i++;
-                            ?>
-                            <div class="row">
-                                <div class="col-8">
-                                    <span id="<?php echo 'cNama'.$i.'';?>">Bayar Kos</span>
-                                    <span id="<?php echo 'cRank'.$i.'';?>" style="display: none">1</span>
-                                </div>
-                                <div class="col-4">
-                                <a  data-toggle="modal" data-target="#EditCatatan" onclick="editModalCatatan('2018-09-06','<?php echo $i;?>')" ><img src="../img/icon/edit.svg" /></a>
-                                    <a  data-toggle="modal" data-target="#doneCatatan" onclick="doneCatatan('<?php echo $i;?>')" ><img src="../img/icon/cekMini.svg" /></a>
-                                </div>
+                            <div id="dashboardCatatanPenting">
                             </div>
-                            <hr/>
-                            <?php
-                                }
-                            ?>
                             <h2>Jadwal</h2>
                             <?php
                                 $i=0;

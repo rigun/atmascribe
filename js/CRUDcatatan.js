@@ -1,5 +1,6 @@
 function getCatatanById(id){
     var penting = "";
+    var dashboard = "";
     var lainnya = "";
 
         $.getJSON("https://atmascribe.thekingcorp.org/api/catatan/readByUser.php?id="+id, function(catatans){
@@ -9,7 +10,17 @@ function getCatatanById(id){
                     penting+="<tr><td><span id='cNama"+cttn.id+"'>"+cttn.catatan+"</span><span id='cRank"+cttn.id+"' style='display:none'>1</span></td>"+
                                 "<td><a  data-toggle='modal' data-target='#EditCatatan' onclick='editModalCatatan("+cttn.id+")'><img src='../img/icon/edit.svg' /></a>"+
                                     "<a  data-toggle='modal' data-target='#doneCatatan' onclick='doneCatatan("+cttn.id+")'><img src='../img/icon/cekMini.svg' /></a></td></tr>";
-                    
+                    dashboard+="<div class='row'>"+
+                                    "<div class='col-8'>"+
+                                        "<span id='cNama"+cttn.id+"'>"+cttn.catatan+"</span>"+
+                                        "<span id='cRank"+cttn.id+"' style='display: none'>"+cttn.id+"</span>"+
+                                    "</div>"+
+                                    "<div class='col-4'>"
+                                    "<a  data-toggle='modal' data-target='#EditCatatan' onclick='editModalCatatan("+cttn.id+")'><img src='../img/icon/edit.svg' /></a>"+
+                                    "<a  data-toggle='modal' data-target='#doneCatatan' onclick='doneCatatan("+cttn.id+")'><img src='../img/icon/cekMini.svg' /></a>"+
+                                    "</div>"+
+                                "</div>"+
+                                "<hr/>";
                 }else if(cttn.prioritas == 0){
                     lainnya += "<tr><td><span id='cNama"+cttn.id+"'>"+cttn.catatan+"</span><span id='cRank"+cttn.id+"' style='display:none'>0</span></td>"+
                                 "<td><a  data-toggle='modal' data-target='#EditCatatan' onclick='editModalCatatan("+cttn.id+")'><img src='../img/icon/edit.svg' /></a>"+
@@ -20,6 +31,7 @@ function getCatatanById(id){
 
             });
             $('#catatanPenting').html(penting);     
+            $('#dashboardCatatanPenting').html(dashboard);     
             $('#catatanLainnya').html(lainnya);                 
         });
 
