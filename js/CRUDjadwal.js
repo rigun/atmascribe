@@ -76,37 +76,40 @@ function getPrioritas(id){
            
             $.each(jadwals.jadwal, function(key, jdwl){
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=1", function(datajadwals){
+                    if(datajadwals.number >0){
                         jadwalPrioritas+="<div class='header-box-data'>"+jdwl.tanggal+
-                                    "</div>"+
-                                "<div class='content-box-data'>"+
-                                    "<table class='table table-hover'>"+
-                                        "<thead>"+
-                                        "<tr>"+
-                                            "<th>Kegiatan</th>"+
-                                            "<th>Mulai</th>"+
-                                            "<th>Tempat</th>"+
-                                            "<th>Pengaturan</th>"+
-                                            "</tr>"+
-                                        "</thead>"+
-                                        "<tbody>";
-                   
-                        $.each(datajadwals.jadwal, function(key, dtjdwl){
-                            
-                            jadwalPrioritas+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
-                                            "<tr>"+
-                                            "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
-                                            "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
-                                            "<td id='jTempat"+dtjdwl.id+"'>"+dtjdwl.tempat+"</td>"+
-                                            "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
-                                            "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
-                                            "</tr>";
-                                 "<hr/>";
+                                "</div>"+
+                            "<div class='content-box-data'>"+
+                                "<table class='table table-hover'>"+
+                                    "<thead>"+
+                                    "<tr>"+
+                                        "<th>Kegiatan</th>"+
+                                        "<th>Mulai</th>"+
+                                        "<th>Tempat</th>"+
+                                        "<th>Pengaturan</th>"+
+                                        "</tr>"+
+                                    "</thead>"+
+                                    "<tbody>";
+            
+                            $.each(datajadwals.jadwal, function(key, dtjdwl){
+                                
+                                jadwalPrioritas+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
+                                                "<tr>"+
+                                                "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
+                                                "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
+                                                "<td id='jTempat"+dtjdwl.id+"'>"+dtjdwl.tempat+"</td>"+
+                                                "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
+                                                "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
+                                                "</tr>";
+                                    "<hr/>";
 
-     
 
-                        });
-                        jadwalPrioritas+="</tbody></table></div>";
-                    $('#prioritasContentData').html(jadwalPrioritas);  
+
+                            });
+                            jadwalPrioritas+="</tbody></table></div>";
+                        $('#prioritasContentData').html(jadwalPrioritas);  
+                            }    
+                    
                     });
 
             });
