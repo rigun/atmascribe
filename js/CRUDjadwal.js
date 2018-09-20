@@ -20,7 +20,7 @@ function getJadwalById(id){
                                             "</tr>"+
                                         "</thead>"+
                                         "<tbody>";
-                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&jadwal="+jadwal, function(datajadwals){
+                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&jadwal="+jdwl.jadwal, function(datajadwals){
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             jadwalUser += "<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
                                             "<tr>"+
