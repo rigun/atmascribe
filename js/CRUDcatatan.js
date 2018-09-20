@@ -85,7 +85,6 @@ function doneCatatanData(e, userId){
         }
         
         var form_data=JSON.stringify(data);
-        console.log(data);
         $.ajax({
         url: "https://atmascribe.thekingcorp.org/api/catatan/delete.php",
         type : "DELETE",

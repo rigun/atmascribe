@@ -56,7 +56,7 @@ if($product->passwordL == null){
     // if unable to update the product, tell the user
     else{
         echo '{';
-            echo '"message": "Gagal memperbaharui data. Coba lagi. with password"';
+            echo '"message": "Gagal memperbaharui data. Coba lagi."';
         echo '}';
     }
 }

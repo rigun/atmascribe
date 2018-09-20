@@ -22,7 +22,7 @@ $product = new Catatan($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set product id to be deleted
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->id = $data->id;
  
 // delete the product
 if($product->delete()){
