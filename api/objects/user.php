@@ -504,7 +504,7 @@ class User{
             $row = $stmtP->fetch(PDO::FETCH_ASSOC);
             $this->password=htmlspecialchars(strip_tags($this->password));
           if(password_verify( $this->password,$row['password'] )){
-            $sql2 = "SELECT id FROM " . $this->table_name . " WHERE email = ?";
+            $sql2 = "SELECT id,status,nama FROM " . $this->table_name . " WHERE email = ?";
 
             $stmt = $this->conn->prepare( $sql2 );
 
@@ -515,6 +515,8 @@ class User{
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             session_start();
             $_SESSION['id'] = $row['id'];
+            $this->status = $row['status'];
+            $_SESSION['nama'] = $row['nama'];
             return true;
           }else{
             return false;

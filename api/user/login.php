@@ -26,9 +26,16 @@ $product->email = $data->email;
 $product->password = $data->password; 
 
 if($product->login()){
-    echo '{';
-        echo '"message": "Login berhasil", "code":"200"';
-    echo '}';
+    if($product->status == 0){
+        echo '{';
+            echo '"message": "Email Belum diverifikasi", "code":"201"';
+        echo '}';
+    }else{
+        echo '{';
+            echo '"message": "Login berhasil", "code":"200"';
+        echo '}';
+    }
+
 }
     
 // if unable to update the product, tell the user
