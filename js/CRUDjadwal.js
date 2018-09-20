@@ -6,7 +6,7 @@ function getJadwalById(id){
         $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
            
             $.each(jadwals.jadwal, function(key, jdwl){
-                this.jadwalUser+="<div class='header-box-data'>"+jdwl.tanggal+
+                jadwalUser+="<div class='header-box-data'>"+jdwl.tanggal+
                                     "</div>"+
                                 "<div class='content-box-data'>"+
                                     "<table class='table table-hover'>"+
@@ -22,7 +22,7 @@ function getJadwalById(id){
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
-                            this.dataJadwal+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
+                            dataJadwal+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
                                             "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
@@ -31,14 +31,14 @@ function getJadwalById(id){
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
                         });
-                        this.jadwalUser+=this.dataJadwal;
-                        console.log(this.dataJadwal);
-                        console.log(this.jadwalUser);
+                        jadwalUser+=dataJadwal;
+                        console.log(dataJadwal);
+                        console.log(jadwalUser);
                     });
-                    this.jadwalUser+="</tbody></table></div>";
+                    jadwalUser+="</tbody></table></div>";
 
             });
-            $('#jadwalContent').html(this.jadwalUser);     
+            $('#jadwalContent').html(jadwalUser);     
 
         });
 
