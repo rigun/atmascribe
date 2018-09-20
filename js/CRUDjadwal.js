@@ -1,7 +1,8 @@
 function getJadwalById(id){
     var jadwalUser = "";
     var todayJadwal = "";
-    var lainnya = "";
+    var prioritas = "";
+    var cekPrioritas = 0;
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
@@ -34,6 +35,7 @@ function getJadwalById(id){
                                             "</tr>"+
                                         "</thead>"+
                                         "<tbody>";
+                        prioritas = jadwalUser;
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
                             jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
@@ -58,10 +60,28 @@ function getJadwalById(id){
                                             "</div>"+
                                             "<hr/>";
                             }
+                            if(jdwl.prioritas == 1){
+                                prioritas+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
+                                            "<tr>"+
+                                            "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
+                                            "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
+                                            "<td id='jTempat"+dtjdwl.id+"'>"+dtjdwl.tempat+"</td>"+
+                                            "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
+                                            "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
+                                            "</tr>";
+                                cekPrioritas = 1;
+                            }
                         });
+                    if(cekPrioritas != 0){
+                        prioritas+="</tbody></table></div>";
+                        cekPrioritas = 0 ;
+                    }else{
+                        prioritas="";
+                    }
                     jadwalUser+="</tbody></table></div>";
                     $('#jadwalContent').html(jadwalUser);  
                     $('#dashboardJadwalHariini').html(todayJadwal);  
+                    $('#prioritasContent').html(prioritas);  
                     });
 
             });
