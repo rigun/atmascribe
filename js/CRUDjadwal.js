@@ -61,8 +61,7 @@ function getJadwalById(id){
                                             "</div>"+
                                             "<hr/>";
                             }
-                            if(jdwl.prioritas == 1){
-                                console.log(jdwl.priorita);
+                            if(dtjdwl.prioritas == 1){
                                 prioritas+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
@@ -73,15 +72,12 @@ function getJadwalById(id){
                                             "</tr>";
                                 cekPrioritas = 1;
                             }
-                            console.log(cekPrioritas);
 
                         });
                     if(cekPrioritas != 0){
                         prioritas+="</tbody></table></div>";
                         headerPrioritas += prioritas;
                         cekPrioritas = 0 ;
-                        console.log(prioritas);
-                        console.log(headerPrioritas);
                     }else{
                         prioritas="";
                     }
