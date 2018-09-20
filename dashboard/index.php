@@ -17,7 +17,7 @@ $id = $_SESSION['id'];
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../bower_components/fullcalendar/dist/fullcalendar.css" />
 </head>
-<body onload="getCatatanById(<?php echo $id;?>)">
+<body onload="getCatatanById(<?php echo $id;?>), getJadwalById(<?php echo $id;?>)">
     <nav id="mainNav" class="navbar navbar-expand-lg">
         <div class="logoNavbar">
             <div class="row">
