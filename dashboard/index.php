@@ -362,7 +362,6 @@ $id = $_SESSION['id'];
             var jWaktu = document.getElementById("jWaktu"+index);
             var jTempat = document.getElementById("jTempat"+index);
             var jRank = document.getElementById("jRank"+index);
-            console.log(date);
             document.forms["myFormEditJadwal"]["name"].value = jNama.innerHTML;
             document.forms["myFormEditJadwal"]["waktu"].value = jWaktu.innerHTML;
             document.forms["myFormEditJadwal"]["tempat"].value = jTempat.innerHTML;
