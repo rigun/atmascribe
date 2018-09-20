@@ -31,14 +31,13 @@ function getJadwalById(id){
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
                         });
+
                         jadwalUser+=dataJadwal;
-
+                        console.log(dataJadwal);
                     });
-
+                    jadwalUser+="</tbody></table></div>";
+                    $('#jadwalContent').html(jadwalUser);  
             });
-            console.log(jadwalUser);
-            jadwalUser+="</tbody></table></div>";
-            $('#jadwalContent').html(jadwalUser);     
         });
 
 }
