@@ -172,8 +172,8 @@ class Jadwal{
                   tanggal = ? anda user_id = ?";
 
           $stmt = $this->conn->prepare( $query );
-          $stmt->bindParam(1, $this->jadwal);
-          $stmt->bindParam(1, $this->user_id);
+          $stmt->bindParam(1, $this->tanggal);
+          $stmt->bindParam(2, $this->user_id);
           $stmt->execute();
   
       return $stmt;

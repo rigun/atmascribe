@@ -6,8 +6,7 @@ function getJadwalById(id){
         $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
            
             $.each(jadwals.jadwal, function(key, jdwl){
-                jadwalUser += "<div class='header-box-data'>"+
-                                jdwl.tanggal+
+                jadwalUser += "<div class='header-box-data'>"+jdwl.tanggal+
                                     "</div>"+
                                 "<div class='content-box-data'>"+
                                     "<table class='table table-hover'>"+
@@ -20,9 +19,9 @@ function getJadwalById(id){
                                             "</tr>"+
                                         "</thead>"+
                                         "<tbody>";
-                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&jadwal="+jdwl.jadwal, function(datajadwals){
+                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
-                            jadwalUser += "<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
+                            jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
                                             "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
@@ -32,7 +31,8 @@ function getJadwalById(id){
                                             "</tr>";
                         });
                     });
-                    jadwalUser +="</tbody></table></div>";
+                    jadwalUser+="</tbody></table></div>";
+                    console.log(jadwalUser);
             });
             $('#jadwalContent').html(jadwalUser);     
         });
