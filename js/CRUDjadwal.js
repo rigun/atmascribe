@@ -73,6 +73,7 @@ function getJadwalById(id){
                                 cekPrioritas = 1;
                             }
                         });
+                        console.log(cekPrioritas);
                     if(cekPrioritas != 0){
                         prioritas+="</tbody></table></div>";
                         headerPrioritas += prioritas;
