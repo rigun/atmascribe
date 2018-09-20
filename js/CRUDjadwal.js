@@ -37,6 +37,7 @@ function getJadwalById(id){
             console.log(jadwalUser);
             $('#jadwalContent').html(jadwalUser);  
         });
+        console.log(jadwalUser);
 
 }
 function createJadwal(e, id){
