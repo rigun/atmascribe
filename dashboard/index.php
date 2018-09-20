@@ -187,8 +187,8 @@ $id = $_SESSION['id'];
                                         </div>
                                     <div class="wrap-input100" >
                                         <div class="radio">
-                                            <input id="prioritas" type="radio" name="prioritas" value="1"><label>Prioritas</label>
-                                            <input id="bukanPrioritas" type="radio" name="prioritas" value="0"><label>Bukan Prioritas</label>
+                                            <input id="prioritas" type="radio" name="prioritasJe" value="1"><label>Prioritas</label>
+                                            <input id="bukanPrioritas" type="radio" name="prioritasJe" value="0"><label>Bukan Prioritas</label>
                                         </div>
                                     </div>
                                     <input type="submit" value="UBAH" class="submit" /><br/>

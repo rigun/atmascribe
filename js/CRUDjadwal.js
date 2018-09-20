@@ -139,7 +139,7 @@ function editJadwalData(e, userId){
         waktu : $('#waktuJe').val(),
         tanggal : $('#tanggalJe').val(),
         tempat : $('#tempatJe').val(),
-        prioritas : $('input[name="prioritasJ"]:checked').val(),
+        prioritas : $('input[name="prioritasJe"]:checked').val(),
         id : $('#jIdE').val(),
     }
     
