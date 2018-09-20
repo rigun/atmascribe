@@ -71,7 +71,7 @@ $id = $_SESSION['id'];
                             
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="buttonApp kalender" onclick="updateContent('Kalender')">
+                                    <div class="buttonApp kalender" onclick="updateContent('Kalender'),getJadwalById(<?php echo $id;?>)">
                                         <h2>KalenderKu</h2>
                                     </div>
                                 </div>
