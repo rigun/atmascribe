@@ -17,11 +17,11 @@ function getJadwalById(id){
 function createJadwal(e, id){
     e.preventDefault();
     var data ={
-        jadwal = $("#jadwalJ").val(),
-        waktu = $("#waktuJ").val(),
-        tanggal = $("#tanggalJ").val(),
-        tempat = $("#tempatJ").val(),
-        prioritas = $("input[name='prioritasJ']:checked").val(),
+        jadwal = $('#jadwalJ').val(),
+        waktu = $('#waktuJ').val(),
+        tanggal = $('#tanggalJ').val(),
+        tempat = $('#tempatJ').val(),
+        prioritas = $('input[name="prioritasJ"]:checked').val(),
         user_id = id
     }
     
