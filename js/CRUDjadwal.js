@@ -22,12 +22,12 @@ function getJadwalById(id){
                                         "<tbody>";
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
-                            jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
+                            jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
                                             "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
                                             "<td id='jTempat"+dtjdwl.id+"'>"+dtjdwl.tempat+"</td>"+
-                                            "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal("+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
+                                            "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal("+jdwl.tanggal+","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
                         });
