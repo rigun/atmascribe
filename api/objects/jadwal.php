@@ -37,6 +37,25 @@ class Jadwal{
 
         return $stmt;
     }
+    function getTanggal(){
+
+        // select all query
+        $query = "SELECT DISTINCT
+                        tanggal
+                FROM
+                    " . $this->table_name . " 
+                ORDER BY
+                tanggal
+                ASC";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 
     // create product
     function create(){
