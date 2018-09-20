@@ -33,8 +33,9 @@ function getJadwalById(id){
                         });
                     });
                     jadwalUser+="</tbody></table></div>";
-                    $('#jadwalContent').html(jadwalUser);  
             });
+            console.log(jadwalUser);
+            $('#jadwalContent').html(jadwalUser);  
         });
 
 }
