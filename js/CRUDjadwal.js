@@ -32,9 +32,8 @@ function getJadwalById(id){
                                             "</tr>";
                         });
                     jadwalUser+="</tbody></table></div>";
-                    console.log(jadwalUser);
+                    $('#jadwalContent').html(jadwalUser);  
                     });
-            $('#jadwalContent').html(jadwalUser);  
 
             });
         });
