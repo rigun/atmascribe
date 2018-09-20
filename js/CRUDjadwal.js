@@ -1,9 +1,6 @@
 function getJadwalById(id){
     var jadwalUser = "";
     var todayJadwal = "";
-    var prioritas = "";
-    var headerPrioritas = "";
-    var cekPrioritas = 0;
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
@@ -22,7 +19,7 @@ function getJadwalById(id){
         $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
            
             $.each(jadwals.jadwal, function(key, jdwl){
-                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
+                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=0", function(datajadwals){
                         jadwalUser+="<div class='header-box-data'>"+jdwl.tanggal+
                                     "</div>"+
                                 "<div class='content-box-data'>"+
@@ -36,19 +33,7 @@ function getJadwalById(id){
                                             "</tr>"+
                                         "</thead>"+
                                         "<tbody>";
-                        headerPrioritas +="<div class='header-box-data'>"+jdwl.tanggal+
-                                            "</div>"+
-                                        "<div class='content-box-data'>"+
-                                            "<table class='table table-hover'>"+
-                                                "<thead>"+
-                                                "<tr>"+
-                                                    "<th>Kegiatan</th>"+
-                                                    "<th>Mulai</th>"+
-                                                    "<th>Tempat</th>"+
-                                                    "<th>Pengaturan</th>"+
-                                                    "</tr>"+
-                                                "</thead>"+
-                                                "<tbody>";
+                   
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
                             jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
@@ -73,8 +58,41 @@ function getJadwalById(id){
                                             "</div>"+
                                             "<hr/>";
                             }
-                            if(dtjdwl.prioritas == 1){
-                                prioritas+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
+     
+
+                        });
+                    jadwalUser+="</tbody></table></div>";
+                    $('#jadwalContent').html(jadwalUser);  
+                    $('#dashboardJadwalHariini').html(todayJadwal);  
+                    });
+
+            });
+        });
+}
+function getPrioritas(id){
+    var jadwalPrioritas = "";
+
+        $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
+           
+            $.each(jadwals.jadwal, function(key, jdwl){
+                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=1", function(datajadwals){
+                        jadwalPrioritas+="<div class='header-box-data'>"+jdwl.tanggal+
+                                    "</div>"+
+                                "<div class='content-box-data'>"+
+                                    "<table class='table table-hover'>"+
+                                        "<thead>"+
+                                        "<tr>"+
+                                            "<th>Kegiatan</th>"+
+                                            "<th>Mulai</th>"+
+                                            "<th>Tempat</th>"+
+                                            "<th>Pengaturan</th>"+
+                                            "</tr>"+
+                                        "</thead>"+
+                                        "<tbody>";
+                   
+                        $.each(datajadwals.jadwal, function(key, dtjdwl){
+                            
+                            jadwalPrioritas+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
                                             "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
@@ -82,22 +100,13 @@ function getJadwalById(id){
                                             "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
-                                cekPrioritas = 1;
-                            }
+                                 "<hr/>";
+
+     
 
                         });
-                    if(cekPrioritas != 0){
-                        prioritas+="</tbody></table></div>";
-                        headerPrioritas += prioritas;
-                        cekPrioritas = 0 ;
-                    }else{
-                        prioritas="";
-                        headerPrioritas= "";
-                    }
-                    jadwalUser+="</tbody></table></div>";
-                    $('#jadwalContent').html(jadwalUser);  
-                    $('#dashboardJadwalHariini').html(todayJadwal);  
-                    $('#prioritasContentData').html(headerPrioritas);  
+                        jadwalPrioritas+="</tbody></table></div>";
+                    $('#prioritasContentData').html(jadwalPrioritas);  
                     });
 
             });

@@ -177,4 +177,21 @@ class Jadwal{
       return $stmt;
      
   }
+    function readOnePrioritas(){
+        // query to read single record
+      $query = "SELECT
+                  *
+              FROM
+                  " . $this->table_name . "
+              WHERE
+                  tanggal = ? and user_id = ? and prioritas = 1";
+
+          $stmt = $this->conn->prepare( $query );
+          $stmt->bindParam(1, $this->tanggal);
+          $stmt->bindParam(2, $this->user_id);
+          $stmt->execute();
+  
+      return $stmt;
+     
+  }
 }
