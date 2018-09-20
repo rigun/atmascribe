@@ -1,12 +1,12 @@
 function getJadwalById(id){
     var jadwalUser = "";
-    var dashboard = "";
+    var dataJadwal = "";
     var lainnya = "";
 
         $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
            
             $.each(jadwals.jadwal, function(key, jdwl){
-                jadwalUser += "<div class='header-box-data'>"+jdwl.tanggal+
+                jadwalUser+="<div class='header-box-data'>"+jdwl.tanggal+
                                     "</div>"+
                                 "<div class='content-box-data'>"+
                                     "<table class='table table-hover'>"+
@@ -21,9 +21,8 @@ function getJadwalById(id){
                                         "<tbody>";
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
-                            console.log(datajadwals.jadwal);
-                            console.log(dtjdwl.id);
-                            jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
+                            
+                            dataJadwal+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
                                             "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
@@ -31,12 +30,15 @@ function getJadwalById(id){
                                             "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal("+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
-                            console.log(jadwalUser);
+                            console.log(dataJadwal);
                         });
+                        jadwalUser+=dataJadwal;
                     });
                     jadwalUser+="</tbody></table></div>";
+
             });
             $('#jadwalContent').html(jadwalUser);     
+
         });
 
 }
