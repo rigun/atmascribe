@@ -353,6 +353,7 @@ $id = $_SESSION['id'];
 <script src="../js/style.js"></script>
 <script src="../js/CRUDuser.js"></script>
 <script src="../js/CRUDcatatan.js"></script>
+<script src="../js/CRUDjadwal.js"></script>
 
 <script>
         function editModal(date,index){
