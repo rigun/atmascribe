@@ -1,5 +1,5 @@
 function getJadwalById(id){
-    var jadwalUser = "";
+    const jadwalUser = "";
     var dataJadwal = "";
     var lainnya = "";
 
@@ -22,7 +22,7 @@ function getJadwalById(id){
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
-                            dataJadwal+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
+                            jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
                                             "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
@@ -31,9 +31,6 @@ function getJadwalById(id){
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
                         });
-
-                        jadwalUser+=dataJadwal;
-                        console.log(dataJadwal);
                     });
                     jadwalUser+="</tbody></table></div>";
                     $('#jadwalContent').html(jadwalUser);  
