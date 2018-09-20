@@ -36,7 +36,19 @@ function getJadwalById(id){
                                             "</tr>"+
                                         "</thead>"+
                                         "<tbody>";
-                        headerPrioritas = jadwalUser;
+                        headerPrioritas +="<div class='header-box-data'>"+jdwl.tanggal+
+                                            "</div>"+
+                                        "<div class='content-box-data'>"+
+                                            "<table class='table table-hover'>"+
+                                                "<thead>"+
+                                                "<tr>"+
+                                                    "<th>Kegiatan</th>"+
+                                                    "<th>Mulai</th>"+
+                                                    "<th>Tempat</th>"+
+                                                    "<th>Pengaturan</th>"+
+                                                    "</tr>"+
+                                                "</thead>"+
+                                                "<tbody>";
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
                             jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
