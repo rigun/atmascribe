@@ -1,5 +1,5 @@
 function getJadwalById(id){
-    const jadwalUser = "";
+    var jadwalUser = "";
     var dataJadwal = "";
     var lainnya = "";
 
