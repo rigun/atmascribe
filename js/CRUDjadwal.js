@@ -32,11 +32,13 @@ function getJadwalById(id){
                                             "</tr>";
                         });
                         jadwalUser+=dataJadwal;
-                        jadwalUser+="</tbody></table></div>";
-                        $('#jadwalContent').html(jadwalUser);     
 
                     });
+
             });
+            console.log(jadwalUser);
+            jadwalUser+="</tbody></table></div>";
+            $('#jadwalContent').html(jadwalUser);     
         });
 
 }
