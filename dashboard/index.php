@@ -94,26 +94,9 @@ $id = $_SESSION['id'];
                             <div id="dashboardCatatanPenting">
                             </div>
                             <h2>Jadwal</h2>
-                            <?php
-                                $i=0;
-                                while($i != 3){
-                                    $i++;
-                                    ?>
-                            <div class="row">
-                                <div class="col-8">
-                                    <span id="<?php echo 'jNama'.$i.'';?>" >Japok <?php echo $i; ?> </span><br/>
-                                    <span id="<?php echo 'jWaktu'.$i.'';?>" >18:00</span>, <span id="<?php echo 'jTempat'.$i.'';?>" >Kampus UAJY</span>
-                                    <span id="<?php echo 'jRank'.$i.'';?>" style="display: none">1</span> 
-                                </div>
-                                <div class="col-4">
-                                    <a  data-toggle="modal" data-target="#EditJadwal" onclick="editModal('2018-09-06','<?php echo $i;?>')" ><img src="../img/icon/edit.svg" /></a>
-                                    <a  data-toggle="modal" data-target="#DeleteJadwal" onclick="deleteModal('<?php echo $i;?>')" ><img src="../img/icon/cancel.svg" /></a>
-                                </div>
+                            <div id="dashboardJadwalHariini">
                             </div>
-                            <hr/>
-                            <?php
-                                }
-                             ?>
+                        
                             <button id="submit" class="submit" data-toggle="modal" data-target="#Jadwal">Tambah</button>
 
                         </div>

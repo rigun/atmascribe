@@ -1,7 +1,21 @@
 function getJadwalById(id){
     var jadwalUser = "";
-    var dataJadwal = "";
+    var todayJadwal = "";
     var lainnya = "";
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+
+    today = yyyy + '-' + mm + "-" + dd;
 
         $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
            
@@ -30,9 +44,24 @@ function getJadwalById(id){
                                             "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
+                            if(jdwl.tanggal == today){
+                                todayJadwal+="<div class='row'>"+
+                                                "<div class='col-8'>"+
+                                                    "<span id='jNama"+dtjdwl.id+"' >"+dtjdwl.jadwal+"</span><br/>"+
+                                                    "<span id='jWaktu"+dtjdwl.id+"' >"+dtjdwl.waktu+"</span>, <span id='jTempat"+dtjdwl.id+"' >"+dtjdwl.tempat+"</span>"+
+                                                    "<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
+                                                "</div>"+
+                                                "<div class='col-4'>"+
+                                                    "<a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
+                                                    "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a>"+
+                                                "</div>"+
+                                            "</div>"+
+                                            "<hr/>";
+                            }
                         });
                     jadwalUser+="</tbody></table></div>";
                     $('#jadwalContent').html(jadwalUser);  
+                    $('#dashboardJadwalHariini').html(todayJadwal);  
                     });
 
             });
