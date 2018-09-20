@@ -77,8 +77,6 @@ function getJadwalById(id){
                     if(cekPrioritas != 0){
                         prioritas+="</tbody></table></div>";
                         headerPrioritas += prioritas;
-                        $('#prioritasContent').html("tes");  
-
                         cekPrioritas = 0 ;
                     }else{
                         prioritas="";
@@ -87,6 +85,7 @@ function getJadwalById(id){
                     jadwalUser+="</tbody></table></div>";
                     $('#jadwalContent').html(jadwalUser);  
                     $('#dashboardJadwalHariini').html(todayJadwal);  
+                    $('#prioritasContentData').html(headerPrioritas);  
                     });
 
             });

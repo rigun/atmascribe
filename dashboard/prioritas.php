@@ -6,5 +6,5 @@
         <button class="submit" data-toggle="modal" data-target="#Jadwal"> Tambah </button>
     </div>
 </div>
-<div id="prioritasContent">
+<div id="prioritasContentData">
 </div>
