@@ -18,8 +18,6 @@ $jadwal->user_id = isset($_GET['id']) ? $_GET['id'] : die();
 $jadwal->tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : die();
 // read the details of user to be edited
 
-echo $jadwal->user_id;
-echo $jadwal->tanggal;
 $stmtJadwal = $jadwal->readOne();
 
 $jadwal_arr=array();

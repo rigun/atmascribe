@@ -58,7 +58,7 @@ $id = $_SESSION['id'];
 
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="buttonApp jadwal" onclick="updateContent('Jadwal')">
+                                    <div class="buttonApp jadwal" onclick="updateContent('Jadwal'),getJadwalById(<?php echo $id;?>)">
                                         <h2>JadwalKu</h2>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@ $id = $_SESSION['id'];
                             
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="buttonApp kalender" onclick="updateContent('Kalender'),getJadwalById(<?php echo $id;?>)">
+                                    <div class="buttonApp kalender" onclick="updateContent('Kalender')">
                                         <h2>KalenderKu</h2>
                                     </div>
                                 </div>

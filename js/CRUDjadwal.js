@@ -21,6 +21,8 @@ function getJadwalById(id){
                                         "<tbody>";
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
+                            console.log(datajadwals.jadwal);
+
                             jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
@@ -32,7 +34,6 @@ function getJadwalById(id){
                         });
                     });
                     jadwalUser+="</tbody></table></div>";
-                    console.log(jadwalUser);
             });
             $('#jadwalContent').html(jadwalUser);     
         });
