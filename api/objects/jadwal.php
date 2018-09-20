@@ -108,7 +108,7 @@ class Jadwal{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                jadwal=:jadwal, waktu=:waktu, tanggal=:tanggal, tempat=:tempat, prioritas=:prioritas, user_id=:user_id
+                jadwal=:jadwal, waktu=:waktu, tanggal=:tanggal, tempat=:tempat, prioritas=:prioritas
                 WHERE
                     id=:id";
     
@@ -120,7 +120,6 @@ class Jadwal{
         $this->tanggal=htmlspecialchars(strip_tags($this->tanggal));
         $this->tempat=htmlspecialchars(strip_tags($this->tempat));
         $this->prioritas=htmlspecialchars(strip_tags($this->prioritas));
-        $this->user_id=htmlspecialchars(strip_tags($this->user_id));
         $this->id=htmlspecialchars(strip_tags($this->id));
 
         // bind values
@@ -129,7 +128,6 @@ class Jadwal{
         $stmt->bindParam(":tanggal", $this->tanggal);
         $stmt->bindParam(":tempat", $this->tempat);
         $stmt->bindParam(":prioritas", $this->prioritas);
-        $stmt->bindParam(":user_id", $this->user_id);
         $stmt->bindParam(":id", $this->id);
     
         // execute the query

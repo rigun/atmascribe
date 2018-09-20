@@ -28,14 +28,14 @@ $product->prioritas = $data->prioritas;
 // update the product
 if($product->update()){
     echo '{';
-        echo '"message": "Product was updated."';
+        echo '"message": "Catatan Berhasil Diupdate."';
     echo '}';
 }
  
 // if unable to update the product, tell the user
 else{
     echo '{';
-        echo '"message": "Unable to update product."';
+        echo '"message": "Catatan Gagal Diupdate."';
     echo '}';
 }
 ?>

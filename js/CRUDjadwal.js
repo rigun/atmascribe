@@ -70,9 +70,12 @@ function createJadwal(e, id){
 function editJadwalData(e, userId){
     e.preventDefault();
     var data ={
-        jadwal: $('#jadwalNameE').val(),
-        prioritas: $('input[name="rankE"]:checked').val(),
-        id : $('#cIdE').val(),
+        jadwal : $('#jadwalJe').val(),
+        waktu : $('#waktuJe').val(),
+        tanggal : $('#tanggalJe').val(),
+        tempat : $('#tempatJe').val(),
+        prioritas : $('input[name="prioritasJ"]:checked').val(),
+        id : $('#jIdE').val(),
     }
     
     var form_data=JSON.stringify(data);

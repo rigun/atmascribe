@@ -184,22 +184,22 @@ $id = $_SESSION['id'];
                     </div>
 
                     <div class="modal-body">
-                            <form id="myForm"  name="myFormEditJadwal" method="post" action="" onsubmit="return cekform()">
-                            <input type="hidden" name="id" value="" />
+                            <form id="myForm"  name="myFormEditJadwal" method="post" action="" onsubmit="return editJadwalData(event,'<?php echo $id ?>')">
+                            <input id="jIdE" type="hidden" name="id" value="" />
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="name" placeholder="Nama Kegiatan" value="">
+                                            <input id="jadwalJe" class="input100" type="text" name="name" placeholder="Nama Kegiatan" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe829;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="waktu" placeholder="Mulai Pukul" value="">
+                                            <input id="waktuJe" class="input100" type="text" name="waktu" placeholder="Mulai Pukul" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe864;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="date" name="tanggal" value="">
+                                            <input id="tanggalJe" class="input100" type="date" name="tanggal" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe836;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="tempat" placeholder="Tempat" value="">
+                                            <input id="tempatJe" class="input100" type="text" name="tempat" placeholder="Tempat" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe833;"></span>
                                         </div>
                                     <div class="wrap-input100" >
@@ -208,9 +208,6 @@ $id = $_SESSION['id'];
                                             <input id="bukanPrioritas" type="radio" name="prioritas" value="0"><label>Bukan Prioritas</label>
                                         </div>
                                     </div>
-                                        
-                                     
-                                      
                                     <input type="submit" value="UBAH" class="submit" /><br/>
                                     <button class="cancel" data-dismiss="modal" aria-label="Close">BATAL</button>
                             </form>

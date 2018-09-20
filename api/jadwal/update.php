@@ -17,32 +17,26 @@ $db = $database->getConnection();
 // prepare product object
 $product = new Jadwal($db);
  
-// get id of product to be edited
 $data = json_decode(file_get_contents("php://input"));
- 
-// set ID property of product to be edited
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
- 
-// set product property values
  
 $product->jadwal = $data->jadwal;
 $product->waktu = $data->waktu;
 $product->tanggal = $data->tanggal;
 $product->tempat = $data->tempat;
 $product->prioritas = $data->prioritas;
-$product->user_id = $data->user_id;
+$product->id = $data->id;
 
 // update the product
 if($product->update()){
     echo '{';
-        echo '"message": "Product was updated."';
+        echo '"message": "Jadwal Berhasil Diupdate."';
     echo '}';
 }
  
 // if unable to update the product, tell the user
 else{
     echo '{';
-        echo '"message": "Unable to update product."';
+        echo '"message": "Jadwal Gagal Diupdate."';
     echo '}';
 }
 ?>
