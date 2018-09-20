@@ -232,11 +232,8 @@ $id = $_SESSION['id'];
 
                     <div class="modal-body">
                         <p style="width: 100%;font-size: 40px; text-align: center;">Apakah anda yakin ingin menghapusnya ? </a>
-                            <form id="myForm"  name="myForm" method="post" action="" onsubmit="return cekform()">
-                            <input type="hidden" name="id" value="" />
-                                        
-                                     
-                                      
+                            <form id="myDeleteJadwalForm"  name="myDeleteJadwalForm" method="post" action="" onsubmit="return deleteJadwalData(event,'<?php echo $id ?>')">
+                            <input id="jIdD" type="hidden" name="jIdD" value="" />
                                     <input type="submit" value="Hapus" class="submit" /><br/>
                                     <button class="cancel" data-dismiss="modal" aria-label="Close">BATAL</button>
                             </form>
@@ -385,6 +382,9 @@ $id = $_SESSION['id'];
         }
         function doneCatatan(id){
             var cId = document.forms["doneCatatanForm"]["cIdD"].value = id;
+        }
+        function deleteModal(id){
+            var cId = document.forms["myDeleteJadwalForm"]["jIdD"].value = id;
         }
         
 </script>

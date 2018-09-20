@@ -27,14 +27,14 @@ $product->id = $data->id;
 // delete the product
 if($product->delete()){
     echo '{';
-        echo '"message": "Product was deleted."';
+        echo '"message": "Catatan Berhasil Dihapus."';
     echo '}';
 }
  
 // if unable to delete the product
 else{
     echo '{';
-        echo '"message": "Unable to delete object."';
+        echo '"message": "Catatan Gagal Dihapus."';
     echo '}';
 }
 ?>

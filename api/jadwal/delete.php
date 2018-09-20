@@ -22,19 +22,19 @@ $product = new Jadwal($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set product id to be deleted
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->id = $data->id;
  
 // delete the product
 if($product->delete()){
     echo '{';
-        echo '"message": "Product was deleted."';
+        echo '"message": "Jadwal berhasil dihapus."';
     echo '}';
 }
  
 // if unable to delete the product
 else{
     echo '{';
-        echo '"message": "Unable to delete object."';
+        echo '"message": "Jadwal Gagal dihapus"';
     echo '}';
 }
 ?>

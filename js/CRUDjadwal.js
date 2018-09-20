@@ -97,11 +97,11 @@ function editJadwalData(e, userId){
 
 
 }
-function doneJadwalData(e, userId){
+function deleteJadwalData(e, userId){
 
     e.preventDefault();
         var data ={
-            id : $('#cIdD').val(),
+            id : $('#jIdD').val(),
         }
         
         var form_data=JSON.stringify(data);
@@ -111,7 +111,7 @@ function doneJadwalData(e, userId){
         contentType : 'application/json',
         data : form_data,
         success : function(result) {
-            $('#doneJadwal').modal('toggle');
+            $('#DeleteJadwal').modal('toggle');
             getJadwalById(userId);
         },
             error: function(xhr, resp, text) {
