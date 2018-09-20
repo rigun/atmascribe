@@ -121,6 +121,7 @@ $id = $_SESSION['id'];
                 </div>
             </div>
         </section>
+        <!-- tambah Jadwal -->
         <!-- Modal -->
         <div class="modal fade" id="Jadwal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -134,28 +135,27 @@ $id = $_SESSION['id'];
                     </div>
 
                     <div class="modal-body">
-                            <form id="myForm"  name="myForm" method="post" action="" onsubmit="return cekform()">
-                            <input type="hidden" name="id" value="" />
+                            <form id="myForm"  name="myForm" method="post" action="" onsubmit="return createJadwal(event,'<?php echo $id ;?>')">
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="name" placeholder="Nama Kegiatan" value="">
+                                            <input id="jadwalJ" class="input100" type="text" name="name" placeholder="Nama Kegiatan" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe829;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="waktu" placeholder="Mulai Pukul" value="">
+                                            <input id="waktuJ" class="input100" type="text" name="waktu" placeholder="Mulai Pukul" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe864;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="date" name="tanggal" value="">
+                                            <input id="tanggalJ" class="input100" type="date" name="tanggal" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe836;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input class="input100" type="text" name="tempat" placeholder="Tempat" value="">
+                                            <input id="tempatJ" class="input100" type="text" name="tempat" placeholder="Tempat" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe833;"></span>
                                         </div>
                                     <div class="wrap-input100" >
                                         <div class="radio">
-                                            <input type="radio" name="prioritas" value="1"><label>Prioritas</label>
-                                            <input type="radio" name="prioritas" value="0"><label>Bukan Prioritas</label>
+                                            <input type="radio" name="prioritasJ" value="1"><label>Prioritas</label>
+                                            <input type="radio" name="prioritasJ" value="0"><label>Bukan Prioritas</label>
                                         </div>
                                     </div>
                                         

@@ -63,7 +63,7 @@ function getSumData(){
                                    " <h2>Jumlah Jadwal</h2>"+
                                     "<h1>"+val.jadwal+"</h1>"+
                                 "</div>  "+
-                            "</div>"
+                            "</div>";
 
         });
         $('#dataUser').html(contentHtml);
@@ -89,15 +89,15 @@ function getDatauser(){
                             "<td id=''>"+val.email+"</td>"+
                             "<td id=''>"+val.catatan+"</td>"+
                             "<td id=''>"+val.jadwal+"</td>"+
-                            "<td id=''>"+val.total+"</td>"
+                            "<td id=''>"+val.total+"</td>";
             if(val.status == 0){
-                contentHtml +=  "<td id=''><span style='color: red'>Tidak Aktif</a></td>"
+                contentHtml +=  "<td id=''><span style='color: red'>Tidak Aktif</a></td>";
             }else if(val.status == 1){
-                contentHtml +=  "<td id=''><span style='color: green'>Aktif</a></td>"
+                contentHtml +=  "<td id=''><span style='color: green'>Aktif</a></td>";
             }else{
-                contentHtml +=  "<td id=''>Kesalahan Pada server</td>"
+                contentHtml +=  "<td id=''>Kesalahan Pada server</td>";
             }
-                    contentHtml +="</tr> " 
+                    contentHtml +="</tr> " ;
             number++;
         });
         $('#dataTable').html(contentHtml);
@@ -161,13 +161,13 @@ function getReport(){
                         "<td id='uTtl"+val.id+"'>"+dataOne.ttl+"</td>"+
                         "<td id='uKutipan"+val.id+"'>"+dataOne.kutipan+"</td>"+
                         "<td class='row'>"+
-                        "<img onclick='showdetail("+val.id+")' src='../img/icon/info.png' />"
+                        "<img onclick='showdetail("+val.id+")' src='../img/icon/info.png' />";
                     if(val.status == 0){
-                        reportContent += "<a data-toggle='modal' data-target='#AktifUser' onclick='updateUserStat(1,"+val.id+")' ><img src='../img/icon/tidak aktif.png' /></a>"
+                        reportContent += "<a data-toggle='modal' data-target='#AktifUser' onclick='updateUserStat(1,"+val.id+")' ><img src='../img/icon/tidak aktif.png' /></a>";
                     }else if(val.status == 1){
-                        reportContent += "<a data-toggle='modal' data-target='#deAktifUser' onclick='updateUserStat(2,"+val.id+")' ><img src='../img/icon/aktif.png' /></a>"
+                        reportContent += "<a data-toggle='modal' data-target='#deAktifUser' onclick='updateUserStat(2,"+val.id+")' ><img src='../img/icon/aktif.png' /></a>";
                     }else{
-                        reportContent += "Kesalahan Pada Server"
+                        reportContent += "Kesalahan Pada Server";
                     }
                         reportContent += "<a data-toggle='modal' data-target='#DeleteUser' onclick='deleteModalUser("+val.id+")' ><img src='../img/icon/cancel.svg' /></a>"+
                         "</td>"+
@@ -186,7 +186,7 @@ function getReport(){
                                     "<th class='col-2'>Tempat</th>"+
                                 "</tr>"+
                             "</thead>"+
-                            "<tbody>"
+                            "<tbody>";
                             $.each(dataOne.jadwals, function(key, valJadwal){
                                 key+=1;
                                 reportContent +=  "<tr>"+
@@ -196,7 +196,7 @@ function getReport(){
                                     "<td class='col-2'>"+valJadwal.tanggal+"</td>"+
                                     "<td class='col-2'>"+valJadwal.tempat+"</td>"+
                                   
-                                "</tr>"
+                                "</tr>";
                             });
                             reportContent += "</tbody>"+
                         "</table>"+
@@ -207,18 +207,18 @@ function getReport(){
                                     "<th class='col-11'>Catatan</th>"+
                                 "</tr>"+
                             "</thead>"+
-                            "<tbody>" 
+                            "<tbody>" ;
                             $.each(dataOne.catatans, function(key, valCatatan){
                                 key+=1;
                                 reportContent +=  "<tr>"+
                                     "<td id=''>"+key+"</td>"+
                                     "<td id=''>"+valCatatan.catatan+"</td>"+
-                                    "</tr>"
+                                    "</tr>";
                             });
                             reportContent += "</tbody>"+
                         "</table>"+
                         "</td>"+
-                    "</tr>"
+                    "</tr>";
                     
                 number++;
             $('#dataReportTable').html(reportContent);     
