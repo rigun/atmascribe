@@ -2,6 +2,7 @@ function getJadwalById(id){
     var jadwalUser = "";
     var todayJadwal = "";
     var prioritas = "";
+    var headerPrioritas = "";
     var cekPrioritas = 0;
     var today = new Date();
     var dd = today.getDate();
@@ -35,7 +36,7 @@ function getJadwalById(id){
                                             "</tr>"+
                                         "</thead>"+
                                         "<tbody>";
-                        prioritas = jadwalUser;
+                        headerPrioritas = jadwalUser;
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
                             jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
@@ -74,14 +75,17 @@ function getJadwalById(id){
                         });
                     if(cekPrioritas != 0){
                         prioritas+="</tbody></table></div>";
+                        headerPrioritas += prioritas;
                         cekPrioritas = 0 ;
+                        console.log(prioritas);
+                        console.log(headerPrioritas);
                     }else{
-                        prioritas+="";
+                        prioritas="";
                     }
                     jadwalUser+="</tbody></table></div>";
                     $('#jadwalContent').html(jadwalUser);  
                     $('#dashboardJadwalHariini').html(todayJadwal);  
-                    $('#prioritasContent').html(prioritas);  
+                    $('#prioritasContent').html(headerPrioritas);  
                     });
 
             });
