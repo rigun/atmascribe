@@ -31,6 +31,7 @@ function getJadwalById(id){
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
                         });
+                        return jadwalUser;
                     });
                     jadwalUser+="</tbody></table></div>";
             });
