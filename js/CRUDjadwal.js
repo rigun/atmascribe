@@ -61,7 +61,7 @@ function getJadwalById(id){
                                             "</div>"+
                                             "<hr/>";
                             }
-                            if(jdwl.prioritas == 1){
+                            if(jdwl.prioritas == "1"){
                                 prioritas+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
                                             "<tr>"+
                                             "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
