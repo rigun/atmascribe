@@ -76,7 +76,7 @@ function getJadwalById(id){
                         prioritas+="</tbody></table></div>";
                         cekPrioritas = 0 ;
                     }else{
-                        prioritas="";
+                        prioritas+="";
                     }
                     jadwalUser+="</tbody></table></div>";
                     $('#jadwalContent').html(jadwalUser);  
