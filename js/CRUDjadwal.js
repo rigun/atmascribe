@@ -6,12 +6,13 @@ function getJadwalById(id){
         $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
            
             $.each(jadwals.jadwal, function(key, jdwl){
-                jadwalUser+="<div class='header-box-data'>"+jdwl.tanggal+
+                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
+                        jadwalUser+="<div class='header-box-data'>"+jdwl.tanggal+
                                     "</div>"+
                                 "<div class='content-box-data'>"+
                                     "<table class='table table-hover'>"+
                                         "<thead>"+
-                                           "<tr>"+
+                                        "<tr>"+
                                             "<th>Kegiatan</th>"+
                                             "<th>Mulai</th>"+
                                             "<th>Tempat</th>"+
@@ -19,7 +20,6 @@ function getJadwalById(id){
                                             "</tr>"+
                                         "</thead>"+
                                         "<tbody>";
-                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal, function(datajadwals){
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
                             
                             jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.id+"</span>"+
@@ -31,15 +31,13 @@ function getJadwalById(id){
                                             "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
                                             "</tr>";
                         });
-                        return jadwalUser;
-                    });
                     jadwalUser+="</tbody></table></div>";
-            });
-            console.log(jadwalUser);
+                    console.log(jadwalUser);
+                    });
             $('#jadwalContent').html(jadwalUser);  
-        });
-        console.log(jadwalUser);
 
+            });
+        });
 }
 function createJadwal(e, id){
     e.preventDefault();
