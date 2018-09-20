@@ -133,6 +133,7 @@ function createJadwal(e, id){
     success : function(result) {
         $('#Jadwal').modal('toggle');
         getJadwalById(id);
+        getPrioritas(id);
     },
         error: function(xhr, resp, text) {
             // show error to console
@@ -162,6 +163,7 @@ function editJadwalData(e, userId){
     success : function(result) {
         $('#EditJadwal').modal('toggle');
         getJadwalById(userId);
+        getPrioritas(userId);
     },
         error: function(xhr, resp, text) {
             // show error to console
@@ -187,6 +189,7 @@ function deleteJadwalData(e, userId){
         success : function(result) {
             $('#DeleteJadwal').modal('toggle');
             getJadwalById(userId);
+            getPrioritas(userId);
         },
             error: function(xhr, resp, text) {
                 // show error to console

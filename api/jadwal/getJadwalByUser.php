@@ -23,10 +23,12 @@ if($_GET['prioritas']==0){
     $stmtJadwal = $jadwal->readOnePrioritas();
 }
 
+$numJadwal = $stmtJadwal->rowCount();
 
 $jadwal_arr=array();
 $jadwal_arr["jadwal"]=array();
-
+$jadwal_arr["number"]=array();
+array_push($jadwal_arr["number"], $numJadwal);
 while ($rowJadwal = $stmtJadwal->fetch(PDO::FETCH_ASSOC)){
 
     extract($rowJadwal);
