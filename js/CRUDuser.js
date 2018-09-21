@@ -129,8 +129,9 @@ function updateAllProfile(e,id){
     }else{
         var passwordL = $('#passwordL').val();
     }
-    var formData = new FormData();
-    formData.append('file', $('input[type=file]')[0].files[0]);
+    var file_data = $('#imageUpload').prop('files')[0];   
+    var dataPicture = new FormData();                  
+    dataPicture.append('file', file_data);
 
     var data ={
         id: id,
@@ -140,9 +141,10 @@ function updateAllProfile(e,id){
         passwordL: passwordL,
         ttl : ttl,
         kutipan: kutipan,
-        foto: formData
+        foto: dataPicture,
     }
     var form_data=JSON.stringify(data);
+    console.log(data);
     $.ajax({
     url: "https://atmascribe.thekingcorp.org/api/user/update.php",
     type : "POST",
