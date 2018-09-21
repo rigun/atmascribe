@@ -93,20 +93,20 @@ function getUpdateKalender(id){
                               })
 
                         });
+                        console.log(eventData);
+                        $('#calendarData').fullCalendar({
+                            header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay,listWeek'
+                            },
+                            eventLimit: true, // allow "more" link when too many events
+                            navLinks: true,
+                            events: eventData
+                        });
+                        console.log(events);
+                    });
                    
-                        
-                        
-                    });
-                    $('#calendarData').fullCalendar({
-                        header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay,listWeek'
-                        },
-                        eventLimit: true, // allow "more" link when too many events
-                        navLinks: true,
-                        events: eventData
-                    });
 
             });
         });
