@@ -89,19 +89,21 @@ function getUpdateKalender(id){
                             obj['eventsData'].push({"title":dtjdwl.jadwal,"start":jdwl.tanggal+'T'+dtjdwl.waktu});
                         });
                         console.log(obj.eventsData);
-                        $('#calendarData').fullCalendar({
-                            header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,agendaWeek,agendaDay,listWeek'
-                            },
-                            editable: true,
-                            eventLimit: true, // allow "more" link when too many events
-                            navLinks: true,
-                            events: obj.eventsData
-                        });
+                        
                     });
-                   
+                    console.log(obj.eventsData);
+
+                    $('#calendarData').fullCalendar({
+                        header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay,listWeek'
+                        },
+                        editable: true,
+                        eventLimit: true, // allow "more" link when too many events
+                        navLinks: true,
+                        events: obj.eventsData
+                    });
 
             });
         });
