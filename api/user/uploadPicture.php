@@ -22,7 +22,7 @@ if(isset($_FILES["foto"]["type"]))
 
                 $targetPath = "../upload/".$newfilename; // Target path where file is to be stored
                 move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
-     
+                echo 'berhasil';
         }
     }else{
         echo 'salah';
