@@ -15,12 +15,14 @@ $jadwal = new Jadwal($db);
 
 // set ID property of user to be edited
 $jadwal->user_id = isset($_GET['id']) ? $_GET['id'] : die();
-$jadwal->tanggal = isset($_GET['tanggal']) ? $_GET['tanggal'] : die();
+$jadwal->tanggal = $_GET['tanggal'];
 // read the details of user to be edited
 if($_GET['prioritas']==0){
     $stmtJadwal = $jadwal->readOne();
-}else{
+}else if($_GET['prioritas']==1){
     $stmtJadwal = $jadwal->readOnePrioritas();
+}else{
+    $stmtJadwal = $jadwal->readAll();
 }
 
 $numJadwal = $stmtJadwal->rowCount();

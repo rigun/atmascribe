@@ -70,7 +70,6 @@ function getJadwalById(id){
         });
 }
 function getUpdateKalender(id){
-    var eventData = [];
     var todayDate = moment().startOf('day');
     var jsonStr = '{"eventsData":[]}';
     var YM = todayDate.format('YYYY-MM');
@@ -78,33 +77,25 @@ function getUpdateKalender(id){
     var TODAY = todayDate.format('YYYY-MM-DD');
     var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
     var obj = JSON.parse(jsonStr);
-    
 
-    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
-        console.log(jadwals.length);
-        $.each(jadwals.jadwal, function(key, jdwl){
-                $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=0", function(datajadwals){
-                                        
-                    $.each(datajadwals.jadwal, function(key, dtjdwl){
-                        obj['eventsData'].push({"title":dtjdwl.jadwal,"start":jdwl.tanggal+'T'+dtjdwl.waktu});
-                        $('#calendarData').fullCalendar({
-                            header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,agendaWeek,agendaDay,listWeek'
-                            },
-                            editable: true,
-                            eventLimit: true, // allow "more" link when too many events
-                            navLinks: true,
-                            events: obj.eventsData
-                        });
-                    });
-                    
-                });
-                console.log(obj.evenstData);
+    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+TODAY+"&prioritas=2", function(datajadwals){
+                            
+        $.each(datajadwals.jadwal, function(key, dtjdwl){
+            obj['eventsData'].push({"title":dtjdwl.jadwal,"start":jdwl.tanggal+'T'+dtjdwl.waktu});
+            
+        });
+        $('#calendarData').fullCalendar({
+            header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listWeek'
+            },
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            navLinks: true,
+            events: obj.eventsData
         });
     });
-       
 }
 function getPrioritas(id){
     var jadwalPrioritas = "";
