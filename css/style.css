@@ -136,8 +136,8 @@
 }
 #homePage{
     background-image: url("../img/icon/bg.svg");
-    max-width: 1366px;
-    min-height: 650px;
+    max-width: 1519px;
+    min-height: 754px;
     margin: auto;
 }
 #homePage .box-input{

@@ -34,7 +34,7 @@ $id = $_SESSION['id'];
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                    <li >
-                        <a class="nav-link js-scroll-trigger nav-active" href="#">Home</a>
+                        <a class="nav-link js-scroll-trigger nav-active" href="#">Beranda</a>
                     </li>
                     <li >
                         <a class="nav-link js-scroll-trigger" href="../akun">Akun</a>
