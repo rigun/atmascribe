@@ -100,7 +100,7 @@ function getUpdateKalender(id){
 function getPrioritas(id){
     var jadwalPrioritas = "";
 
-        $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
+        $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php?id="+id, function(jadwals){
            
             $.each(jadwals.jadwal, function(key, jdwl){
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=1", function(datajadwals){
@@ -150,15 +150,15 @@ function createJadwal(e, id){
         return;
     }
     if($('#waktuJ').val() == ""){
-        alert("jadwal tidak boleh kosong");
+        alert("Waktu tidak boleh kosong");
         return;
     }
     if($('#tanggalJ').val() == ""){
-        alert("jadwal tidak boleh kosong");
+        alert("tanggal tidak boleh kosong");
         return;
     }
     if($('#tempatJ').val() == ""){
-        alert("jadwal tidak boleh kosong");
+        alert("tempat tidak boleh kosong");
         return;
     }
 
