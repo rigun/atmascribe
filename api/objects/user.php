@@ -421,7 +421,7 @@ class User{
         return false;
     }
 
-    function updatePasswordByToken($newToken){
+    function updatePasswordByToken(){
         // update query
         $query = "UPDATE
                     " . $this->table_name . "
@@ -434,12 +434,11 @@ class User{
         $stmt = $this->conn->prepare($query);
     
         $this->token=htmlspecialchars(strip_tags($this->token));
-        $newToken=htmlspecialchars(strip_tags($newToken));
         $this->password=htmlspecialchars(strip_tags($this->password));
 
         // bind values
         $stmt->bindParam(":password", $this->password);
-        $stmt->bindParam(":newToken", $newToken);
+        $stmt->bindParam(":newToken", bin2hex(random_bytes(5)));
         $stmt->bindParam(":token", $this->token);
     
         // execute the query

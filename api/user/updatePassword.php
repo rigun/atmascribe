@@ -24,13 +24,11 @@ $data = json_decode(file_get_contents("php://input"));
 $product->token = $data->token;
 $product->password = password_hash($data->password, PASSWORD_DEFAULT); 
 
-if($product->updatePasswordByToken($data->newToken)){
+if($product->updatePasswordByToken()){
     echo '{';
         echo '"message": "password berhasil di perbaharui","code":"200"';
     echo '}';
 }
-    
-// if unable to update the product, tell the user
 else{
     echo '{';
         echo '"message": "Gagal memperbaharui data. Coba lagi."';

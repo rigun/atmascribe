@@ -172,13 +172,11 @@ function updateAllProfile(e,id){
         }
     });
 }
-function updatePassword(e,token, newToken){
+function updatePassword(e,token){
     e.preventDefault();
    
-
     var data ={
         token: token,
-        newToken: newToken,
         password: $('#password').val()
     }
     var form_data=JSON.stringify(data);
