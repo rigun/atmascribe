@@ -80,7 +80,7 @@ function closePassword(){
 function readURL(e, input,id) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-    
+        var formData = new FormData();
         formData.append('imageUpload', input.files[0], input.files[0].name);
   
         reader.onload = function(e) {
