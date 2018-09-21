@@ -1,22 +1,22 @@
 <?php
 
-if(isset($_FILES["file"]["type"]))
+if(isset($_FILES["foto"]["type"]))
 {
     $id = $_GET['id'];
     $validextensions = array("jpeg", "jpg", "png");
-    $temporary = explode(".", $_FILES["file"]["name"]);
+    $temporary = explode(".", $_FILES["foto"]["name"]);
     $file_extension = end($temporary);
     
-    if ((($_FILES["file"]["type"] == "image/png") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/jpeg")) && ($_FILES["file"]["size"] < 100000) && in_array($file_extension, $validextensions)) {
-        if ($_FILES["file"]["error"] > 0)
+    if ((($_FILES["foto"]["type"] == "image/png") || ($_FILES["foto"]["type"] == "image/jpg") || ($_FILES["foto"]["type"] == "image/jpeg")) && ($_FILES["foto"]["size"] < 100000) ) {
+        if ($_FILES["foto"]["error"] > 0)
         {
-            echo "Return Code: " . $_FILES["file"]["error"] . "<br/><br/>";
+            echo "Return Code: " . $_FILES["foto"]["error"] . "<br/><br/>";
         }
         else
         {
            
-                $sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
-                $filename=$_FILES["file"]["name"];
+                $sourcePath = $_FILES['foto']['tmp_name']; // Storing source path of the file in a variable
+                $filename=$_FILES["foto"]["name"];
                 $extension=end(explode(".", $filename));
                 $newfilename=$id .".".$extension;
 
@@ -24,6 +24,8 @@ if(isset($_FILES["file"]["type"]))
                 move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
      
         }
+    }else{
+        echo 'salah';
     }
 }else{
     echo 'gagal';
