@@ -69,6 +69,84 @@ function getJadwalById(id){
             });
         });
 }
+function getUpdateKalender(id){
+    var jadwalUser = "";
+    var todayJadwal = "";
+    var eventData = [];
+    var todayDate = moment().startOf('day');
+    var YM = todayDate.format('YYYY-MM');
+    var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
+    var TODAY = todayDate.format('YYYY-MM-DD');
+    var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
+  
+    
+
+        $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
+           
+            $.each(jadwals.jadwal, function(key, jdwl){
+                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=0", function(datajadwals){
+                        jadwalUser+="<div class='header-box-data'>"+jdwl.tanggal+
+                                    "</div>"+
+                                "<div class='content-box-data'>"+
+                                    "<table class='table table-hover'>"+
+                                        "<thead>"+
+                                        "<tr>"+
+                                            "<th>Kegiatan</th>"+
+                                            "<th>Mulai</th>"+
+                                            "<th>Tempat</th>"+
+                                            "<th>Pengaturan</th>"+
+                                            "</tr>"+
+                                        "</thead>"+
+                                        "<tbody>";
+                   
+                        $.each(datajadwals.jadwal, function(key, dtjdwl){
+                            
+                            jadwalUser+="<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
+                                            "<tr>"+
+                                            "<td id='jNama"+dtjdwl.id+"'>"+dtjdwl.jadwal+"</td>"+
+                                            "<td id='jWaktu"+dtjdwl.id+"'>"+dtjdwl.waktu+"</td>"+
+                                            "<td id='jTempat"+dtjdwl.id+"'>"+dtjdwl.tempat+"</td>"+
+                                            "<td><a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
+                                            "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a></td>"+
+                                            "</tr>";
+                            if(jdwl.tanggal == today){
+                                todayJadwal+="<div class='row'>"+
+                                                "<div class='col-8'>"+
+                                                    "<span id='jNama"+dtjdwl.id+"' >"+dtjdwl.jadwal+"</span><br/>"+
+                                                    "<span id='jWaktu"+dtjdwl.id+"' >"+dtjdwl.waktu+"</span>, <span id='jTempat"+dtjdwl.id+"' >"+dtjdwl.tempat+"</span>"+
+                                                    "<span id='jRank"+dtjdwl.id+"' style='display: none' >"+dtjdwl.prioritas+"</span>"+
+                                                "</div>"+
+                                                "<div class='col-4'>"+
+                                                    "<a  data-toggle='modal' data-target='#EditJadwal' onclick='editModal(\""+jdwl.tanggal+"\","+dtjdwl.id+")'><img src='../img/icon/edit.svg'></a>"+
+                                                    "<a  data-toggle='modal' data-target='#DeleteJadwal' onclick='deleteModal("+dtjdwl.id+")'><img src='../img/icon/cancel.svg' /></a>"+
+                                                "</div>"+
+                                            "</div>"+
+                                            "<hr/>";
+                            }
+                            eventData.push({
+                                title: dtjdwl.jadwal,
+                                start: jdwl.tanggal+'T'+dtjdwl.waktu
+                              })
+
+                        });
+                    jadwalUser+="</tbody></table></div>";
+                    $('#calendarData').fullCalendar({
+                        header: {
+                          left: 'prev,next today',
+                          center: 'title',
+                          right: 'month,agendaWeek,agendaDay,listWeek'
+                        },
+                        eventLimit: true, // allow "more" link when too many events
+                        navLinks: true,
+                        events: eventData
+                      });
+                    $('#jadwalContent').html(jadwalUser);  
+                    $('#dashboardJadwalHariini').html(todayJadwal);  
+                    });
+
+            });
+        });
+}
 function getPrioritas(id){
     var jadwalPrioritas = "";
 

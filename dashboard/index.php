@@ -71,7 +71,7 @@ $id = $_SESSION['id'];
                             
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="buttonApp kalender" onclick="updateContent('Kalender')">
+                                    <div class="buttonApp kalender" onclick="updateContent('Kalender'), getUpdateKalender(<?php echo $id;?>)">
                                         <h2>KalenderKu</h2>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ $id = $_SESSION['id'];
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe829;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input id="waktuJ" class="input100" type="text" name="waktu" placeholder="Mulai Pukul" value="">
+                                            <input id="waktuJ" class="input100" type="time" name="waktu" placeholder="Mulai Pukul" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe864;"></span>
                                         </div>
                                     <div class="wrap-input100" >
@@ -174,7 +174,7 @@ $id = $_SESSION['id'];
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe829;"></span>
                                         </div>
                                     <div class="wrap-input100" >
-                                            <input id="waktuJe" class="input100" type="text" name="waktu" placeholder="Mulai Pukul" value="">
+                                            <input id="waktuJe" class="input100" type="time" name="waktu" placeholder="Mulai Pukul" value="">
                                             <span class="focus-input100 icon-foo" data-placeholder="&#xe864;"></span>
                                         </div>
                                     <div class="wrap-input100" >
