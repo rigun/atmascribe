@@ -25,6 +25,8 @@ if(isset($_FILES["file"]["type"]))
      
         }
     }
+}else{
+    echo 'gagal';
 }
 
 ?>
