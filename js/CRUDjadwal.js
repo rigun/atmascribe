@@ -16,7 +16,7 @@ function getJadwalById(id){
 
     today = yyyy + '-' + mm + "-" + dd;
 
-        $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
+        $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php?id="+id, function(jadwals){
            
             $.each(jadwals.jadwal, function(key, jdwl){
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=0", function(datajadwals){

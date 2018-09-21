@@ -10,6 +10,9 @@ $db = $database->getConnection();
 $product = new Jadwal($db);
 $stmt = $product->getTanggal();
 $num = $stmt->rowCount();
+
+$product->user_id = isset($_GET['id']) ? $_GET['id'] : die();
+
 if($num>0){
     $products_arr=array();
     $products_arr["jadwal"]=array();

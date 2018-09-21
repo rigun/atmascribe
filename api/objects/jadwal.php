@@ -44,14 +44,14 @@ class Jadwal{
                         tanggal
                 FROM
                     " . $this->table_name . " 
+                WHERE
+                user_id = ?
                 ORDER BY
                 tanggal
                 ASC";
 
-        // prepare query statement
-        $stmt = $this->conn->prepare($query);
-
-        // execute query
+        $stmt = $this->conn->prepare( $query );
+        $stmt->bindParam(1, $this->user_id);
         $stmt->execute();
 
         return $stmt;
