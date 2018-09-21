@@ -22,7 +22,7 @@ $data = json_decode(file_get_contents("php://input"));
  
 // set ID property of product to be edited
 $product->id = $data->id;
-$newfilename = "di atas";
+$newfilename = $data->foto;
 if(isset($_FILES["file"]["type"]))
 {
     $newfilename = "didalam";
