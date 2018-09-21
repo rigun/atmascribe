@@ -129,7 +129,9 @@ function updateAllProfile(e,id){
     }else{
         var passwordL = $('#passwordL').val();
     }
-   
+    var formData = new FormData();
+    formData.append('file', $('input[type=file]')[0].files[0]);
+
     var data ={
         id: id,
         nama: $('#nama').val(),
@@ -138,7 +140,7 @@ function updateAllProfile(e,id){
         passwordL: passwordL,
         ttl : ttl,
         kutipan: kutipan,
-        foto: new FormData($('input#imageUpload'))
+        foto: formData
     }
     var form_data=JSON.stringify(data);
     $.ajax({
