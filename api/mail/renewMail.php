@@ -1,21 +1,21 @@
 <?php
 // Check for empty fields
 if(empty($_POST['email']))
-   {
-   echo "No arguments Provided!";
-   return false;
-   }
-   use PHPMailer\PHPMailer\PHPMailer;
-   use PHPMailer\PHPMailer\Exception;
-   
-   require '../vendor/phpmailer/phpmailer/src/Exception.php';
-   require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-   require '../vendor/phpmailer/phpmailer/src/SMTP.php';
-   
-   require '../vendor/autoload.php';
+{
+echo "No arguments Provided!";
+return false;
+}
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+
+require '../vendor/autoload.php';
    
 $email = strip_tags(htmlspecialchars($_POST['email']));
-
+echo $email;
 // get database connection
 include_once '../config/database.php';
  
