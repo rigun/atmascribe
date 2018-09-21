@@ -1,0 +1,17 @@
+[16-Sep-2018 15:09:37 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[16-Sep-2018 15:10:11 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[17-Sep-2018 21:07:22 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[17-Sep-2018 21:07:50 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[19-Sep-2018 03:50:49 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[19-Sep-2018 03:57:30 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[19-Sep-2018 03:57:34 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[19-Sep-2018 03:58:19 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 50
+[19-Sep-2018 04:00:21 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 43
+[19-Sep-2018 04:00:29 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 43
+[19-Sep-2018 04:00:38 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 43
+[19-Sep-2018 04:04:52 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 44
+[19-Sep-2018 04:18:30 UTC] PHP Notice:  Undefined variable: user_arr in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 43
+[19-Sep-2018 04:20:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on array in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/catatan/readByUser.php on line 16

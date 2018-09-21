@@ -1,0 +1,74 @@
+[16-Sep-2018 15:01:41 UTC] PHP Notice:  Undefined variable: keywords in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 36
+[16-Sep-2018 15:02:25 UTC] PHP Notice:  Undefined variable: keywords in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 36
+[16-Sep-2018 15:03:00 UTC] PHP Notice:  Undefined variable: keywords in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 36
+[18-Sep-2018 09:49:48 UTC] PHP Notice:  Trying to get property 'email' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/login.php on line 25
+[18-Sep-2018 09:49:48 UTC] PHP Notice:  Trying to get property 'password' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/login.php on line 26
+[19-Sep-2018 03:00:39 UTC] PHP Notice:  Undefined property: stdClass::$id in /home/thekingc/atmascribe.thekingcorp.org/api/user/delete.php on line 25
+[19-Sep-2018 04:20:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/thekingc/atmascribe.thekingcorp.org/api/user/readOne.php on line 23
+[19-Sep-2018 04:39:34 UTC] PHP Notice:  Trying to get property 'email' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/login.php on line 25
+[19-Sep-2018 04:39:34 UTC] PHP Notice:  Trying to get property 'password' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/login.php on line 26
+[21-Sep-2018 04:23:01 UTC] PHP Notice:  Trying to get property 'email' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/search.php on line 20
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'email' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 24
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'nama' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 25
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'password' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 26
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'email' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 34
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'email' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 24
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'nama' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 25
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'password' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 26
+[21-Sep-2018 04:23:59 UTC] PHP Notice:  Trying to get property 'email' of non-object in /home/thekingc/atmascribe.thekingcorp.org/api/user/create.php on line 34
+[21-Sep-2018 11:32:42 UTC] PHP Notice:  Undefined variable: newfilename in /home/thekingc/atmascribe.thekingcorp.org/api/user/update.php on line 55

@@ -1,0 +1,30 @@
+[20-Sep-2018 07:08:03 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/thekingc/atmascribe.thekingcorp.org/api/objects/jadwal.php on line 177
+[20-Sep-2018 07:08:03 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/thekingc/atmascribe.thekingcorp.org/api/objects/jadwal.php on line 177
+[20-Sep-2018 07:08:03 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/thekingc/atmascribe.thekingcorp.org/api/objects/jadwal.php on line 177
+[20-Sep-2018 13:56:57 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 13:57:17 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:01:13 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:03:55 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:07:39 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:07:49 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:07:55 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:08:05 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:08:14 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:08:28 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:08:49 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:09:55 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/update.php on line 26
+[20-Sep-2018 15:31:39 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:39 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:39 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:41 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:41 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:41 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:53 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:53 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:53 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:57 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:57 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[20-Sep-2018 15:31:57 UTC] PHP Notice:  Undefined index: prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php on line 20
+[21-Sep-2018 04:17:00 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/create.php on line 28
+[21-Sep-2018 08:33:36 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/create.php on line 28
+[21-Sep-2018 08:37:18 UTC] PHP Notice:  Undefined property: stdClass::$prioritas in /home/thekingc/atmascribe.thekingcorp.org/api/jadwal/create.php on line 28
