@@ -273,7 +273,7 @@ $(document).ready(function (e) {
     $("#uploadimage").on('submit',(function(e) {
         e.preventDefault();
             $.ajax({
-            url: "https://atmascribe.thekingcorp.org/api/user/uploadPicture.php", // Url to which the request is send
+            url: "https://atmascribe.thekingcorp.org/api/user/uploadPicture.php?id="+$('#user_id').text(), // Url to which the request is send
             type: "POST",             // Type of request to be send, called as method
             data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
             contentType: false,       

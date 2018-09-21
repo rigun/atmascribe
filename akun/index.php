@@ -17,6 +17,7 @@ if($_SESSION['id']){
     <link rel="stylesheet" type="text/css" media="screen" href="../bower_components/fullcalendar/dist/fullcalendar.css" />
 </head>
 <body onload="getUserProfile(<?php echo $_SESSION['id']; ?>)">
+<span id="user_id" style="display:none"><?php echo $_SESSION['id']?></span>
     <nav id="mainNav" class="navbar navbar-expand-lg">
         <div class="logoNavbar">
             <div class="row">

@@ -2,7 +2,7 @@
 
 if(isset($_FILES["file"]["type"]))
 {
-    $newfilename = "didalam";
+    $id = $_GET['id'];
     $validextensions = array("jpeg", "jpg", "png");
     $temporary = explode(".", $_FILES["file"]["name"]);
     $file_extension = end($temporary);
@@ -18,7 +18,7 @@ if(isset($_FILES["file"]["type"]))
                 $sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
                 $filename=$_FILES["file"]["name"];
                 $extension=end(explode(".", $filename));
-                $newfilename=$data->id .".".$extension;
+                $newfilename=$id .".".$extension;
 
                 $targetPath = "../upload/".$newfilename; // Target path where file is to be stored
                 move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
