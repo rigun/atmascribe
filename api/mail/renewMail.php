@@ -3,8 +3,7 @@
 // Check for empty fields
 if(empty($_POST['email']))
 {
-    echo "No arguments Provided!";
-    return false;
+echo "No arguments Provided!";
 }
    
 use PHPMailer\PHPMailer\PHPMailer;
