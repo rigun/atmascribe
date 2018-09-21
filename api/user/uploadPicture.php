@@ -33,7 +33,7 @@ if(isset($_FILES["imageUpload"]["type"]))
             $product = new User($db);
 
             $product->id = $id;
-            $product->foto = $extension;
+            $product->foto = $newfilename;
             if($product->updatePicture()){
                 echo '{';
                     echo '"message": "Data berhasil di perbaharui."';
