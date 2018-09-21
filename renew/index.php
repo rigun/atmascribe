@@ -2,11 +2,6 @@
 <?php
 require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
 
-// $user = __cekAuth();
-// setPageTitle("Kriteria");
-
-// $listKriteria = listKriteria();
-
 layout('layouts/header.php');
 ?>
 <img src="<?php echo BASE_URL.'/img/icon/Logo.png'; ?>" alt="logo">
@@ -15,7 +10,7 @@ layout('layouts/header.php');
                         
                             
                         <div class="wrap-input100" >
-                                <input id="email" class="input100" type="email" name="email" placeholder="Email" value="">
+                                <input id="emailVerif" class="input100" type="email" name="email" placeholder="Email" value="">
                                 <span class="focus-input100" data-placeholder="&#xe818;"></span>
                             </div>
                             

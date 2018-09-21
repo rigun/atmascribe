@@ -240,7 +240,7 @@ function sendMailPassword(e){
         type: "POST",
         contentType : 'application/x-www-form-urlencoded',
         data: {
-          email: $('#email').val(),
+          email: $('#emailVerif').val(),
         },
         cache: false,
         success: function(result) {
