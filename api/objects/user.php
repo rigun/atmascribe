@@ -218,7 +218,7 @@ class User{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    email=:email, nama=:nama, foto=:foto, ttl=:ttl, kutipan=:kutipan
+                    email=:email, nama=:nama, ttl=:ttl, kutipan=:kutipan
                 WHERE
                     id=:id";
     
@@ -227,7 +227,6 @@ class User{
     
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->nama=htmlspecialchars(strip_tags($this->nama));
-        $this->foto=htmlspecialchars(strip_tags($this->foto));
         $this->ttl=htmlspecialchars(strip_tags($this->ttl));
         $this->kutipan=htmlspecialchars(strip_tags($this->kutipan));
         $this->id=htmlspecialchars(strip_tags($this->id));
@@ -235,7 +234,6 @@ class User{
         // bind values
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":nama", $this->nama);
-        $stmt->bindParam(":foto", $this->foto);
         $stmt->bindParam(":ttl", $this->ttl);
         $stmt->bindParam(":kutipan", $this->kutipan);
         $stmt->bindParam(":id", $this->id);
@@ -265,7 +263,7 @@ class User{
             $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    email=:email, nama=:nama, password=:password, foto=:foto, ttl=:ttl, kutipan=:kutipan
+                    email=:email, nama=:nama, password=:password, ttl=:ttl, kutipan=:kutipan
                 WHERE
                     id=:id";
 
@@ -275,7 +273,6 @@ class User{
             $this->email=htmlspecialchars(strip_tags($this->email));
             $this->nama=htmlspecialchars(strip_tags($this->nama));
             $this->password=htmlspecialchars(strip_tags($this->password));
-            $this->foto=htmlspecialchars(strip_tags($this->foto));
             $this->ttl=htmlspecialchars(strip_tags($this->ttl));
             $this->kutipan=htmlspecialchars(strip_tags($this->kutipan));
             $this->id=htmlspecialchars(strip_tags($this->id));
@@ -284,7 +281,6 @@ class User{
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":nama", $this->nama);
             $stmt->bindParam(":password", $this->password);
-            $stmt->bindParam(":foto", $this->foto);
             $stmt->bindParam(":ttl", $this->ttl);
             $stmt->bindParam(":kutipan", $this->kutipan);
             $stmt->bindParam(":id", $this->id);
@@ -318,6 +314,32 @@ class User{
 
         // bind values
         $stmt->bindParam(":status", $this->status);
+        $stmt->bindParam(":id", $this->id);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+    function updatePicture(){
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    foto=:foto
+                WHERE
+                    id=:id";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        $this->foto=htmlspecialchars(strip_tags($this->foto));
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        // bind values
+        $stmt->bindParam(":foto", $this->foto);
         $stmt->bindParam(":id", $this->id);
     
         // execute the query

@@ -27,7 +27,6 @@ $product->email = $data->email;
 $product->nama = $data->nama; 
 $product->password = password_hash($data->password, PASSWORD_DEFAULT); 
 $product->passwordL = $data->passwordL; 
-$product->foto = null; 
 $product->ttl = $data->ttl; 
 $product->kutipan = $data->kutipan; 
 

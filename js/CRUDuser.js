@@ -5,7 +5,7 @@ function getUserProfile(id){
         userContent +=  '<div class="col-md-2">'+
                         '<form method="post" action="#" id="akunForm"  name="updateAkunPengguna" enctype="multipart/form-data" onsubmit="updateAllProfile(event,'+id+')">'+
                         '<div class="avatar-preview">'+
-                                        '<div id="imagePreview" style="background-image: url(../upload/'+id+'.png);">'+
+                                        '<div id="imagePreview" style="background-image: url(https://atmascribe.thekingcorp.org/upload/'+dataUser.foto+');">'+
                                         '</div>'+
                                     '</div>'+
                                 '<div class="avatar-edit simpan" style="display: none" >'+
@@ -152,7 +152,6 @@ function updateAllProfile(e,id){
         passwordL: passwordL,
         ttl : ttl,
         kutipan: kutipan,
-        foto: null,
     }
     var form_data=JSON.stringify(data);
     $.ajax({
