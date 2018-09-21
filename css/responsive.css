@@ -4,14 +4,4 @@
     margin-top: 50px;
     font-size: 70px;
 	}
-
-   #homePage p {
-    font-size: 25px;
-    top: 40px;
-	}
-
-	*, ::after, ::before {
-    padding-left: inherit;
-    padding-right: inherit;
-	}
 }
