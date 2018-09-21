@@ -5,6 +5,14 @@ if(empty($_POST['email']))
    echo "No arguments Provided!";
    return false;
    }
+   use PHPMailer\PHPMailer\PHPMailer;
+   use PHPMailer\PHPMailer\Exception;
+   
+   require '../vendor/phpmailer/phpmailer/src/Exception.php';
+   require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+   require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+   
+   require '../vendor/autoload.php';
    
 $email = strip_tags(htmlspecialchars($_POST['email']));
 
@@ -22,9 +30,7 @@ $product = new User($db);
 $token  = $product->getUserByToken($email);
 
 if($token != null){
-
-
-    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
             try {
                 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
                 $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -66,9 +72,10 @@ if($token != null){
 
                 $mail->send();
                 echo '200';
+                return true;
             } catch (Exception $e) {
                 echo "Terjadi kesalahan saat mengirim pesan, coba lagi";
-
+                return false;
             }
 
     
