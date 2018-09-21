@@ -271,6 +271,7 @@ function login(e){
 
 $(document).ready(function (e) {
     $("#uploadimage").on('submit',(function(e) {
+        console.log("test");
         e.preventDefault();
             $.ajax({
             url: "https://atmascribe.thekingcorp.org/api/user/uploadPicture.php?id="+$('#user_id').text(), // Url to which the request is send
