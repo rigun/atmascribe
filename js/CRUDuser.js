@@ -5,7 +5,7 @@ function getUserProfile(id){
         userContent +=  '<div class="col-md-2">'+
                         '<form method="post" action="#" id="akunForm"  name="updateAkunPengguna" enctype="multipart/form-data" onsubmit="updateAllProfile(event,'+id+')">'+
                         '<div class="avatar-preview">'+
-                                        '<div id="imagePreview" style="background-image: url('+"../img/"+dataUser.foto+');">'+
+                                        '<div id="imagePreview" style="background-image: url('+"../upload/"+id+'.png);">'+
                                         '</div>'+
                                     '</div>'+
                                 '<div class="avatar-edit simpan" style="display: none" >'+

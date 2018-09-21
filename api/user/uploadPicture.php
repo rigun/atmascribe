@@ -1,21 +1,21 @@
 <?php
 
-if(isset($_FILES["foto"]["type"]))
+if(isset($_FILES["imageUpload"]["type"]))
 {
     $id = $_GET['id'];
     $validextensions = array("jpeg", "jpg", "png");
-    $temporary = explode(".", $_FILES["foto"]["name"]);
+    $temporary = explode(".", $_FILES["imageUpload"]["name"]);
     $file_extension = end($temporary);
     
-    if ($_FILES["foto"]["error"] > 0)
+    if ($_FILES["imageUpload"]["error"] > 0)
     {
-        echo "Return Code: " . $_FILES["foto"]["error"] . "<br/><br/>";
+        echo "Return Code: " . $_FILES["imageUpload"]["error"] . "<br/><br/>";
     }
     else
     {
         
-            $sourcePath = $_FILES['foto']['tmp_name']; // Storing source path of the file in a variable
-            $filename=$_FILES["foto"]["name"];
+            $sourcePath = $_FILES['imageUpload']['tmp_name']; // Storing source path of the file in a variable
+            $filename=$_FILES["imageUpload"]["name"];
             $extension=end(explode(".", $filename));
             $newfilename=$id .".".$extension;
 
