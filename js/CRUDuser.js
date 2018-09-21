@@ -9,7 +9,7 @@ function getUserProfile(id){
                                         '</div>'+
                                     '</div>'+
                                 '<div class="avatar-edit simpan" style="display: none" >'+
-                                        '<input type="file" id="imageUpload" onchange="readURL(this);" accept=".png, .jpg, .jpeg" />'+
+                                        '<input type="file" name="imageUpload" id="imageUpload" onchange="readURL(this);" accept=".png, .jpg, .jpeg" />'+
                                         '<label for="imageUpload"><img src="../img/icon/camera.png"></label>'+
                                 '</div>'+
                             '<input id="updateAkun" type="submit" class="submit simpan" style="display:none" value="SIMPAN" />'+
@@ -107,6 +107,7 @@ function getUserProfile(id){
 
 function updateAllProfile(e,id){
     e.preventDefault();
+    
     if($('#ttl').val() == ""){
         var ttl = null;
     }else{
@@ -128,7 +129,6 @@ function updateAllProfile(e,id){
     }else{
         var passwordL = $('#passwordL').val();
     }
-
     var data ={
         id: id,
         nama: $('#nama').val(),
