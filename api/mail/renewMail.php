@@ -65,19 +65,15 @@ if($token != null){
                 $mail->Body  .='</html>';
 
                 $mail->send();
-                $response["value"] = 200;
-                echo json_encode($response);
+                echo '200';
             } catch (Exception $e) {
-                $response["value"] = 400;
-                $response["message"] = "Terjadi kesalahan saat mengirim pesan, coba lagi";
-                echo json_encode($response);
+                echo "Terjadi kesalahan saat mengirim pesan, coba lagi";
+
             }
 
     
 }else{
-    $response["value"] = 403;
-    $response["message"] = "Email tidak di temukan";
-    echo json_encode($response);
+    echo "Email tidak di temukan";
 }
 
 
