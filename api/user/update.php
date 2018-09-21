@@ -25,6 +25,7 @@ $product->id = $data->id;
 $newfilename = "di atas";
 if(isset($_FILES["file"]["type"]))
 {
+    $newfilename = "didalam";
     $validextensions = array("jpeg", "jpg", "png");
     $temporary = explode(".", $_FILES["file"]["name"]);
     $file_extension = end($temporary);
