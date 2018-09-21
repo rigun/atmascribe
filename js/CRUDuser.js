@@ -104,10 +104,25 @@ function getUserProfile(id){
     });
 
 }
-
+$("#uploadimage").on('submit',(function(e) {
+    console.log("test");
+    e.preventDefault();
+        $.ajax({
+        url: "https://atmascribe.thekingcorp.org/api/user/uploadPicture.php?id="+$('#user_id').text(), // Url to which the request is send
+        type: "POST",             // Type of request to be send, called as method
+        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        contentType: false,       
+        cache: false,             
+        processData:false,        // To send DOMDocument or non processed data file it is set to false
+        success: function(data)   // A function to be called if request succeeds
+        {
+            console.log(data);
+        }
+    });
+}));
 function updateAllProfile(e,id){
     e.preventDefault();
-    
+    console.log(this);
     if($('#ttl').val() == ""){
         var ttl = null;
     }else{
@@ -269,21 +284,3 @@ function login(e){
     });
 }
 
-$(document).ready(function (e) {
-    $("#uploadimage").on('submit',(function(e) {
-        console.log("test");
-        e.preventDefault();
-            $.ajax({
-            url: "https://atmascribe.thekingcorp.org/api/user/uploadPicture.php?id="+$('#user_id').text(), // Url to which the request is send
-            type: "POST",             // Type of request to be send, called as method
-            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-            contentType: false,       
-            cache: false,             
-            processData:false,        // To send DOMDocument or non processed data file it is set to false
-            success: function(data)   // A function to be called if request succeeds
-            {
-                console.log(data);
-            }
-        });
-    }));
-});
