@@ -24,7 +24,11 @@ $token  = $product->getUserByToken($email);
 if($token != null){
     $product->email = $email;
     $product->token = $token;
-    $product->sendEmail();
+    if($product->sendEmail()){
+        echo '200';
+    }else{
+        echo 'Terjadi kesalahan pada saat pengiriman email, coba lagi';
+    };
 }else{
     echo "Email tidak di temukan";
 }

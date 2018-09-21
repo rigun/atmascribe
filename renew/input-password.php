@@ -8,7 +8,7 @@ if(isset($_GET['token']))
 ?>
 <img src="<?php echo BASE_URL.'/img/icon/Logo.png'; ?>" alt="logo">
             </div>
-                <form id="myForm"  name="myForm" method="post" action="" onsubmit="return updatePassword(event,'<?php echo $_GET['token'];?>','<?php echo bin2hex(random_bytes(5))?>')">
+                <form id="myForm"  name="myForm" method="post" action="" onsubmit="return updatePassword(event,'<?php echo $_GET['token'];?>')">
                         
                             
                 <div class="wrap-input100" >
