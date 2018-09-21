@@ -87,22 +87,24 @@ function getUpdateKalender(id){
                                         
                     $.each(datajadwals.jadwal, function(key, dtjdwl){
                         obj['eventsData'].push({"title":dtjdwl.jadwal,"start":jdwl.tanggal+'T'+dtjdwl.waktu});
+                        $('#calendarData').fullCalendar({
+                            header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay,listWeek'
+                            },
+                            editable: true,
+                            eventLimit: true, // allow "more" link when too many events
+                            navLinks: true,
+                            events: obj.eventsData
+                        });
                     });
+                    
                 });
+                console.log(obj.evenstData);
         });
     });
-        console.log(obj.eventsData);
-        $('#calendarData').fullCalendar({
-            header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay,listWeek'
-            },
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            navLinks: true,
-            events: obj.eventsData
-        });
+       
 }
 function getPrioritas(id){
     var jadwalPrioritas = "";
