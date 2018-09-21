@@ -234,10 +234,11 @@ function registration(e){
 
 function sendMailPassword(e){
     e.preventDefault();
-    console.log( $('#emailVerif').val());
+
     $.ajax({
         url: "https://atmascribe.thekingcorp.org/api/mail/renewMail.php",
         type: "POST",
+        contentType : 'application/x-www-form-urlencoded',
         data: {
           email: $('#emailVerif').val(),
         },

@@ -2,10 +2,10 @@
 
 // Check for empty fields
 if(empty($_POST['email']))
-   {
-   echo "No arguments Provided!";
-   return false;
-   }
+{
+    echo "No arguments Provided!";
+    return false;
+}
    
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
