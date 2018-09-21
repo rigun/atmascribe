@@ -22,7 +22,7 @@ $data = json_decode(file_get_contents("php://input"));
  
 // set ID property of product to be edited
 $product->id = $data->id;
- 
+$newfilename = "di atas";
 if(isset($_FILES["file"]["type"]))
 {
     $validextensions = array("jpeg", "jpg", "png");
@@ -42,12 +42,13 @@ if(isset($_FILES["file"]["type"]))
                 $extension=end(explode(".", $filename));
                 $newfilename=$data->id .".".$extension;
 
-                $targetPath = "upload/".$newfilename; // Target path where file is to be stored
+                $targetPath = "../upload/".$newfilename; // Target path where file is to be stored
                 move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
      
         }
     }
 }
+
 $product->email = $data->email; 
 $product->nama = $data->nama; 
 $product->password = password_hash($data->password, PASSWORD_DEFAULT); 
