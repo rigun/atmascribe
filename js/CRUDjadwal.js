@@ -100,11 +100,11 @@ function getUpdateKalender(id){
                             center: 'title',
                             right: 'month,agendaWeek,agendaDay,listWeek'
                             },
+                            editable: true,
                             eventLimit: true, // allow "more" link when too many events
                             navLinks: true,
                             events: eventData
                         });
-                        console.log(events);
                     });
                    
 
