@@ -72,11 +72,12 @@ function getJadwalById(id){
 function getUpdateKalender(id){
     var eventData = [];
     var todayDate = moment().startOf('day');
+    var jsonStr = '{"eventsData":[]}';
     var YM = todayDate.format('YYYY-MM');
     var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
     var TODAY = todayDate.format('YYYY-MM-DD');
     var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
-  
+    var obj = JSON.parse(jsonStr);
     
 
         $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
@@ -85,15 +86,9 @@ function getUpdateKalender(id){
                     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=0", function(datajadwals){
                                            
                         $.each(datajadwals.jadwal, function(key, dtjdwl){
-                            
-                            
-                            eventData.push({
-                                title: dtjdwl.jadwal,
-                                start: jdwl.tanggal+'T'+dtjdwl.waktu
-                              })
-
+                            obj['eventsData'].push({"title":"\""+dtjdwl.jadwal+"\"","start":"\""+jdwl.tanggal+'T'+dtjdwl.waktu+"\""});
                         });
-                        console.log(eventData);
+                        console.log(obj.eventsData);
                         $('#calendarData').fullCalendar({
                             header: {
                             left: 'prev,next today',
@@ -103,7 +98,7 @@ function getUpdateKalender(id){
                             editable: true,
                             eventLimit: true, // allow "more" link when too many events
                             navLinks: true,
-                            events: eventData
+                            events: obj.eventsData
                         });
                     });
                    
