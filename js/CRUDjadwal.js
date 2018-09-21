@@ -80,18 +80,17 @@ function getUpdateKalender(id){
     var obj = JSON.parse(jsonStr);
     
 
-        $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
-           
-            $.each(jadwals.jadwal, function(key, jdwl){
-                    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=0", function(datajadwals){
-                                           
-                        $.each(datajadwals.jadwal, function(key, dtjdwl){
-                            obj['eventsData'].push({"title":dtjdwl.jadwal,"start":jdwl.tanggal+'T'+dtjdwl.waktu});
-                        });
-                        
+    $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getTanggalJadwal.php", function(jadwals){
+        console.log(jadwals.length);
+        $.each(jadwals.jadwal, function(key, jdwl){
+                $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+jdwl.tanggal+"&prioritas=0", function(datajadwals){
+                                        
+                    $.each(datajadwals.jadwal, function(key, dtjdwl){
+                        obj['eventsData'].push({"title":dtjdwl.jadwal,"start":jdwl.tanggal+'T'+dtjdwl.waktu});
                     });
-            });
+                });
         });
+    });
         console.log(obj.eventsData);
         $('#calendarData').fullCalendar({
             header: {
