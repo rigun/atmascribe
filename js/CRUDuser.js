@@ -247,7 +247,7 @@ function sendMailPassword(e){
             if(result.code == 200){
                 window.location = "./success-renew.php"
             }else{
-                alert(result.message);
+                alert(result);
             }
         },
         error: function(xhr, resp, text) {
