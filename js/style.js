@@ -77,18 +77,36 @@ function closePassword(){
     $(".ubahPassword").css("display", "block");
 
 }
-function readURL(input) {
-    console.log(input);
-if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        $('#imagePreview').css('background-image', 'url('+e.target.result +')');
-        $('#imagePreview').hide();
-        $('#imagePreview').fadeIn(650);
-    }
-    reader.readAsDataURL(input.files[0]);
+function readURL(e, input,id) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        formData.append('imageUpload', input.files[0], input.files[0].name);
+  
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+        
+        e.preventDefault();
+            $.ajax({
+            url: "https://atmascribe.thekingcorp.org/api/user/uploadPicture.php?id="+id, // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+            contentType: false,       
+            cache: false,             
+            processData:false,        // To send DOMDocument or non processed data file it is set to false
+            success: function(data)   // A function to be called if request succeeds
+            {
+                console.log(data);
+            }
+        });
     }
 }
+
+
 $("#imageUpload").change(function() {
     readURL(this);
 });

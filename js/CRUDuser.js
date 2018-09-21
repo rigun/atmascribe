@@ -5,11 +5,11 @@ function getUserProfile(id){
         userContent +=  '<div class="col-md-2">'+
                         '<form method="post" action="#" id="akunForm"  name="updateAkunPengguna" enctype="multipart/form-data" onsubmit="updateAllProfile(event,'+id+')">'+
                         '<div class="avatar-preview">'+
-                                        '<div id="imagePreview" style="background-image: url('+"../upload/"+id+'.png);">'+
+                                        '<div id="imagePreview" style="background-image: url(../upload/'+id+'.png);">'+
                                         '</div>'+
                                     '</div>'+
                                 '<div class="avatar-edit simpan" style="display: none" >'+
-                                        '<input type="file" name="imageUpload" id="imageUpload" onchange="readURL(this);" accept=".png, .jpg, .jpeg" />'+
+                                        '<input type="file" name="imageUpload" id="imageUpload" onchange="readURL(event,this,'+id+');" accept=".png, .jpg, .jpeg" />'+
                                         '<label for="imageUpload"><img src="../img/icon/camera.png"></label>'+
                                 '</div>'+
                             '<input id="updateAkun" type="submit" class="submit simpan" style="display:none" value="SIMPAN" />'+
@@ -122,7 +122,6 @@ $("#uploadimage").on('submit',(function(e) {
 }));
 function updateAllProfile(e,id){
     e.preventDefault();
-    console.log(this);
     if($('#ttl').val() == ""){
         var ttl = null;
     }else{
@@ -156,7 +155,6 @@ function updateAllProfile(e,id){
         foto: null,
     }
     var form_data=JSON.stringify(data);
-    console.log(data);
     $.ajax({
     url: "https://atmascribe.thekingcorp.org/api/user/update.php",
     type : "POST",
