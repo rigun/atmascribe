@@ -129,9 +129,6 @@ function updateAllProfile(e,id){
     }else{
         var passwordL = $('#passwordL').val();
     }
-    var file_data = $('#imageUpload').prop('files')[0];   
-    var dataPicture = new FormData();                  
-    dataPicture.append('file', file_data);
 
     var data ={
         id: id,
@@ -141,7 +138,7 @@ function updateAllProfile(e,id){
         passwordL: passwordL,
         ttl : ttl,
         kutipan: kutipan,
-        foto: dataPicture,
+        foto: null,
     }
     var form_data=JSON.stringify(data);
     console.log(data);
@@ -271,3 +268,21 @@ function login(e){
         }
     });
 }
+
+$(document).ready(function (e) {
+    $("#uploadimage").on('submit',(function(e) {
+        e.preventDefault();
+            $.ajax({
+            url: "https://atmascribe.thekingcorp.org/api/user/uploadPicture.php", // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+            contentType: false,       
+            cache: false,             
+            processData:false,        // To send DOMDocument or non processed data file it is set to false
+            success: function(data)   // A function to be called if request succeeds
+            {
+                console.log(data);
+            }
+        });
+    }));
+});
