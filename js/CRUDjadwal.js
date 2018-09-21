@@ -81,7 +81,7 @@ function getUpdateKalender(id){
     $.getJSON("https://atmascribe.thekingcorp.org/api/jadwal/getJadwalByUser.php?id="+id+"&tanggal="+TODAY+"&prioritas=2", function(datajadwals){
                             
         $.each(datajadwals.jadwal, function(key, dtjdwl){
-            obj['eventsData'].push({"title":dtjdwl.jadwal,"start":jdwl.tanggal+'T'+dtjdwl.waktu});
+            obj['eventsData'].push({"title":dtjdwl.jadwal,"start":dtjdwl.tanggal+'T'+dtjdwl.waktu});
             
         });
         $('#calendarData').fullCalendar({
