@@ -145,6 +145,23 @@ function getPrioritas(id){
 }
 function createJadwal(e, id){
     e.preventDefault();
+    if($('#jadwalJ').val() == ""){
+        alert("jadwal tidak boleh kosong");
+        return;
+    }
+    if($('#waktuJ').val() == ""){
+        alert("jadwal tidak boleh kosong");
+        return;
+    }
+    if($('#tanggalJ').val() == ""){
+        alert("jadwal tidak boleh kosong");
+        return;
+    }
+    if($('#tempatJ').val() == ""){
+        alert("jadwal tidak boleh kosong");
+        return;
+    }
+
     var data ={
         jadwal : $('#jadwalJ').val(),
         waktu : $('#waktuJ').val(),
