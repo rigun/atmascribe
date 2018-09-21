@@ -8,10 +8,12 @@ include_once '../objects/jadwal.php';
 $database = new Database();
 $db = $database->getConnection();
 $product = new Jadwal($db);
+$product->user_id = isset($_GET['id']) ? $_GET['id'] : die();
+
 $stmt = $product->getTanggal();
 $num = $stmt->rowCount();
 
-$product->user_id = isset($_GET['id']) ? $_GET['id'] : die();
+
 
 if($num>0){
     $products_arr=array();
