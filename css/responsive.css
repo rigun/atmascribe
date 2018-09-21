@@ -1,7 +1,5 @@
 @media (max-width: 464px)
 {
-	#homePage h1 {
     margin-top: 50px;
-    font-size: 70px;
-	}
+    font-size: 70px
 }
