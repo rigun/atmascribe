@@ -244,8 +244,11 @@ function sendMailPassword(e){
         },
         cache: false,
         success: function(result) {
-          alert(result);
-          window.location = "./success-renew.php"
+            if(result.code == 200){
+                window.location = "./success-renew.php"
+            }else{
+                alert(result.message);
+            }
         },
         error: function(xhr, resp, text) {
         console.log(xhr, resp, text);

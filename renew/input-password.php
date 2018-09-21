@@ -2,11 +2,6 @@
 <?php
 require_once('..'.DIRECTORY_SEPARATOR.'base'.DIRECTORY_SEPARATOR.'base.php');
 
-// $user = __cekAuth();
-// setPageTitle("Kriteria");
-
-// $listKriteria = listKriteria();
-
 layout('layouts/header.php');
 if(isset($_GET['token']))
 {
