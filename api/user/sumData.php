@@ -18,13 +18,24 @@ $product = new User($db);
 // check if more than 0 record found
 if($product->sumData()){
  
+    // products array
+    $products_arr=array();
+    $products_arr["records"]=array();
+
+
         $product_item=array(
-            "user" => $product->jumlahUser,
-            "catatan" => $product->jumlahCatatan,
-            "jadwal" => $product->jumlahJadwal,
+            "user" => $user,
+            "catatan" => $catatan,
+            "jadwal" => $jadwal,
          );
+         
+         // "description" => html_entity_decode($description),
+   
+
  
-    echo json_encode($product_item);
+        array_push($products_arr["records"], $product_item);
+ 
+    echo json_encode($products_arr);
 }
  
 else{
