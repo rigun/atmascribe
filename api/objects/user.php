@@ -269,6 +269,7 @@ class User{
             $this->jumlahUser = $rowUser['jumlahUser'];
             $this->jumlahJadwal = $rowJadwal['jumlahJadwal'];
             $this->jumlahCatatan = $rowCatatan['jumlahCatatan'];
+            return true;
     }
     // update the product
     function update(){
