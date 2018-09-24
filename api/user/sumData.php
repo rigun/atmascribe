@@ -24,9 +24,9 @@ if($product->sumData()){
 
 
         $product_item=array(
-            "user" => $user,
-            "catatan" => $catatan,
-            "jadwal" => $jadwal,
+            "user" => $product->jumlahUser,
+            "catatan" => $product->jumlahCatatan,
+            "jadwal" => $product->jumlahJadwal,
          );
          
          // "description" => html_entity_decode($description),
