@@ -538,3 +538,6 @@
         color: white!important ;
         opacity: 1;
     }
+.nav-link{
+    cursor: pointer;
+}

@@ -26,6 +26,9 @@ class User{
     public $dibuat_pada;
     public $token;
     public $passwordL;
+    public $jumlahUser;
+    public $jumlahCatatan;
+    public $jumlahJadwal;
  
     // constructor with $db as database connection
     public function __construct($db){
@@ -247,15 +250,25 @@ class User{
     }
     function sumData(){
            // select all query
-           $query = "SELECT u.countData as user, c.countCatatan as catatan, j.countJadwal as jadwal FROM (select id, count(id) as countData from user) u left join (select user_id, count(user_id) as countCatatan from catatan) c on c.user_id = u.id left join (select user_id, count(user_id) as countJadwal from jadwal ) j on j.user_id = u.id";
+           $queryUser = "select count(id) as jumlahUser from user";
+           $queryCatatan = "select count(id) as jumlahCatatan from catatan";
+           $queryJadwal = "select count(id) as jumlahJadwal from jadwal";
 
-            // prepare query statement
-            $stmt = $this->conn->prepare($query);
 
-            // execute query
-            $stmt->execute();
+            $stmtUser = $this->conn->prepare($queryUser);
+            $stmtUser->execute();
+            $stmtCatatan = $this->conn->prepare($queryCatatan);
+            $stmtCatatan->execute();
+            $stmtJadwal = $this->conn->prepare($queryJadwal);
+            $stmtJadwal->execute();
 
-            return $stmt;
+            $rowUser = $stmtUser->fetch(PDO::FETCH_ASSOC);
+            $rowJadwal = $stmtJadwal->fetch(PDO::FETCH_ASSOC);
+            $rowCatatan = $stmtCatatan->fetch(PDO::FETCH_ASSOC);
+
+            $this->jumlahUser = $rowUser['jumlahUser'];
+            $this->jumlahJadwal = $rowJadwal['jumlahJadwal'];
+            $this->jumlahCatatan = $rowCatatan['jumlahCatatan'];
     }
     // update the product
     function update(){

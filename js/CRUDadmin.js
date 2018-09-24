@@ -1,15 +1,9 @@
-function submitDataUser(e,dibuat_pada,token){
+function submitDataUser(e){
     e.preventDefault();
     var data ={
         nama: $('#nama').val(),
         email: $('#email').val(),
         password: $('#password').val(),
-        ttl : null,
-        kutipan: null,
-        foto: null,
-        status: null,
-        dibuat_pada: dibuat_pada,
-        token: token
     }
     
     var form_data=JSON.stringify(data);

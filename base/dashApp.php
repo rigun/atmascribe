@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="modal-body">
-                        <form id="userAdd"  name="userAdd"  action='#' method='post' onsubmit="return submitDataUser(event,'<?php echo date('Y-m-d H:i:s');?>','<?php echo bin2hex(random_bytes(5))?>')">
+                        <form id="userAdd"  name="userAdd"  action='#' method='post' onsubmit="return submitDataUser(event)">
                         <input type="hidden" name="id" value="" />
                                 <div class="wrap-input100" >
                                         <input class="input100" type="text" id="nama" name="nama" placeholder="Nama" value="">

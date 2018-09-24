@@ -14,35 +14,17 @@ $db = $database->getConnection();
 // initialize object
 $product = new User($db);
  
-// query products
-$stmt = $product->sumData();
-$num = $stmt->rowCount();
  
 // check if more than 0 record found
-if($num>0){
+if($product->sumData()){
  
-    // products array
-    $products_arr=array();
-    $products_arr["records"]=array();
-
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-
-        extract($row);
-
         $product_item=array(
-            "user" => $user,
-            "catatan" => $catatan,
-            "jadwal" => $jadwal,
+            "user" => $product->jumlahUser,
+            "catatan" => $product->jumlahCatatan,
+            "jadwal" => $product->jumlahJadwal,
          );
-         
-         // "description" => html_entity_decode($description),
-   
-
  
-        array_push($products_arr["records"], $product_item);
-    }
- 
-    echo json_encode($products_arr);
+    echo json_encode($product_item);
 }
  
 else{
