@@ -168,7 +168,7 @@ function getReport(){
                     "</tr>"+
                     "<tr id='detail"+val.id+"' style='display: none'>"+
                         "<td id='' colspan='6'>"+
-                        "<img src='"+val.foto+"' style='width: 150px'>"+
+                        "<img src='https://atmascribe.thekingcorp.org/upload/"+val.foto+"' style='width: 150px'>"+
                         "<h1>Jadwal</h1>"+
                         "<table class='table table-custom'>"+
                             "<thead>"+
@@ -181,15 +181,14 @@ function getReport(){
                                 "</tr>"+
                             "</thead>"+
                             "<tbody>";
-                            $.each(dataOne.jadwals, function(key, valJadwal){
+                            $.each(dataOne.jadwal, function(key, valJadwal){
                                 key+=1;
-                                reportContent +=  "<tr>"+
+                                reportContent+="<tr>"+
                                     "<td class='col-1'>"+key+"</td>"+
                                     "<td class='col-5'>"+valJadwal.jadwal+"</td>"+
                                     "<td class='col-2'>"+valJadwal.waktu+"</td>"+
                                     "<td class='col-2'>"+valJadwal.tanggal+"</td>"+
                                     "<td class='col-2'>"+valJadwal.tempat+"</td>"+
-                                  
                                 "</tr>";
                             });
                             reportContent += "</tbody>"+
@@ -202,7 +201,7 @@ function getReport(){
                                 "</tr>"+
                             "</thead>"+
                             "<tbody>" ;
-                            $.each(dataOne.catatans, function(key, valCatatan){
+                            $.each(dataOne.catatan, function(key, valCatatan){
                                 key+=1;
                                 reportContent +=  "<tr>"+
                                     "<td id=''>"+key+"</td>"+

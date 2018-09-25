@@ -44,10 +44,15 @@
     function updateAppDash(data){
         if(data == 'dashApp'){
             $('.dashAppsData').load('https://atmascribe.thekingcorp.org/base/dashApp.php');
+            $('#navDashboard').addClass('nav-active');
+            $('#navReport').removeClass('nav-active');
+
             getSumData();
             getDatauser();
         }else if(data == 'report'){
             $('.dashAppsData').load('https://atmascribe.thekingcorp.org/base/report.php');
+            $('#navDashboard').removeClass('nav-active');
+            $('#navReport').addClass('nav-active');
             getReport();
         }else {
             $('.dashAppsData').html("failed");
