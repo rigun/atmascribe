@@ -181,7 +181,7 @@ function getReport(){
                                 "</tr>"+
                             "</thead>"+
                             "<tbody>";
-                            $.each(dataOne.jadwal, function(key, valJadwal){
+                            $.each(dataOne.jadwals, function(key, valJadwal){
                                 key+=1;
                                 reportContent+="<tr>"+
                                     "<td class='col-1'>"+key+"</td>"+
@@ -201,7 +201,7 @@ function getReport(){
                                 "</tr>"+
                             "</thead>"+
                             "<tbody>" ;
-                            $.each(dataOne.catatan, function(key, valCatatan){
+                            $.each(dataOne.catatans, function(key, valCatatan){
                                 key+=1;
                                 reportContent +=  "<tr>"+
                                     "<td id=''>"+key+"</td>"+
