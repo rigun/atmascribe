@@ -122,10 +122,11 @@ var specialElementHandlers = {
     }
 };
 $('#cmd').click(function () {   
+    
     doc.fromHTML($('#dataReportTable').html(), 15, 15, {
         'width': 170,
             'elementHandlers': specialElementHandlers
-    });
-    doc.save('report-file.pdf');
+    },function(bla){doc.save('saveInCallback.pdf');});
+    
 });
 </script>
