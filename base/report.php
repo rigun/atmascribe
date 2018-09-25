@@ -123,7 +123,7 @@ var specialElementHandlers = {
 };
 $('#cmd').click(function () {   
     
-    doc.fromHTML($('#dataReportTable').html(), 15, 15, {
+    doc.fromHTML($('#content').html(), 15, 15, {
         'width': 170,
             'elementHandlers': specialElementHandlers
     },function(bla){doc.save('saveInCallback.pdf');});
