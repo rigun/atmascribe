@@ -116,7 +116,11 @@ function updateUserStat(status,id){
 <script src="../bower_components/jspdf/dist/jspdf.min.js"></script>
 <script>
 var doc = new jsPDF();
-
+var specialElementHandlers = {
+      'DIV to be rendered out': function(element, renderer){
+       return true;
+    }
+};
 $('#cmd').click(function () {   
     doc.fromHTML($('#content').html(), 15, 15, {
         'width': 170,
