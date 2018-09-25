@@ -59,8 +59,8 @@ $user_arr = array(
     "foto" => $user->foto,
     "ttl" => $user->ttl,
     "kutipan" => $user->kutipan,
-    "catatans" => $catatan_arr["catatan"],
-    "jadwals" => $jadwal_arr["jadwal"]
+    "catatans" => $catatan_arr,
+    "jadwals" => $jadwal_arr
  );
  
 // make it json format
