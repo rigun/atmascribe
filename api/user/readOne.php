@@ -21,7 +21,7 @@ $jadwal->user_id = $user->id;
 $user->readOne();
 $stmtCatatan = $catatan->readOne();
 $numCatatan = $stmtCatatan->rowCount();
-$stmtJadwal = $jadwal->readOne();
+$stmtJadwal = $jadwal->readOneDateByUserID();
 $numJadwal = $stmtJadwal->rowCount();
 
 // create array

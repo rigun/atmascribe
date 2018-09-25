@@ -177,6 +177,22 @@ class Jadwal{
       return $stmt;
      
   }
+    function readOneDateByUserID(){
+        // query to read single record
+      $query = "SELECT
+                  *
+              FROM
+                  " . $this->table_name . "
+              WHERE
+                  user_id = ?";
+
+          $stmt = $this->conn->prepare( $query );
+          $stmt->bindParam(1, $this->user_id);
+          $stmt->execute();
+  
+      return $stmt;
+     
+  }
     function readOnePrioritas(){
         // query to read single record
       $query = "SELECT
