@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-12 ">
-        <button id="submit" class="submit col-4 float-right" data-toggle="modal" data-target="#User">Download pdf</button>
+        <button id="cmd" class="submit col-4 float-right" data-toggle="modal" data-target="#User">Download pdf</button>
     </div>
 </div>
 
@@ -112,4 +112,16 @@ function updateUserStat(status,id){
         alert(status);
     }
 }
+</script>
+<script src="../bower_components/jspdf/dist/jspdf.min.js"></script>
+<script>
+var doc = new jsPDF();
+
+$('#cmd').click(function () {   
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('report-file.pdf');
+});
 </script>
