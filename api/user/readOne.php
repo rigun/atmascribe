@@ -15,41 +15,56 @@ $jadwal = new Jadwal($db);
  
 // set ID property of user to be edited
 $user->id = isset($_GET['id']) ? $_GET['id'] : die();
-$catatan->id = $user->id; 
-$jadwal->id = $user->id;
+$catatan->user_id = $user->id; 
+$jadwal->user_id = $user->id;
 // read the details of user to be edited
 $user->readOne();
 $stmtCatatan = $catatan->readOne();
+$numCatatan = $stmtCatatan->rowCount();
 $stmtJadwal = $jadwal->readOne();
+$numJadwal = $stmtJadwal->rowCount();
 
-// products array
-$catatan_arr=array();
-$catatan_arr["catatan"]=array();
+// create array
+if($numCatatan>0){
+ 
+    // products array
+    $catatan_arr=array();
+    $catatan_arr["catatan"]=array();
 
-while ($rowCatatan = $stmtCatatan->fetch(PDO::FETCH_ASSOC)){
+    while ($rowCatatan = $stmtCatatan->fetch(PDO::FETCH_ASSOC)){
 
-    extract($rowCatatan);
-    $product_item=array(
-        "catatan" => $catatan,
-        );
-        
-    array_push($catatan_arr["catatan"], $product_item);
+        extract($rowCatatan);
+        $product_item=array(
+            "catatan" => $catatan,
+         );
+         
+        array_push($catatan_arr["catatan"], $product_item);
+    }
 }
+else{
+    $catatan_arr["catatan"]=null;
+}
+if($numJadwal>0){
+ 
+    // products array
+    $jadwal_arr=array();
+    $jadwal_arr["jadwal"]=array();
 
-$jadwal_arr=array();
-$jadwal_arr["jadwal"]=array();
+    while ($rowJadwal = $stmtJadwal->fetch(PDO::FETCH_ASSOC)){
 
-while ($rowJadwal = $stmtJadwal->fetch(PDO::FETCH_ASSOC)){
-
-    extract($rowJadwal);
-    $product_item=array(
-        "jadwal" => $jadwal,
-        "waktu" => $waktu,
-        "tanggal" => $tanggal,
-        "tempat" => $tempat,
-        );
-        
-    array_push($jadwal_arr["jadwal"], $product_item);
+        extract($rowJadwal);
+        $product_item=array(
+            "jadwal" => $jadwal,
+            "waktu" => $waktu,
+            "tanggal" => $tanggal,
+            "tempat" => $tempat,
+         );
+         
+        array_push($jadwal_arr["jadwal"], $product_item);
+    }
+}
+else{
+    $jadwal_arr["jadwal"]=null;
 }
 
 $user_arr = array(
@@ -59,8 +74,8 @@ $user_arr = array(
     "foto" => $user->foto,
     "ttl" => $user->ttl,
     "kutipan" => $user->kutipan,
-    "catatans" => $catatan_arr,
-    "jadwals" => $jadwal_arr
+    "catatans" => $catatan_arr["catatan"],
+    "jadwals" => $jadwal_arr["jadwal"]
  );
  
 // make it json format
