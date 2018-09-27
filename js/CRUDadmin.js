@@ -283,6 +283,7 @@ function downloadPDF(){
     });
     $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
+            console.log($('#pdf'+key).html());
             doc.fromHTML($('#pdf'+key).html(), 15, 15, {
                 'width': 170,
                     'elementHandlers': specialElementHandlers
