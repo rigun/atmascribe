@@ -104,6 +104,7 @@ function getUserProfile(id){
     });
 
 }
+
 $("#uploadimage").on('submit',(function(e) {
     console.log("test");
     e.preventDefault();

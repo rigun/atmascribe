@@ -147,77 +147,145 @@ function getReport(){
         $.each(data.records, function(key, val){
             $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
              
+        
                 reportContent +=    "<tr id="+val.id+">"+
-                    "<span id='' style='display: none' >"+val.id+"</span>"+
-                        "<td >"+number+"</td>"+
-                        "<td id='uNama"+val.id+"'>"+dataOne.nama+"</td>"+
-                        "<td id='uEmail"+val.id+"'>"+dataOne.email+"</td>"+
-                        "<td id='uTtl"+val.id+"'>"+dataOne.ttl+"</td>"+
-                        "<td id='uKutipan"+val.id+"'>"+dataOne.kutipan+"</td>"+
-                        "<td class='row'>"+
-                        "<img onclick='showdetail("+val.id+")' src='../img/icon/info.png' />";
-                    if(val.status == 0){
-                        reportContent += "<a data-toggle='modal' data-target='#AktifUser' onclick='updateUserStat(1,"+val.id+")' ><img src='../img/icon/tidak aktif.png' /></a>";
-                    }else if(val.status == 1){
-                        reportContent += "<a data-toggle='modal' data-target='#deAktifUser' onclick='updateUserStat(2,"+val.id+")' ><img src='../img/icon/aktif.png' /></a>";
-                    }else{
-                        reportContent += "Kesalahan Pada Server";
-                    }
-                        reportContent += "<a data-toggle='modal' data-target='#DeleteUser' onclick='deleteModalUser("+val.id+")' ><img src='../img/icon/cancel.svg' /></a>"+
-                        "</td>"+
-                    "</tr>"+
-                    "<tr id='detail"+val.id+"' style='display: none'>"+
-                        "<td id='' colspan='6'>"+
-                        "<img src='https://atmascribe.thekingcorp.org/upload/"+val.foto+"' style='width: 150px'>"+
-                        "<h1>Jadwal</h1>"+
-                        "<table class='table table-custom'>"+
-                            "<thead>"+
-                                "<tr>"+
-                                    "<th class='col-1'></th>"+
-                                    "<th class='col-3'>Jadwal</th>"+
-                                    "<th class='col-2'>Waktu</th>"+
-                                    "<th class='col-2'>Tanggal</th>"+
-                                    "<th class='col-2'>Tempat</th>"+
-                                "</tr>"+
-                            "</thead>"+
-                            "<tbody>";
-                            $.each(dataOne.jadwals, function(key, valJadwal){
-                                key+=1;
-                                reportContent+="<tr>"+
-                                    "<td class='col-1'>"+key+"</td>"+
-                                    "<td class='col-5'>"+valJadwal.jadwal+"</td>"+
-                                    "<td class='col-2'>"+valJadwal.waktu+"</td>"+
-                                    "<td class='col-2'>"+valJadwal.tanggal+"</td>"+
-                                    "<td class='col-2'>"+valJadwal.tempat+"</td>"+
+                "<span id='' style='display: none' >"+val.id+"</span>"+
+                    "<td >"+number+"</td>"+
+                    "<td id='uNama"+val.id+"'>"+dataOne.nama+"</td>"+
+                    "<td id='uEmail"+val.id+"'>"+dataOne.email+"</td>"+
+                    "<td id='uTtl"+val.id+"'>"+dataOne.ttl+"</td>"+
+                    "<td id='uKutipan"+val.id+"'>"+dataOne.kutipan+"</td>"+
+                    "<td class='row'>"+
+                    "<img onclick='showdetail("+val.id+")' src='../img/icon/info.png' />";
+                if(val.status == 0){
+                    reportContent += "<a data-toggle='modal' data-target='#AktifUser' onclick='updateUserStat(1,"+val.id+")' ><img src='../img/icon/tidak aktif.png' /></a>";
+                }else if(val.status == 1){
+                    reportContent += "<a data-toggle='modal' data-target='#deAktifUser' onclick='updateUserStat(2,"+val.id+")' ><img src='../img/icon/aktif.png' /></a>";
+                }else{
+                    reportContent += "Kesalahan Pada Server";
+                }
+                    reportContent += "<a data-toggle='modal' data-target='#DeleteUser' onclick='deleteModalUser("+val.id+")' ><img src='../img/icon/cancel.svg' /></a>"+
+                    "</td>"+
+                "</tr>"+
+                "<tr id='detail"+val.id+"' style='display: none'>"+
+                    "<td id='' colspan='6'>"+
+                    "<img src='https://atmascribe.thekingcorp.org/upload/"+val.foto+"' style='width: 150px'>"+
+                    "<h1>Jadwal</h1>"+
+                    "<table class='table table-custom'>"+
+                        "<thead>"+
+                            "<tr>"+
+                                "<th class='col-1'></th>"+
+                                "<th class='col-3'>Jadwal</th>"+
+                                "<th class='col-2'>Waktu</th>"+
+                                "<th class='col-2'>Tanggal</th>"+
+                                "<th class='col-2'>Tempat</th>"+
+                            "</tr>"+
+                        "</thead>"+
+                        "<tbody>";
+                        $.each(dataOne.jadwals, function(key, valJadwal){
+                            key+=1;
+                            reportContent+="<tr>"+
+                                "<td class='col-1'>"+key+"</td>"+
+                                "<td class='col-5'>"+valJadwal.jadwal+"</td>"+
+                                "<td class='col-2'>"+valJadwal.waktu+"</td>"+
+                                "<td class='col-2'>"+valJadwal.tanggal+"</td>"+
+                                "<td class='col-2'>"+valJadwal.tempat+"</td>"+
+                            "</tr>";
+                        });
+                        reportContent += "</tbody>"+
+                    "</table>"+
+                    "<h1>Catatan</h1>"+"<table class='table table-custom'>"+
+                        "<thead>"+
+                            "<tr>"+
+                                "<th class='col-1'>No.</th>"+
+                                "<th class='col-11'>Catatan</th>"+
+                            "</tr>"+
+                        "</thead>"+
+                        "<tbody>" ;
+                        $.each(dataOne.catatans, function(key, valCatatan){
+                            key+=1;
+                            reportContent +=  "<tr>"+
+                                "<td id=''>"+key+"</td>"+
+                                "<td id=''>"+valCatatan.catatan+"</td>"+
                                 "</tr>";
-                            });
-                            reportContent += "</tbody>"+
-                        "</table>"+
-                        "<h1>Catatan</h1>"+"<table class='table table-custom'>"+
-                            "<thead>"+
-                                "<tr>"+
-                                    "<th class='col-1'>No.</th>"+
-                                    "<th class='col-11'>Catatan</th>"+
-                                "</tr>"+
-                            "</thead>"+
-                            "<tbody>" ;
-                            $.each(dataOne.catatans, function(key, valCatatan){
-                                key+=1;
-                                reportContent +=  "<tr>"+
-                                    "<td id=''>"+key+"</td>"+
-                                    "<td id=''>"+valCatatan.catatan+"</td>"+
-                                    "</tr>";
-                            });
-                            reportContent += "</tbody>"+
-                        "</table>"+
-                        "</td>"+
-                    "</tr>";
-                    
-                number++;
-            $('#dataReportTable').html(reportContent);     
+                        });
+                        reportContent += "</tbody>"+
+                    "</table>"+
+                    "</td>"+
+                "</tr>";
+                
+            number++;
+        $('#dataReportTable').html(reportContent);  
             });
         });   
     });
+}
+function downloadPDF(){
+    var doc = new jsPDF();
+    var specialElementHandlers = {
+          'DIV to be rendered out': function(element, renderer){
+           return true;
+        }
+    };
+    var reportContent = "";
+    $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
+        $.each(data.records, function(key, val){
+            reportContent="";
+            $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
+                reportContent +="<p>ID : "+val.id+"</p>"
+                "<p>Nama : "+dataOne.nama+"</p>"+
+                "<p>Email : "+dataOne.email+"</p>"+
+                "<p>Tanggal Lahir : "+dataOne.ttl+"</p>"+
+                "<p>Kutipan : "+dataOne.kutipan+"</p>"+
+                "<p>Dibuat Pada : "+val.dibuat_pada+"</p>"+
+                "<p>Status : "; 
+                if(val.status == 0){reportContent += "Tidak Aktif"}else{reportContent +="Aktif"};
+    
+                reportContent +="</p>"
+                "<h1>Catatan</h1>"+
+                "<table>"+
+                    "<tr>"+
+                        "<th>No</th>"+
+                        "<th>Catatan</th>"+
+                   "</tr>";
+                   $.each(dataOne.catatans, function(key, valCatatan){
+                    key+=1;
+                    reportContent +=  "<tr>"+
+                        "<td>"+key+"</td>"+
+                        "<td>"+valCatatan.catatan+"</td>"+
+                        "</tr>";
+                });
+                reportContent +="</table>"+
+                "<h1>Jadwal</h1>"+
+                "<table>"+
+                "<tr>"+
+                    "<th>No</th>"+
+                    "<th>Jadwal</th>"+
+                    "<th>Waktu</th>"+
+                    "<th>Tanggal</th>"+
+                    "<th>Tempat</th>"+
+               "</tr>";
+               $.each(dataOne.jadwals, function(key, valJadwal){
+                key+=1;
+                reportContent+="<tr>"+
+                    "<td>"+key+"</td>"+
+                    "<td>"+valJadwal.jadwal+"</td>"+
+                    "<td>"+valJadwal.waktu+"</td>"+
+                    "<td>"+valJadwal.tanggal+"</td>"+
+                    "<td>"+valJadwal.tempat+"</td>"+
+                "</tr>";
+            });
+            reportContent+="</table>";
+            doc.fromHTML(reportContent, 15, 15, {
+                'width': 170,
+                    'elementHandlers': specialElementHandlers
+            });
+            doc.addPage();
+            });
+            doc.save('reportPDF.pdf');
+        });   
+    });
+
 }
 
 function loginAdmin(e){
