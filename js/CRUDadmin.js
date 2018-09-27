@@ -280,11 +280,11 @@ function downloadPDF(){
                 'width': 170,
                     'elementHandlers': specialElementHandlers
             });
+        doc.save('reportPDF.pdf');
+
             });
                
-            doc.addPage();
         });   
-        doc.save('reportPDF.pdf');
     });
 
 }
