@@ -281,8 +281,10 @@ function downloadPDF(){
                     'elementHandlers': specialElementHandlers
             });
             doc.addPage();
-            doc.save('reportPDF.pdf');
 
+
+            },function(tes){
+                doc.save('reportPDF.pdf');
             });
                
         });   
