@@ -232,7 +232,14 @@ function downloadPDF(){
         $.each(data.records, function(key, val){
            
             doc = $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
-                reportContent +="<p>ID : "+val.id+"</p>"+
+                var doc = new jsPDF("p","px","letter");    
+                var reportContent = "";
+                var specialElementHandlers = {
+                    'DIV to be rendered out': function(element, renderer){
+                     return true;
+                  }
+              };
+            reportContent +="<p>ID : "+val.id+"</p>"+
                 "<p>Nama : "+dataOne.nama+"</p>"+
                 "<p>Email : "+dataOne.email+"</p>"+
                 "<p>Tanggal Lahir : "+dataOne.ttl+"</p>"+
