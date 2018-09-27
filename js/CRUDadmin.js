@@ -241,7 +241,7 @@ function downloadPDF(){
                 "<p>Status : "; 
                 if(val.status == 0){reportContent+="Tidak Aktif";}else{reportContent+="Aktif";};
     
-            reportContent+="</p>"+``
+            reportContent+="</p>"+
                 "<h1>Catatan</h1>"+
                 "<table>"+
                     "<tr height='80px' >"+
