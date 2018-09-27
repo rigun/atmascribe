@@ -19,7 +19,8 @@
         </div>
         </div>
 </div>
-
+<div id="reportPDF" style="display:none">
+</div>
 <div class="row">
     <div class="col-12 ">
         <button id="cmd" class="submit col-4 float-right" data-toggle="modal" data-target="#User" onclick="downloadPDF()">Download pdf</button>

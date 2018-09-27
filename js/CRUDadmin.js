@@ -221,7 +221,7 @@ function getReport(){
     });
 }
 function downloadPDF(){
-    var pdf = new jsPDF("p","px","letter");
+    var doc = new jsPDF("p","px","letter");
     var specialElementHandlers = {
           'DIV to be rendered out': function(element, renderer){
            return true;
@@ -230,16 +230,9 @@ function downloadPDF(){
     var reportContent = "";
     $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
-           var doc = new jsPDF("p","px","letter");    
-           var reportContent = "";
-           var specialElementHandlers = {
-               'DIV to be rendered out': function(element, renderer){
-                return true;
-             }
-         };
-            pdf = $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
-               
-            reportContent +="<p>ID : "+val.id+"</p>"+
+           
+            $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
+                reportContent +="<div id='pdf"+key+"'><p>ID : "+val.id+"</p>"+
                 "<p>Nama : "+dataOne.nama+"</p>"+
                 "<p>Email : "+dataOne.email+"</p>"+
                 "<p>Tanggal Lahir : "+dataOne.ttl+"</p>"+
@@ -282,17 +275,21 @@ function downloadPDF(){
                     "<td>"+valJadwal.tempat+"</td>"+
                 "</tr>";
             });
-            reportContent+="</table>";
-            doc.fromHTML(reportContent, 15, 15, {
+            reportContent+="</table></div>";
+            $('#reportPDF').html(reportContent);  
+            });
+               
+        });   
+    });
+    $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
+        $.each(data.records, function(key, val){
+            doc.fromHTML($('#pdf'+key), 15, 15, {
                 'width': 170,
                     'elementHandlers': specialElementHandlers
             });
             doc.addPage();
-            reportContent="";
-            return doc;
-            });
-        });   
-        pdf.save('reportPDF.pdf');
+        });
+        doc.save('reportPDF.pdf');
     });
 
 }
