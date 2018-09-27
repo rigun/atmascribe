@@ -221,7 +221,7 @@ function getReport(){
     });
 }
 function downloadPDF(){
-    var doc = new jsPDF();
+    var doc = new jsPDF("p","px","letter");
     var specialElementHandlers = {
           'DIV to be rendered out': function(element, renderer){
            return true;
@@ -239,18 +239,18 @@ function downloadPDF(){
                 "<p>Kutipan : "+dataOne.kutipan+"</p>"+
                 "<p>Dibuat Pada : "+val.dibuat_pada+"</p>"+
                 "<p>Status : "; 
-                if(val.status == 0){reportContent += "Tidak Aktif"}else{reportContent +="Aktif"};
+                if(val.status == 0){reportContent+="Tidak Aktif";}else{reportContent+="Aktif";};
     
-            reportContent +="</p>"+``
+            reportContent+="</p>"+``
                 "<h1>Catatan</h1>"+
                 "<table>"+
-                    "<tr>"+
+                    "<tr height='80px' >"+
                         "<th>No</th>"+
                         "<th>Catatan</th>"+
                    "</tr>";
-                   $.each(dataOne.catatans, function(key, valCatatan){
+                $.each(dataOne.catatans, function(key, valCatatan){
                     key+=1;
-                    reportContent +=  "<tr>"+
+                    reportContent+="<tr height='80px'>"+
                         "<td>"+key+"</td>"+
                         "<td>"+valCatatan.catatan+"</td>"+
                         "</tr>";
@@ -258,7 +258,7 @@ function downloadPDF(){
                 reportContent +="</table>"+
                 "<h1>Jadwal</h1>"+
                 "<table>"+
-                "<tr>"+
+                "<tr height='80px'>"+
                     "<th>No</th>"+
                     "<th>Jadwal</th>"+
                     "<th>Waktu</th>"+
@@ -267,7 +267,7 @@ function downloadPDF(){
                "</tr>";
                $.each(dataOne.jadwals, function(key, valJadwal){
                 key+=1;
-                reportContent+="<tr>"+
+                reportContent+="<tr height='80px'>"+
                     "<td>"+key+"</td>"+
                     "<td>"+valJadwal.jadwal+"</td>"+
                     "<td>"+valJadwal.waktu+"</td>"+
