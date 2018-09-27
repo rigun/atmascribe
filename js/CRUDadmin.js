@@ -219,29 +219,21 @@ function getReport(){
             });
         });   
     });
-}
-function downloadPDF(){
-    var doc = new jsPDF("p","px","letter");
-    var specialElementHandlers = {
-          'DIV to be rendered out': function(element, renderer){
-           return true;
-        }
-    };
-    var reportContent = "";
+    var pdfContent = "";
     $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
            
             $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
-                reportContent +="<div id='pdf"+key+"'><p>ID : "+val.id+"</p>"+
+                pdfContent +="<div id='pdf"+key+"'><p>ID : "+val.id+"</p>"+
                 "<p>Nama : "+dataOne.nama+"</p>"+
                 "<p>Email : "+dataOne.email+"</p>"+
                 "<p>Tanggal Lahir : "+dataOne.ttl+"</p>"+
                 "<p>Kutipan : "+dataOne.kutipan+"</p>"+
                 "<p>Dibuat Pada : "+val.dibuat_pada+"</p>"+
                 "<p>Status : "; 
-                if(val.status == 0){reportContent+="Tidak Aktif";}else{reportContent+="Aktif";};
+                if(val.status == 0){pdfContent+="Tidak Aktif";}else{pdfContent+="Aktif";};
     
-            reportContent+="</p>"+
+            pdfContent+="</p>"+
                 "<h1>Catatan</h1>"+
                 "<table>"+
                     "<tr height='80px' >"+
@@ -250,12 +242,12 @@ function downloadPDF(){
                    "</tr>";
                 $.each(dataOne.catatans, function(key, valCatatan){
                     key+=1;
-                    reportContent+="<tr height='80px'>"+
+                    pdfContent+="<tr height='80px'>"+
                         "<td>"+key+"</td>"+
                         "<td>"+valCatatan.catatan+"</td>"+
                         "</tr>";
                 });
-                reportContent +="</table>"+
+                pdfContent +="</table>"+
                 "<h1>Jadwal</h1>"+
                 "<table>"+
                 "<tr height='80px'>"+
@@ -267,7 +259,7 @@ function downloadPDF(){
                "</tr>";
                $.each(dataOne.jadwals, function(key, valJadwal){
                 key+=1;
-                reportContent+="<tr height='80px'>"+
+                pdfContent+="<tr height='80px'>"+
                     "<td>"+key+"</td>"+
                     "<td>"+valJadwal.jadwal+"</td>"+
                     "<td>"+valJadwal.waktu+"</td>"+
@@ -275,12 +267,21 @@ function downloadPDF(){
                     "<td>"+valJadwal.tempat+"</td>"+
                 "</tr>";
             });
-            reportContent+="</table></div>";
-            $('#reportPDF').html(reportContent);  
+            pdfContent+="</table></div>";
+            $('#reportPDF').html(pdfContent);  
             });
                
         });   
     });
+}
+function downloadPDF(){
+    var doc = new jsPDF("p","px","letter");
+    var specialElementHandlers = {
+          'DIV to be rendered out': function(element, renderer){
+           return true;
+        }
+    };
+    
     $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
             console.log($('#pdf'+key).html());
