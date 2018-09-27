@@ -230,7 +230,7 @@ function downloadPDF(){
     var reportContent = "";
     $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
-            reportContent="";
+           
             $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
                 reportContent +="<p>ID : "+val.id+"</p>"+
                 "<p>Nama : "+dataOne.nama+"</p>"+
@@ -281,13 +281,11 @@ function downloadPDF(){
                     'elementHandlers': specialElementHandlers
             });
             doc.addPage();
-
-
-            },function(tes){
-                doc.save('reportPDF.pdf');
+            reportContent="";
             });
                
         });   
+        doc.save('reportPDF.pdf');
     });
 
 }
