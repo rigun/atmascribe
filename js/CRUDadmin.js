@@ -232,7 +232,7 @@ function downloadPDF(){
         $.each(data.records, function(key, val){
             reportContent="";
             $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
-                reportContent +="<p>ID : "+val.id+"</p>"
+                reportContent +="<p>ID : "+val.id+"</p>"+
                 "<p>Nama : "+dataOne.nama+"</p>"+
                 "<p>Email : "+dataOne.email+"</p>"+
                 "<p>Tanggal Lahir : "+dataOne.ttl+"</p>"+
@@ -241,7 +241,7 @@ function downloadPDF(){
                 "<p>Status : "; 
                 if(val.status == 0){reportContent += "Tidak Aktif"}else{reportContent +="Aktif"};
     
-                reportContent +="</p>"
+            reportContent +="</p>"+``
                 "<h1>Catatan</h1>"+
                 "<table>"+
                     "<tr>"+
@@ -280,7 +280,8 @@ function downloadPDF(){
                 'width': 170,
                     'elementHandlers': specialElementHandlers
             });
-        doc.save('reportPDF.pdf');
+            doc.addPage();
+            doc.save('reportPDF.pdf');
 
             });
                
