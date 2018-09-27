@@ -276,12 +276,12 @@ function downloadPDF(){
                 "</tr>";
             });
             reportContent+="</table>";
-         
-            });
             doc.fromHTML(reportContent, 15, 15, {
                 'width': 170,
                     'elementHandlers': specialElementHandlers
             });
+            });
+               
             doc.addPage();
         });   
         doc.save('reportPDF.pdf');
