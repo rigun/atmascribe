@@ -221,7 +221,7 @@ function getReport(){
     });
 }
 function downloadPDF(){
-    var doc = new jsPDF("p","px","letter");
+    var pdf = new jsPDF("p","px","letter");
     var specialElementHandlers = {
           'DIV to be rendered out': function(element, renderer){
            return true;
@@ -230,15 +230,15 @@ function downloadPDF(){
     var reportContent = "";
     $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
-           
-            doc = $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
-                var doc = new jsPDF("p","px","letter");    
-                var reportContent = "";
-                var specialElementHandlers = {
-                    'DIV to be rendered out': function(element, renderer){
-                     return true;
-                  }
-              };
+           var doc = new jsPDF("p","px","letter");    
+           var reportContent = "";
+           var specialElementHandlers = {
+               'DIV to be rendered out': function(element, renderer){
+                return true;
+             }
+         };
+            pdf = $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
+               
             reportContent +="<p>ID : "+val.id+"</p>"+
                 "<p>Nama : "+dataOne.nama+"</p>"+
                 "<p>Email : "+dataOne.email+"</p>"+
@@ -292,7 +292,7 @@ function downloadPDF(){
             return doc;
             });
         });   
-        doc.save('reportPDF.pdf');
+        pdf.save('reportPDF.pdf');
     });
 
 }
