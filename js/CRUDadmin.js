@@ -231,7 +231,7 @@ function downloadPDF(){
     $.getJSON("https://atmascribe.thekingcorp.org/api/user/read.php", function(data){
         $.each(data.records, function(key, val){
            
-            $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
+            doc = $.getJSON("https://atmascribe.thekingcorp.org/api/user/readOne.php?id="+val.id, function(dataOne){
                 reportContent +="<p>ID : "+val.id+"</p>"+
                 "<p>Nama : "+dataOne.nama+"</p>"+
                 "<p>Email : "+dataOne.email+"</p>"+
@@ -282,8 +282,8 @@ function downloadPDF(){
             });
             doc.addPage();
             reportContent="";
+            return doc;
             });
-               
         });   
         doc.save('reportPDF.pdf');
     });
